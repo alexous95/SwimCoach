@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>849062297654-vlfov7ngiqkn4ok0gv41ef2q2ondlctn.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.849062297654-vlfov7ngiqkn4ok0gv41ef2q2ondlctn</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCQTyCtrWfmIVtl972CsL8PUTt0TMeojTw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>849062297654</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.Alex.SwimCoach</string>
+	<key>PROJECT_ID</key>
+	<string>swim-coach-3dfcf</string>
+	<key>STORAGE_BUCKET</key>
+	<string>swim-coach-3dfcf.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:849062297654:ios:9b1c863caa20ef7f361897</string>
+	<key>DATABASE_URL</key>
+	<string>https://swim-coach-3dfcf.firebaseio.com</string>
+</dict>
+</plist>

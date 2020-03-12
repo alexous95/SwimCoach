@@ -1,0 +1,6 @@
+framework module Pods_SwimCoachTests {
+  umbrella header "Pods-SwimCoachTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
