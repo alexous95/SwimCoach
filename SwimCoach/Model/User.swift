@@ -10,5 +10,11 @@ import Foundation
 
 struct User: Codable {
     
-    let username: String
+    let email: String
+    let password: String
+    
+    init(email: String = "", password: String = "") {
+        self.email = email
+        self.password = password
+    }
 }
