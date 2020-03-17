@@ -21,7 +21,7 @@
 		FA7814BD23FE90CE0011A69B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7814BB23FE90CE0011A69B /* LaunchScreen.storyboard */; };
 		FA7814C823FE90CE0011A69B /* SwimCoachTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7814C723FE90CE0011A69B /* SwimCoachTests.swift */; };
 		FA7814DA23FE965B0011A69B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA7814D923FE965B0011A69B /* GoogleService-Info.plist */; };
-		FA82DF9A2412C9290053BA2C /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82DF992412C9290053BA2C /* FirestoreManager.swift */; };
+		FA82DF9A2412C9290053BA2C /* FirestoreGroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82DF992412C9290053BA2C /* FirestoreGroupManager.swift */; };
 		FA82DF9C2412C9AD0053BA2C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82DF9B2412C9AD0053BA2C /* Group.swift */; };
 		FA82DF9E2412C9E90053BA2C /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82DF9D2412C9E90053BA2C /* Person.swift */; };
 		FA9855EF23FED97F00B6CF3F /* CreateUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9855EE23FED97F00B6CF3F /* CreateUserController.swift */; };
@@ -64,7 +64,7 @@
 		FA7814C723FE90CE0011A69B /* SwimCoachTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimCoachTests.swift; sourceTree = "<group>"; };
 		FA7814C923FE90CE0011A69B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA7814D923FE965B0011A69B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		FA82DF992412C9290053BA2C /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		FA82DF992412C9290053BA2C /* FirestoreGroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGroupManager.swift; sourceTree = "<group>"; };
 		FA82DF9B2412C9AD0053BA2C /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		FA82DF9D2412C9E90053BA2C /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		FA9855EE23FED97F00B6CF3F /* CreateUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserController.swift; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				FABAD7BB23FEBC5100E573AF /* FirestoreService.swift */,
-				FA82DF992412C9290053BA2C /* FirestoreManager.swift */,
+				FA82DF992412C9290053BA2C /* FirestoreGroupManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -404,7 +404,7 @@
 				FA7814B223FE90C90011A69B /* LoginController.swift in Sources */,
 				FA82DF9C2412C9AD0053BA2C /* Group.swift in Sources */,
 				FAD03DB7241A58D1001DC925 /* LoginViewModel.swift in Sources */,
-				FA82DF9A2412C9290053BA2C /* FirestoreManager.swift in Sources */,
+				FA82DF9A2412C9290053BA2C /* FirestoreGroupManager.swift in Sources */,
 				FA7814AE23FE90C90011A69B /* AppDelegate.swift in Sources */,
 				FA7814B023FE90C90011A69B /* SceneDelegate.swift in Sources */,
 				FA2A5659241F7EF70037128F /* CreateUserViewModel.swift in Sources */,
