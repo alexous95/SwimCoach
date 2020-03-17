@@ -114,6 +114,10 @@ class HomeScreenController: UIViewController {
         present(alert, animated: true)
     }
     
+    @objc private func segueTo() {
+        performSegue(withIdentifier: "presenceSegue", sender: nil)
+    }
+    
 }
 
 // MARK: - Extension
@@ -137,9 +141,11 @@ extension HomeScreenController: UICollectionViewDelegate, UICollectionViewDataSo
         let group = groups[indexPath.item]
         
         cell.configure(name: group.groupName)
+        
         return cell
     }
     
-    
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
+    }
 }

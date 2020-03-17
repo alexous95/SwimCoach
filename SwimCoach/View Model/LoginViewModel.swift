@@ -25,7 +25,6 @@ final class LoginViewModel {
     func authentificate(withEmail email: String, password: String){
         isLoading = true
         if email == "" || password == "" || password.count < 5 {
-            print("10")
             isLoading = false
             error = .fieldsError
             access = false

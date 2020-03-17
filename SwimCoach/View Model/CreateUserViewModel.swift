@@ -37,7 +37,6 @@ final class CreateUserViewModel {
                     print(error.debugDescription)
                 } else {
                     self.isLoading = false
-                    print("inscription de \(username)")
                     
                     guard let user = Auth.auth().currentUser else { return }
                     let userID = user.uid

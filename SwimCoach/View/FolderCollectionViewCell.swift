@@ -13,8 +13,12 @@ class FolderCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var folderImage: UIImageView!
     @IBOutlet weak var groupeName: UILabel!
   
+    var touchGesture: UITapGestureRecognizer? = nil
+    
     func configure(name: String) {
         groupeName.text = name
     }
+    
+    
     
 }

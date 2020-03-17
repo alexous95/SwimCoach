@@ -13,6 +13,7 @@
 		FA2A5659241F7EF70037128F /* CreateUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A5658241F7EF70037128F /* CreateUserViewModel.swift */; };
 		FA2A565B241F8B6A0037128F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A565A241F8B6A0037128F /* UIViewController+Alert.swift */; };
 		FA2A565D241F96640037128F /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A565C241F96640037128F /* HomeScreenViewModel.swift */; };
+		FA7125BD24211BFD00C98323 /* PresenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7125BC24211BFD00C98323 /* PresenceController.swift */; };
 		FA7814AE23FE90C90011A69B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7814AD23FE90C90011A69B /* AppDelegate.swift */; };
 		FA7814B023FE90C90011A69B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7814AF23FE90C90011A69B /* SceneDelegate.swift */; };
 		FA7814B223FE90C90011A69B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7814B123FE90C90011A69B /* LoginController.swift */; };
@@ -52,6 +53,7 @@
 		FA2A5658241F7EF70037128F /* CreateUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModel.swift; sourceTree = "<group>"; };
 		FA2A565A241F8B6A0037128F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		FA2A565C241F96640037128F /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
+		FA7125BC24211BFD00C98323 /* PresenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceController.swift; sourceTree = "<group>"; };
 		FA7814AA23FE90C90011A69B /* SwimCoach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwimCoach.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA7814AD23FE90C90011A69B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA7814AF23FE90C90011A69B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				FA7814B123FE90C90011A69B /* LoginController.swift */,
 				FA9855EE23FED97F00B6CF3F /* CreateUserController.swift */,
 				FA9855F023FEDD4300B6CF3F /* HomeScreenController.swift */,
+				FA7125BC24211BFD00C98323 /* PresenceController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				FA82DF9A2412C9290053BA2C /* FirestoreGroupManager.swift in Sources */,
 				FA7814AE23FE90C90011A69B /* AppDelegate.swift in Sources */,
 				FA7814B023FE90C90011A69B /* SceneDelegate.swift in Sources */,
+				FA7125BD24211BFD00C98323 /* PresenceController.swift in Sources */,
 				FA2A5659241F7EF70037128F /* CreateUserViewModel.swift in Sources */,
 				FA1616AE24069D7A009C6148 /* UIImageExtension.swift in Sources */,
 				FA2A565B241F8B6A0037128F /* UIViewController+Alert.swift in Sources */,
