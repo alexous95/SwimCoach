@@ -143,7 +143,7 @@
                         <outlet property="email" destination="1eS-3Q-NrI" id="qlO-1d-XJt"/>
                         <outlet property="login" destination="4f8-ra-NHq" id="Sm2-oI-eXt"/>
                         <outlet property="password" destination="Egy-fe-pKh" id="5Hl-ce-Qfc"/>
-                        <segue destination="idQ-Wi-13W" kind="presentation" identifier="homeScreenSegue" id="2wK-Oe-KOt"/>
+                        <segue destination="bXg-ni-pBe" kind="presentation" identifier="homeScreenSegue" id="pRa-nZ-YBT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -262,7 +262,7 @@
                         <outlet property="email" destination="3q9-Rb-hBQ" id="O8X-m1-iUv"/>
                         <outlet property="password" destination="RoP-lL-tsU" id="BcS-bT-YF8"/>
                         <outlet property="username" destination="f5o-y7-B4K" id="fDY-Ni-8de"/>
-                        <segue destination="idQ-Wi-13W" kind="presentation" identifier="homeScreenSegue" id="Kmh-TN-bGA"/>
+                        <segue destination="bXg-ni-pBe" kind="presentation" identifier="homeScreenSegue" id="VLg-le-hSn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRO-Um-Uoz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -291,7 +291,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5bw-oX-PAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1986" y="-202"/>
+            <point key="canvasLocation" x="1233" y="394"/>
         </scene>
         <!--Group-->
         <scene sceneID="ben-V2-Lpt">
@@ -302,7 +302,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CEe-eq-uLy" customClass="folde">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JJb-jF-oyF">
                                     <size key="itemSize" width="180" height="180"/>
@@ -381,37 +381,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXo-xI-COE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2805.5999999999999" y="-202.46305418719211"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="mDI-26-fLH">
-            <objects>
-                <tabBarController modalPresentationStyle="fullScreen" id="idQ-Wi-13W" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="eHK-eI-0vu"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backgroundImage="transparent" id="5EX-Yz-bZR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="bXg-ni-pBe" kind="relationship" relationship="viewControllers" id="b8C-kb-Y1u"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XWA-62-HYw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1130" y="481"/>
+            <point key="canvasLocation" x="2401" y="394"/>
         </scene>
     </scenes>
     <resources>
         <image name="White bubble" width="474" height="512"/>
         <image name="folder" catalog="system" width="64" height="46"/>
         <image name="person.3" catalog="system" width="72" height="35"/>
-        <image name="transparent" width="0.5" height="0.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2wK-Oe-KOt"/>
+        <segue reference="VLg-le-hSn"/>
     </inferredMetricsTieBreakers>
 </document>
