@@ -236,6 +236,10 @@
                                     <action selector="createAccount:" destination="yek-Mb-W1m" eventType="touchUpInside" id="enA-Dr-c1Q"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="DNv-yB-2KU">
+                                <rect key="frame" x="169" y="360.66666666666669" width="37" height="37"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.26716036809999999" green="0.5833066925" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -243,7 +247,9 @@
                             <constraint firstItem="pVc-04-t96" firstAttribute="centerX" secondItem="CDj-cm-AnF" secondAttribute="centerX" id="S20-y9-fx9"/>
                             <constraint firstItem="pVc-04-t96" firstAttribute="leading" secondItem="1ZR-B0-mNc" secondAttribute="leading" id="Sjl-Dq-8Dg"/>
                             <constraint firstItem="pVc-04-t96" firstAttribute="centerY" secondItem="CDj-cm-AnF" secondAttribute="centerY" id="Tz8-8f-mO4"/>
+                            <constraint firstItem="DNv-yB-2KU" firstAttribute="centerY" secondItem="CDj-cm-AnF" secondAttribute="centerY" id="YGr-HT-awU"/>
                             <constraint firstItem="1ZR-B0-mNc" firstAttribute="bottom" secondItem="BoK-Ez-6Q0" secondAttribute="bottom" constant="25" id="aBu-ix-com"/>
+                            <constraint firstItem="DNv-yB-2KU" firstAttribute="centerX" secondItem="CDj-cm-AnF" secondAttribute="centerX" id="cm5-9D-SKk"/>
                             <constraint firstItem="1ZR-B0-mNc" firstAttribute="trailing" secondItem="pVc-04-t96" secondAttribute="trailing" id="uSb-mj-Shm"/>
                             <constraint firstItem="BoK-Ez-6Q0" firstAttribute="width" secondItem="CDj-cm-AnF" secondAttribute="width" multiplier="0.4" id="xXo-h9-gv1"/>
                         </constraints>
@@ -251,6 +257,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="OZK-NU-P7c"/>
                     <connections>
+                        <outlet property="activityWheel" destination="DNv-yB-2KU" id="aEu-ev-XgV"/>
                         <outlet property="createAccount" destination="BoK-Ez-6Q0" id="DQv-74-RdQ"/>
                         <outlet property="email" destination="3q9-Rb-hBQ" id="O8X-m1-iUv"/>
                         <outlet property="password" destination="RoP-lL-tsU" id="BcS-bT-YF8"/>
@@ -316,7 +323,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDv-qi-UQ1">
-                                                    <rect key="frame" x="63" y="117.99999999999999" width="54" height="20.333333333333329"/>
+                                                    <rect key="frame" x="31.666666666666671" y="117.99999999999999" width="117.00000000000001" height="20.333333333333329"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -331,7 +338,7 @@
                                                 <constraint firstItem="LDv-qi-UQ1" firstAttribute="centerX" secondItem="EIb-oV-S0s" secondAttribute="centerX" id="eqE-LP-XDo"/>
                                                 <constraint firstItem="FLS-eS-OLo" firstAttribute="height" secondItem="EIb-oV-S0s" secondAttribute="height" multiplier="0.6" id="fqz-XM-467"/>
                                                 <constraint firstItem="FLS-eS-OLo" firstAttribute="leading" secondItem="EIb-oV-S0s" secondAttribute="leading" id="gRm-96-M4P"/>
-                                                <constraint firstItem="LDv-qi-UQ1" firstAttribute="width" secondItem="EIb-oV-S0s" secondAttribute="width" multiplier="0.3" id="r57-fc-vZh"/>
+                                                <constraint firstItem="LDv-qi-UQ1" firstAttribute="width" secondItem="EIb-oV-S0s" secondAttribute="width" multiplier="0.65" id="r57-fc-vZh"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -343,21 +350,32 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="hGd-SH-AkP">
+                                <rect key="frame" x="169" y="387.66666666666669" width="37" height="37"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2LV-wr-pXa" firstAttribute="trailing" secondItem="CEe-eq-uLy" secondAttribute="trailing" id="8s7-gY-hAK"/>
                             <constraint firstItem="2LV-wr-pXa" firstAttribute="bottom" secondItem="CEe-eq-uLy" secondAttribute="bottom" id="EzX-5S-z3U"/>
+                            <constraint firstItem="hGd-SH-AkP" firstAttribute="centerY" secondItem="FwI-JP-OIg" secondAttribute="centerY" id="YcP-zg-DOH"/>
                             <constraint firstItem="CEe-eq-uLy" firstAttribute="leading" secondItem="2LV-wr-pXa" secondAttribute="leading" id="Z0j-4n-Lmy"/>
+                            <constraint firstItem="hGd-SH-AkP" firstAttribute="centerX" secondItem="FwI-JP-OIg" secondAttribute="centerX" id="aCz-0L-I4H"/>
                             <constraint firstItem="CEe-eq-uLy" firstAttribute="top" secondItem="2LV-wr-pXa" secondAttribute="top" id="vIp-z7-5YF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2LV-wr-pXa"/>
                     </view>
                     <navigationItem key="navigationItem" title="HomeScreen" id="gpk-sn-muT">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3AM-Yh-ZRX"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3AM-Yh-ZRX">
+                            <connections>
+                                <action selector="addGroup" destination="xaQ-HS-j1N" id="5LR-jH-tgC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityWheel" destination="hGd-SH-AkP" id="RLz-r7-bYH"/>
                         <outlet property="collectionView" destination="CEe-eq-uLy" id="25E-Mz-AKZ"/>
                     </connections>
                 </viewController>
@@ -393,6 +411,6 @@
         <image name="transparent" width="0.5" height="0.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2wK-Oe-KOt"/>
+        <segue reference="Kmh-TN-bGA"/>
     </inferredMetricsTieBreakers>
 </document>

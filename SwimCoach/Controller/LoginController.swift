@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Combine
 
 class LoginController: UIViewController {
     
@@ -27,15 +28,20 @@ class LoginController: UIViewController {
     let gradient = CAGradientLayer()
     let screenHeight = UIScreen.main.bounds.height
     
+    let viewModel = LoginViewModel()
+    var activitySubscriber: AnyCancellable?
+    var accessSubscriber: AnyCancellable?
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createActivitySubscriber()
+        createAccessSubscriber()
         setupGesture()
         setupBackground()
         setupTextFields()
         setupButton()
-        setupActivityWheel()
         prepareForAnimation()
     }
     
@@ -168,15 +174,47 @@ class LoginController: UIViewController {
         create.layer.cornerRadius = 10.0
     }
     
-    private func setupActivityWheel() {
-        activityWheel.isHidden = true
-    }
     /// Configures a tap gesture to end dismiss the keyboard
     private func setupGesture() {
         let touchGesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         view.addGestureRecognizer(touchGesture)
     }
     
+    // MARK: - Subscriber
+    
+    /// Create a subscriber to listen to update from the viewModel if the isLoading value change
+    ///
+    /// This function uses the Publisher/Subscriber model to update the interface accordingly to the modele.
+    /// When the value isLoading change in the view model, the activity wheel start/stop animating accordingly
+    private func createActivitySubscriber() {
+        activitySubscriber = viewModel.$isLoading.receive(on: DispatchQueue.main).sink(receiveValue: { (value) in
+            if value {
+                self.activityWheel.isHidden = !value
+                self.activityWheel.startAnimating()
+            } else {
+                self.activityWheel.isHidden = !value
+                self.activityWheel.stopAnimating()
+            }
+        })
+    }
+        
+    /// Create a subscriber to listen to update from the viewModel if the access value change
+    ///
+    /// This function uses the Publisher/Subscriber model to update the interface accordingly to the modele.
+    /// When the value access change in the view model, we perform a segue if the value is true.
+    /// If not we show an alert with the contextual error
+    private func createAccessSubscriber() {
+        accessSubscriber = viewModel.$access.receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink(receiveValue: { (access) in
+                if access {
+                    print("access granted")
+                    self.performSegue(withIdentifier: "homeScreenSegue", sender: nil)
+                } else {
+                    self.showAlert(withTitle: "Oops", message: self.viewModel.error.rawValue)
+                }
+            })
+    }
     
     // MARK: - Actions
     
@@ -184,34 +222,7 @@ class LoginController: UIViewController {
         guard let email = email.text else { return }
         guard let password = password.text else { return }
         
-        if email == "" || password == "" || password.count < 5 {
-            let alert = UIAlertController(title: "Oops", message: "You need to fill correctly the fields", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            
-            alert.addAction(action)
-            
-            present(alert, animated: true)
-        } else {
-            activityWheel.isHidden = false
-            activityWheel.startAnimating()
-            Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-                if error != nil {
-                    print(error.debugDescription)
-                    
-                    let alert = UIAlertController(title: "Oops", message: "Error while authentificating you", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-                    
-                    alert.addAction(action)
-                    self.present(alert, animated: true)
-                    
-                } else {
-                    print("authentification successful")
-                    self.activityWheel.stopAnimating()
-                    self.activityWheel.isHidden = true
-                    self.performSegue(withIdentifier: "homeScreenSegue", sender: nil)
-                }
-            }
-        }
+        viewModel.authentificate(withEmail: email, password: password)
     }
     
     @objc private func endEditing() {

@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import Combine
 
 class CreateUserController: UIViewController {
     
@@ -17,15 +18,22 @@ class CreateUserController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var createAccount: UIButton!
+    @IBOutlet weak var activityWheel: UIActivityIndicatorView!
     
     // MARK: - Variables
     
     let gradient = CAGradientLayer()
+    let viewModel = CreateUserViewModel()
+    
+    var accessSubscriber: AnyCancellable?
+    var loadingSubscriber: AnyCancellable?
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createActivitySubscriber()
+        createAccessSubscriber()
         setupTextfields()
         setupButton()
         prepareForAnimation()
@@ -42,7 +50,6 @@ class CreateUserController: UIViewController {
         startTexfieldsAnimation()
     }
     
-   
     // MARK: - UI Setup
     
     /// Setsup the backgound with a gradient of color
@@ -114,6 +121,40 @@ class CreateUserController: UIViewController {
         }, completion: nil)
     }
     
+    
+    /// Create a subscriber to listen for update from the viewModel if the isLoading value change
+    ///
+    /// This function uses the Publisher/Subscriber model to update the interface accordingly to the modele.
+    /// When the value isLoading change in the view model, the activity wheel start/stop animating accordingly
+    private func createActivitySubscriber() {
+        loadingSubscriber = viewModel.$isLoading.receive(on: DispatchQueue.main).sink(receiveValue: { (loading) in
+            if loading {
+                self.activityWheel.isHidden = !loading
+                self.activityWheel.startAnimating()
+            } else {
+                self.activityWheel.isHidden = !loading
+                self.activityWheel.stopAnimating()
+            }
+        })
+    }
+    
+    /// Create a subscriber to listen for update from the viewModel if the access value change
+    ///
+    /// This function uses the Publisher/Subscriber model to update the interface accordingly to the modele.
+    /// When the value access change in the view model, we perform a segue if the value is true.
+    /// If not, we show an alert with the contextual error
+    private func createAccessSubscriber() {
+        accessSubscriber = viewModel.$access.receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink(receiveValue: { (access) in
+                if access {
+                    self.performSegue(withIdentifier: "homeScreenSegue", sender: nil)
+                } else {
+                    self.showAlert(withTitle: "Oops", message: self.viewModel.error.rawValue)
+                }
+        })
+    }
+    
     // MARK: - Actions
     
     @IBAction func createAccount(_ sender: Any) {
@@ -121,30 +162,8 @@ class CreateUserController: UIViewController {
         guard let email = email.text else { return }
         guard let password = password.text else { return }
         
-        if email == "" || password == "" || password.count < 5 || username.count < 4 {
-            let alert = UIAlertController(title: "Oops", message: "Check if your password is at leats 5 characters long. Check if your username is at least 3 character long.", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            
-            alert.addAction(action)
-            
-            present(alert, animated: true)
-        } else {
-            
-            Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-                if error != nil {
-                    print(error.debugDescription)
-                } else {
-                    
-                    print("inscription de \(username)")
-                    guard let user = Auth.auth().currentUser else { return }
-                    let userID = user.uid
-                    
-                    FirestoreService.database.collection("users").document(userID).setData(["username": username])
-                    
-                    self.performSegue(withIdentifier: "homeScreenSegue", sender: nil)
-                }
-            }
-        }
+        viewModel.createUser(withUsername: username, email: email, password: password)
+
     }
     
 }

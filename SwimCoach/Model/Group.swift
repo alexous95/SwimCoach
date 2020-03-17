@@ -11,5 +11,18 @@ import Foundation
 struct Group: Codable {
     
     let groupName: String
-    let persons: [Person]
+    
+    var dictionnary: [String : Any] {
+        return ["groupName" : self.groupName]
+    }
+    
+    init(groupName: String) {
+        self.groupName = groupName
+    }
+    
+    init?(document: [String: Any]) {
+        guard let groupName = document["groupName"] as? String else { return nil }
+        
+        self.init(groupName: groupName)
+    }
 }
