@@ -13,8 +13,11 @@ class PresenceController: UIViewController {
     
     // MARK: - Outlet
     
+        
     // MARK: - Variables
     
+    var group: Group?
+    var viewModel: PresenceViewModel?
     let gradient = CAGradientLayer()
     
     // MARK: - View Life Cycle
@@ -22,6 +25,7 @@ class PresenceController: UIViewController {
     override func viewDidLoad() {
         setupBackground()
         setupNavBar()
+        initialiseViewModel()
     }
     
     override func viewDidLayoutSubviews() {
@@ -30,11 +34,19 @@ class PresenceController: UIViewController {
         setupBackground()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-    }
-    
     // MARK: - Private
+    
+    /// Initialise the view model
+    ///
+    /// We can initialize the view model only after we received the data from the segue transition.
+    /// The view model init methode require a group as parameter
+    private func initialiseViewModel(){
+        guard let group = group else {
+            print("Initialisation failed")
+            return
+        }
+        viewModel = PresenceViewModel(group: group)
+    }
     
     private func setupBackground() {
         guard let backStartColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
@@ -47,6 +59,7 @@ class PresenceController: UIViewController {
     private func setupNavBar() {
         self.navigationController?.navigationBar.shadowImage = UIImage.imageWithColor(color: UIColor.white)
     }
+    
     
     
 }

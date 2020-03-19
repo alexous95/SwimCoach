@@ -41,6 +41,10 @@ final class CreateUserViewModel {
                     guard let user = Auth.auth().currentUser else { return }
                     let userID = user.uid
                     
+                    // We use the user's uid to create a new document in the users collection
+                    // In the new created document we set the data of this document with the username
+                    // entered by the user
+                    
                     FirestoreService.database.collection("users").document(userID).setData(["username": username])
                     self.access = true                }
             }

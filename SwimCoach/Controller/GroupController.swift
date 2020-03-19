@@ -9,7 +9,7 @@
 import UIKit
 import Combine
 
-class HomeScreenController: UIViewController {
+class GroupController: UIViewController {
     
     // MARK: - Outlet
     
@@ -19,7 +19,7 @@ class HomeScreenController: UIViewController {
     // MARK: - Variables
 
     let gradient = CAGradientLayer()
-    let viewModel = HomeScreenViewModel()
+    let viewModel = GroupViewModel()
     
     var activitySubscriber: AnyCancellable?
     var availlableDataSubscriber: AnyCancellable?
@@ -39,6 +39,19 @@ class HomeScreenController: UIViewController {
         super.viewDidLayoutSubviews()
         gradient.frame = view.bounds
         setupBackground()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "presenceSegue" {
+            let destVC: PresenceController = segue.destination as! PresenceController
+            let indexPath = collectionView.indexPathsForSelectedItems
+            
+            guard let groups = viewModel.groups else { return }
+            guard let index = indexPath else { return }
+            
+            let item = index[0].item
+            destVC.navigationItem.title = groups[item].groupName
+        }
     }
     
     // MARK: - Setup UI
@@ -122,7 +135,7 @@ class HomeScreenController: UIViewController {
 
 // MARK: - Extension
 
-extension HomeScreenController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension GroupController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItem()
     }
@@ -143,9 +156,5 @@ extension HomeScreenController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.configure(name: group.groupName)
         
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
     }
 }

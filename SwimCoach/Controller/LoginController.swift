@@ -208,7 +208,6 @@ class LoginController: UIViewController {
             .compactMap { $0 }
             .sink(receiveValue: { (access) in
                 if access {
-                    print("access granted")
                     self.performSegue(withIdentifier: "homeScreenSegue", sender: nil)
                 } else {
                     self.showAlert(withTitle: "Oops", message: self.viewModel.error.rawValue)

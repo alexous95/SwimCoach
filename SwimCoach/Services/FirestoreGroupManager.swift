@@ -45,7 +45,11 @@ final class FirestoreGroupManager {
     static func addGroup(group: Group) {
         if let user = Auth.auth().currentUser{
             let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups")
-             ref.document(group.groupName).setData(group.dictionnary)
+            
+            // We create here a new document which name is the group name
+            // We set the data with dictionnary property of the group model
+            
+            ref.document(group.groupName).setData(group.dictionnary)
         }
     }
 }

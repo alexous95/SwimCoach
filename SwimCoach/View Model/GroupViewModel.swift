@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-final class HomeScreenViewModel {
+final class GroupViewModel {
     
     // This publisher is for the activity wheel
     @Published var isLoading: Bool = false
