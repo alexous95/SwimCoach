@@ -38,9 +38,6 @@ class PresenceController: UIViewController {
         createActivitySubscriber()
         createAvaillableDataSubscriber()
         loadData()
-        
-        print("tableView width: \(tableView.bounds.width)")
-        print("tableView height: \(tableView.bounds.height)")
     }
     
     override func viewDidLayoutSubviews() {
@@ -49,8 +46,6 @@ class PresenceController: UIViewController {
         setupBackground()
         
     }
-    
-   
     
     // MARK: - Setup
     
@@ -209,5 +204,16 @@ extension PresenceController: UITableViewDelegate, UITableViewDataSource {
         return headerView
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            guard let viewModel = viewModel else { return }
+            guard let persons = viewModel.persons else { return }
+            guard let group = group else { return }
+            
+            let person = persons[indexPath.section]
+            viewModel.deletePerson(personID: person.personID, from: group)
+        }
+    }
     
 }

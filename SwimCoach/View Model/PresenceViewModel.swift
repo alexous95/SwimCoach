@@ -23,6 +23,7 @@ final class PresenceViewModel {
         self.group = group
     }
     
+    /// Fetches persons from the database and add them to our model
     func fetchPerson() {
         isLoading = true
         FirestorePersonManager.fetchPersons(from: group) { (persons, error) in
@@ -40,8 +41,15 @@ final class PresenceViewModel {
         }
     }
     
+    /// Adds a person to the database and fetches the data to update the model
     func addPerson(lastName: String, firstName: String, to group: Group) {
         FirestorePersonManager.addPerson(lastName: lastName, firstName: firstName, to: group)
+        fetchPerson()
+    }
+    
+    /// Deletes a person from the database and fetches the data to udpdate the model
+    func deletePerson(personID: String, from group: Group) {
+        FirestorePersonManager.deletePerson(personID: personID, from: group)
         fetchPerson()
     }
     
