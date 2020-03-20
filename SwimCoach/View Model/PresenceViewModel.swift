@@ -19,8 +19,6 @@ final class PresenceViewModel {
     @Published var dataAvaillable: Bool = false
     @Published var isLoading: Bool = false
     
-    
-    
     init(group: Group) {
         self.group = group
     }

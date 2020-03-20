@@ -51,6 +51,7 @@ class GroupController: UIViewController {
             
             let item = index[0].item
             destVC.navigationItem.title = groups[item].groupName
+            destVC.group = groups[item]
         }
     }
     
