@@ -26,24 +26,7 @@ class PersonViewCell: UITableViewCell {
             isPresentSwitch.onTintColor = .systemBlue
         }
     }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
         
-        let blurEffect = UIBlurEffect(style: .light)
-        let visualEffectView = UIVisualEffectView(effect: blurEffect)
-        
-        print("Init bounds with widht: \(contentView.bounds.width)")
-        print("Init bounds with height: \(contentView.bounds.height)")
-       
-        visualEffectView.frame = contentView.bounds
-        visualEffectView.layer.masksToBounds = true
-        
-        self.addSubview(visualEffectView)
-        self.sendSubviewToBack(visualEffectView)
-        
-    }
-    
     // This method is used to apply a gradient to our custom cells
     
     func configure(lastName: String, firstName: String) {
