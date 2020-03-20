@@ -15,7 +15,7 @@ struct Person: Codable {
     let lastName: String
     var presence: [Presence]
     
-    init(personID: String, firstName: String, lastName: String, presence: [Presence] = [Presence]()) {
+    init(personID: String = "", firstName: String, lastName: String, presence: [Presence] = [Presence]()) {
         self.personID = personID
         self.firstName = firstName
         self.lastName = lastName

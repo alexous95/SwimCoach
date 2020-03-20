@@ -26,7 +26,7 @@ class PresenceController: UIViewController {
     var availlableDataSubscriber: AnyCancellable?
     
     let gradient = CAGradientLayer()
-    let cellSpacingHeight: CGFloat = 15
+    let cellSpacingHeight: CGFloat = 20
     
     // MARK: - View Life Cycle
     
@@ -37,20 +37,28 @@ class PresenceController: UIViewController {
         setupDelegate()
         createActivitySubscriber()
         createAvaillableDataSubscriber()
+        loadData()
+        
+        print("tableView width: \(tableView.bounds.width)")
+        print("tableView height: \(tableView.bounds.height)")
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         gradient.frame = view.bounds
         setupBackground()
+        
     }
     
+   
+    
+    // MARK: - Setup
+    
+    /// Setsup the table view delegate and data source
     private func setupDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
-    // MARK: - Private
     
     /// Initialise the view model
     ///
@@ -64,6 +72,33 @@ class PresenceController: UIViewController {
         viewModel = PresenceViewModel(group: group)
     }
     
+    private func loadData() {
+        guard let viewModel = viewModel else { return }
+        viewModel.fetchPerson()
+    }
+    
+    // MARK: - UI Setup
+    
+    /// Setsup the background with our custom colors
+    private func setupBackground() {
+        guard let backStartColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
+        guard let backEndColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
+        
+        gradient.colors = [backStartColor.cgColor, backEndColor.cgColor]
+        view.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    /// Add a little image below the nav bar
+    private func setupNavBar() {
+        self.navigationController?.navigationBar.shadowImage = UIImage.imageWithColor(color: UIColor.white)
+    }
+    
+    // MARK: - Subscribers
+    
+    /// Create a subscriber to listen for update from the viewModel if the isLoading value change
+    ///
+    /// This function uses the Publisher/Subscriber model to update the interface accordingly to the modele.
+    /// When the value isLoading change in the view model, the activity wheel start/stop animating accordingly
     private func createActivitySubscriber() {
         guard let viewModel = viewModel else {
             print("pas de view model")
@@ -80,6 +115,11 @@ class PresenceController: UIViewController {
         })
     }
     
+    /// Create a subscriber to listen for update from the viewModel if the access value change
+    ///
+    /// This function uses the Publisher/Subscriber model to update the interface accordingly to the modele.
+    /// When the value access change in the view model, we perform a segue if the value is true.
+    /// If not, we show an alert with the contextual error
     private func createAvaillableDataSubscriber() {
         guard let viewModel = viewModel else {
             print("pas de view model")
@@ -93,28 +133,50 @@ class PresenceController: UIViewController {
         })
     }
     
-    private func addBlurEffect() {
-        
-    }
+    // MARK: - Action
     
-    private func setupBackground() {
-        guard let backStartColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
-        guard let backEndColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
+    @IBAction func addPerson() {
+        let alert = UIAlertController(title: "Add group", message: "Choose a name", preferredStyle: .alert)
         
-        gradient.colors = [backStartColor.cgColor, backEndColor.cgColor]
-        view.layer.insertSublayer(gradient, at: 0)
-    }
-    
-    private func setupNavBar() {
-        self.navigationController?.navigationBar.shadowImage = UIImage.imageWithColor(color: UIColor.white)
+        alert.addTextField { (textfield) in
+            textfield.placeholder = "Last name?"
+        }
+        
+        alert.addTextField { (textfield) in
+            textfield.placeholder = "First Name?"
+        }
+        
+        let save = UIAlertAction(title: "Add", style: .default) { (alertAction) in
+            let lastNameTextField = alert.textFields![0] as UITextField
+            let firstNameTextField = alert.textFields![1] as UITextField
+            
+            guard let lastName = lastNameTextField.text else { return }
+            guard let firstName = firstNameTextField.text else { return }
+            guard let group = self.group else { return }
+            
+            if lastName != "" && firstName != "" {
+                self.viewModel?.addPerson(lastName: lastName, firstName: firstName, to: group)
+            }
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(cancel)
+        alert.addAction(save)
+        
+        present(alert, animated: true)
     }
     
 }
 
 extension PresenceController: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        guard let viewModel = viewModel else { return 0 }
+        guard let persons = viewModel.persons else { return 0 }
+        return persons.count
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -123,11 +185,16 @@ extension PresenceController: UITableViewDelegate, UITableViewDataSource {
         
         // To access our future array we will have to use indexPath.section rather than row
         
+        guard let viewModel = viewModel else { return UITableViewCell() }
+        guard let persons = viewModel.persons else { return UITableViewCell() }
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath) as? PersonViewCell else {
             return UITableViewCell()
         }
         
-        cell.configure(lastName: "test", firstName: "test")
+        let person = persons[indexPath.section]
+        
+        cell.configure(lastName: person.lastName, firstName: person.firstName)
         
         return cell
     }

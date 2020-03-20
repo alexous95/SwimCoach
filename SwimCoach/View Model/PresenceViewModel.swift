@@ -40,9 +40,8 @@ final class PresenceViewModel {
         }
     }
     
-    func addPerson(personID: String, firstName: String, lastName: String, to group: Group) {
-        let person = Person(personID: personID, firstName: firstName, lastName: lastName)
-        FirestorePersonManager.addPerson(person, to: group)
+    func addPerson(lastName: String, firstName: String, to group: Group) {
+        FirestorePersonManager.addPerson(lastName: lastName, firstName: firstName, to: group)
         fetchPerson()
     }
     

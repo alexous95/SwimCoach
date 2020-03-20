@@ -38,13 +38,15 @@ final class FirestorePersonManager {
     }
     
     
-    static func addPerson(_ person: Person, to group: Group) {
+    static func addPerson(lastName: String, firstName: String, to group: Group) {
+        
         if let user = Auth.auth().currentUser {
             let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("persons")
             
             // We create an empty document and we retrieve his ID which is created randomly
             
             let id = ref.document().documentID
+            let person = Person(personID: id, firstName: firstName, lastName: lastName)
             ref.document(id).setData(person.dictionary)
             
         }

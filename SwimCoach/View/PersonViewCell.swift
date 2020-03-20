@@ -17,13 +17,26 @@ class PersonViewCell: UITableViewCell {
     let gradient = CAGradientLayer()
     
     
+    override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: self.layer)
+        switch traitCollection.userInterfaceStyle {
+        case .dark:
+            isPresentSwitch.onTintColor = UIColor(named: "SwitchDark")
+        default:
+            isPresentSwitch.onTintColor = .systemBlue
+        }
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
         let blurEffect = UIBlurEffect(style: .light)
         let visualEffectView = UIVisualEffectView(effect: blurEffect)
         
-        visualEffectView.frame = self.bounds
+        print("Init bounds with widht: \(contentView.bounds.width)")
+        print("Init bounds with height: \(contentView.bounds.height)")
+       
+        visualEffectView.frame = contentView.bounds
         visualEffectView.layer.masksToBounds = true
         
         self.addSubview(visualEffectView)
@@ -36,6 +49,7 @@ class PersonViewCell: UITableViewCell {
     func configure(lastName: String, firstName: String) {
         lastNameLabel.text = lastName
         firstNameLabel.text = firstName
+        isPresentSwitch.isOn = false
     }
    
 }
