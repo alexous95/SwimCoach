@@ -16,7 +16,6 @@ class PersonViewCell: UITableViewCell {
     
     let gradient = CAGradientLayer()
     
-    
     override func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: self.layer)
         switch traitCollection.userInterfaceStyle {
@@ -26,8 +25,6 @@ class PersonViewCell: UITableViewCell {
             isPresentSwitch.onTintColor = .systemBlue
         }
     }
-        
-    // This method is used to apply a gradient to our custom cells
     
     func configure(lastName: String, firstName: String) {
         lastNameLabel.text = lastName

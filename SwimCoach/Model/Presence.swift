@@ -17,4 +17,17 @@ struct Presence: Codable {
         self.date = date
         self.isPresent = isPresent
     }
+    
+    var dictionnary: [String: Any] {
+        return ["date": self.date,
+                "isPresent": self.isPresent
+               ]
+    }
+    
+    init?(document: [String : Any]) {
+        guard let date = document["date"] as? Date else { return nil }
+        guard let isPresent = document["isPresent"] as? Bool else { return nil }
+        
+        self.init(date: date, isPresent: isPresent)
+    }
 }

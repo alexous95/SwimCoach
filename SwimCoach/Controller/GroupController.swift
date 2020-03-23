@@ -35,6 +35,7 @@ class GroupController: UIViewController {
         loadData()
     }
     
+    // Sets the gradient's frame to the new bounds of the view to apply dark mode correctly
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         gradient.frame = view.bounds
