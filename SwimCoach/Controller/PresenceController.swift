@@ -16,12 +16,16 @@ class PresenceController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityWheel: UIActivityIndicatorView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var calendarButton: UIButton!
     
     // MARK: - Variables
     
     var group: Group?
     var viewModel: PresenceViewModel?
     
+    var toolBar = UIToolbar()
+    var picker = UIDatePicker()
     var activitySubscriber: AnyCancellable?
     var availlableDataSubscriber: AnyCancellable?
     
@@ -37,6 +41,7 @@ class PresenceController: UIViewController {
         setupDelegate()
         createActivitySubscriber()
         createAvaillableDataSubscriber()
+        initializeDate()
         loadData()
     }
     
@@ -65,6 +70,12 @@ class PresenceController: UIViewController {
             return
         }
         viewModel = PresenceViewModel(group: group)
+    }
+    
+    private func initializeDate() {
+        guard let viewModel = viewModel else { return }
+        
+        dateLabel.text = viewModel.printDate()
     }
     
     private func loadData() {
@@ -130,6 +141,7 @@ class PresenceController: UIViewController {
     
     // MARK: - Action
     
+    /// Adds a person to the database
     @IBAction func addPerson() {
         let alert = UIAlertController(title: "Add group", message: "Choose a name", preferredStyle: .alert)
         
@@ -162,6 +174,60 @@ class PresenceController: UIViewController {
         present(alert, animated: true)
     }
     
+    
+    /// Changes the label date with the date selected
+    ///
+    /// A date picker is presented to choose the new date
+    @IBAction func changeDate(_ sender: Any) {
+        picker = UIDatePicker.init()
+        picker.backgroundColor = .systemBackground
+        
+        picker.autoresizingMask = .flexibleWidth
+        picker.datePickerMode = .date
+        
+        picker.addTarget(self, action: #selector(self.dateChanged(_:)), for: .valueChanged)
+        picker.frame = CGRect(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+        self.view.addSubview(picker)
+        
+        // The toolbar is used to add a "done" button to dismiss the date picker
+        
+        toolBar = UIToolbar(frame: CGRect(x: 0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+        toolBar.barStyle = .default
+        toolBar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.onDoneButtonClick))]
+        toolBar.sizeToFit()
+        self.view.addSubview(toolBar)
+
+    }
+    
+    @IBAction func switchChange(_ sender: UISwitch) {
+        guard let viewModel = viewModel else { return }
+        guard let persons = viewModel.persons else { return }
+        guard let group = group else { return }
+        
+        if sender.isOn {
+            let person = persons[sender.tag]
+            viewModel.addPresence(personID: person.personID, from: group, isPresent: true)
+        }
+    }
+    
+    // MARK: - Objc functions
+    
+    // The next two methodes are used in a selector to display or remove a date picker
+    
+    /// Update the date label with information from the viewModel
+    @objc func dateChanged(_ sender: UIDatePicker?) {
+        guard let viewModel = viewModel else { return }
+        
+        if let date = sender?.date {
+            dateLabel.text = viewModel.printDate(from: date)
+        }
+    }
+    
+    @objc func onDoneButtonClick() {
+        toolBar.removeFromSuperview()
+        picker.removeFromSuperview()
+    }
+    
 }
 
 extension PresenceController: UITableViewDelegate, UITableViewDataSource {
@@ -190,6 +256,7 @@ extension PresenceController: UITableViewDelegate, UITableViewDataSource {
         let person = persons[indexPath.section]
         
         cell.configure(lastName: person.lastName, firstName: person.firstName)
+        cell.isPresentSwitch.tag = indexPath.section
         
         return cell
     }

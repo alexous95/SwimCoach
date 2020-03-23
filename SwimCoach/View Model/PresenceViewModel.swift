@@ -14,6 +14,10 @@ final class PresenceViewModel {
     var persons: [Person]?
     var group: Group
     var error: String = ""
+    var dateSelected: Date?
+    
+    let now = Date()
+    let dateFormatter = DateFormatter()
     
     @Published var dataAvaillable: Bool = false
     @Published var isLoading: Bool = false
@@ -61,4 +65,50 @@ final class PresenceViewModel {
         fetchPerson()
     }
     
+    /// Returns the formatted date of the day
+    ///
+    /// - Returns: A string with the date of the day formatted
+    func printDate() -> String {
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        
+        dateFormatter.locale = Locale(identifier: "FR-fr")
+        
+        return dateFormatter.string(from: now)
+    }
+    
+    /// Return the formatted date of the selected date
+    func printDate(from date: Date) -> String {
+        dateSelected = date
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "FR-fr")
+       
+        return dateFormatter.string(from: date)
+    }
+    
+    /// Add a presence to the database
+    func addPresence(personID: String, from group: Group, isPresent: Bool) {
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "FR-fr")
+        
+        if dateSelected == nil {
+            let dateString = dateFormatter.string(from: now)
+            let path = convertDateString(dateString: dateString)
+             FirestorePersonManager.addPresence(personID: personID, from: group, stringDate: path, date: now, isPresent: isPresent)
+        } else {
+            guard let dateSelected = dateSelected else { return }
+            let dateString = dateFormatter.string(from: dateSelected)
+            let path = convertDateString(dateString: dateString)
+            FirestorePersonManager.addPresence(personID: personID, from: group, stringDate: path, date: dateSelected, isPresent: isPresent)
+        }
+       
+    }
+    
+    func convertDateString(dateString: String) -> String {
+        let path = dateString.replacingOccurrences(of: "/", with: "-")
+        
+        return path
+    }
 }

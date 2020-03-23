@@ -98,14 +98,14 @@
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="White bubble" translatesAutoresizingMaskIntoConstraints="NO" id="Cy9-gp-toD">
-                                <rect key="frame" x="262.66666666666669" y="44.000000000000007" width="112.33333333333343" height="121.66666666666669"/>
+                                <rect key="frame" x="262.66666666666669" y="44.000000000000007" width="112.33333333333331" height="121.66666666666669"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="White bubble" translatesAutoresizingMaskIntoConstraints="NO" id="tuh-fI-wuy">
-                                <rect key="frame" x="0.0" y="696.66666666666663" width="75.000000000000114" height="81.333333333333371"/>
+                                <rect key="frame" x="0.0" y="696.66666666666663" width="75" height="81.333333333333371"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="White bubble" translatesAutoresizingMaskIntoConstraints="NO" id="AyR-GD-QUi">
-                                <rect key="frame" x="165" y="653.33333333333337" width="45.000000000000114" height="40.666666666666629"/>
+                                <rect key="frame" x="165" y="653.33333333333337" width="45" height="40.666666666666629"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -414,12 +414,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YSS-DW-iY1">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="137.33333333333331" width="375" height="591.66666666666674"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" rowHeight="130" translatesAutoresizingMaskIntoConstraints="NO" id="AXF-Y3-xDL" customClass="PersonViewCell" customModule="SwimCoach" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" rowHeight="130" translatesAutoresizingMaskIntoConstraints="NO" id="AXF-Y3-xDL" customClass="PersonViewCell" customModule="SwimCoach" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="AXF-Y3-xDL" id="5iW-hb-U7g">
@@ -466,6 +466,9 @@
                                                                 <rect key="frame" x="318" y="49.666666666666657" width="51" height="31"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="onTintColor" red="0.095801420509815216" green="0.58598506450653076" blue="0.11407060176134109" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <connections>
+                                                                    <action selector="switchChange:" destination="KFZ-qh-hii" eventType="valueChanged" id="b6q-AE-b2E"/>
+                                                                </connections>
                                                             </switch>
                                                         </subviews>
                                                         <constraints>
@@ -502,13 +505,41 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date du jour" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exg-ID-bSA">
+                                <rect key="frame" x="122" y="93" width="131" height="24.333333333333329"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTk-5i-Mtv">
+                                <rect key="frame" x="261" y="94.666666666666657" width="24.333333333333314" height="21.333333333333343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jTk-5i-Mtv" secondAttribute="height" multiplier="1:1" id="bvd-8q-RTi"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="calendar" catalog="system"/>
+                                <connections>
+                                    <action selector="changeDate:" destination="KFZ-qh-hii" eventType="touchUpInside" id="Kp5-dG-Hhm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YSS-DW-iY1" firstAttribute="leading" secondItem="k6S-kU-clu" secondAttribute="leading" id="GXK-DN-exj"/>
                             <constraint firstItem="k6S-kU-clu" firstAttribute="trailing" secondItem="YSS-DW-iY1" secondAttribute="trailing" id="Q8o-us-yvr"/>
-                            <constraint firstItem="YSS-DW-iY1" firstAttribute="top" secondItem="k6S-kU-clu" secondAttribute="top" id="Tzi-NQ-tUu"/>
+                            <constraint firstItem="jTk-5i-Mtv" firstAttribute="leading" secondItem="exg-ID-bSA" secondAttribute="trailing" constant="8" id="Tpy-68-i1V"/>
+                            <constraint firstItem="exg-ID-bSA" firstAttribute="width" secondItem="1rC-Be-MZo" secondAttribute="width" multiplier="0.35" id="Vi4-is-YUW"/>
+                            <constraint firstItem="exg-ID-bSA" firstAttribute="top" secondItem="k6S-kU-clu" secondAttribute="top" constant="5" id="X2m-ah-dPN"/>
+                            <constraint firstItem="exg-ID-bSA" firstAttribute="centerX" secondItem="1rC-Be-MZo" secondAttribute="centerX" id="g8U-zC-ysx"/>
+                            <constraint firstItem="exg-ID-bSA" firstAttribute="height" secondItem="1rC-Be-MZo" secondAttribute="height" multiplier="0.03" id="gWH-q4-yHb"/>
+                            <constraint firstItem="YSS-DW-iY1" firstAttribute="top" secondItem="exg-ID-bSA" secondAttribute="bottom" constant="20" id="tJV-pw-1lG"/>
+                            <constraint firstItem="jTk-5i-Mtv" firstAttribute="centerY" secondItem="exg-ID-bSA" secondAttribute="centerY" id="tlF-xy-x5O"/>
                             <constraint firstItem="k6S-kU-clu" firstAttribute="bottom" secondItem="YSS-DW-iY1" secondAttribute="bottom" id="xpn-TZ-tHg"/>
+                            <constraint firstItem="jTk-5i-Mtv" firstAttribute="height" secondItem="exg-ID-bSA" secondAttribute="height" id="yd2-oc-xQ1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="k6S-kU-clu"/>
                     </view>
@@ -522,6 +553,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityWheel" destination="R3j-WJ-FS2" id="EyO-q3-sV2"/>
+                        <outlet property="calendarButton" destination="jTk-5i-Mtv" id="Hef-Y3-1J6"/>
+                        <outlet property="dateLabel" destination="exg-ID-bSA" id="gzc-0Q-uVx"/>
                         <outlet property="tableView" destination="YSS-DW-iY1" id="xR5-i1-07a"/>
                     </connections>
                 </viewController>
@@ -532,6 +565,7 @@
     </scenes>
     <resources>
         <image name="White bubble" width="474" height="512"/>
+        <image name="calendar" catalog="system" width="64" height="52"/>
         <image name="folder" catalog="system" width="64" height="46"/>
         <image name="folder.badge.plus" catalog="system" width="64" height="42"/>
         <image name="person.3" catalog="system" width="72" height="35"/>

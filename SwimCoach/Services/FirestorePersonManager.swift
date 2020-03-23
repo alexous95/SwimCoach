@@ -86,5 +86,15 @@ final class FirestorePersonManager {
             }
         }
     }
+    
+    static func addPresence(personID: String, from group: Group, stringDate: String, date: Date, isPresent: Bool) {
+        if let user = Auth.auth().currentUser {
+            let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("persons").document(personID).collection("presences")
+            
+            let presence = Presence(date: date, isPresent: isPresent)
+            
+            ref.document(stringDate).setData(presence.dictionnary)
+        }
+    }
 }
 

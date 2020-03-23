@@ -31,5 +31,5 @@ class PersonViewCell: UITableViewCell {
         firstNameLabel.text = firstName
         isPresentSwitch.isOn = false
     }
-   
+    
 }
