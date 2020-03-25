@@ -7,17 +7,19 @@
 //
 
 import Foundation
+import Firebase
 import FirebaseAuth
 
 final class FirestorePersonManager {
     
     /// Fetches persons belonging to a group from the database
     /// - Parameter group: A Group object to get our reference from firebase
+    /// - Parameter date: The date of the day we want to fetch the presence
     /// - Parameter completion: An escaping closure to transmit the data to another class
     ///
     /// We use this method with a group name to create a path to our required group.
     /// We then fetch all the document inside the persons collection from the document groupName.
-    static func fetchPersons(from group: Group, completion: @escaping ([Person], Error?) -> ()) {
+    static func fetchPersons(from group: Group, date: String, completion: @escaping ([Person], Error?) -> ()) {
         var persons = [Person]()
         
         if let user = Auth.auth().currentUser {
@@ -33,7 +35,15 @@ final class FirestorePersonManager {
                     let documents = snapshot.documents
                     
                     for document in documents {
-                        guard let person = Person(document: document.data()) else { return }
+                        guard var person = Person(document: document.data()) else { return }
+                        
+                        FirestorePersonManager.fetchPresence(personID: person.personID, date: date, from: group) { (presences, error) in
+                            if error != nil {
+                                print("13 error loading presence")
+                            } else {
+                                person.presences = presences
+                            }
+                        }
                         persons.append(person)
                     }
                     completion(persons, nil)
@@ -87,13 +97,42 @@ final class FirestorePersonManager {
         }
     }
     
-    static func addPresence(personID: String, from group: Group, stringDate: String, date: Date, isPresent: Bool) {
+    /// Adds a presence to the database
+    /// - Parameter personID: The person ID to select the correct document in the database
+    /// - Parameter group: The group object that will be used to create our reference in the database
+    /// - Parameter stringDate: A string representing our date to create a document
+    static func addPresence(personID: String, from group: Group, stringDate: String) {
         if let user = Auth.auth().currentUser {
-            let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("persons").document(personID).collection("presences")
+            let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("persons").document(personID)
             
-            let presence = Presence(date: date, isPresent: isPresent)
+            ref.updateData(["presences": FieldValue.arrayUnion([stringDate])])
+        }
+    }
+    
+    /// fetches the presence for a person
+    ///
+    static func fetchPresence(personID: String, date: String, from group: Group, completion: @escaping ([String], Error?) -> ()) {
+        if let user = Auth.auth().currentUser {
+            var presences: [String] = []
+            let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("persons").document(personID)
             
-            ref.document(stringDate).setData(presence.dictionnary)
+            ref.getDocument { (document, error) in
+                if error != nil {
+                    print("error while loading presences")
+                    completion(presences, error)
+                    return
+                } else {
+                    if let doc = document, doc.exists {
+                        guard let person = Person(document: doc.data()!) else {
+                            return
+                        }
+                        presences = person.presences
+                        completion(presences, nil)
+                        return
+                    }
+                }
+                completion(presences, nil)
+            }
         }
     }
 }

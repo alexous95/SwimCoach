@@ -12,6 +12,8 @@ import Combine
 final class PresenceViewModel {
     
     var persons: [Person]?
+    var presencePersons: [String : Bool] = [:]
+    
     var group: Group
     var error: String = ""
     var dateSelected: Date?
@@ -21,6 +23,7 @@ final class PresenceViewModel {
     
     @Published var dataAvaillable: Bool = false
     @Published var isLoading: Bool = false
+    @Published var presenceAvaillable: Bool = false
     
     init(group: Group) {
         self.group = group
@@ -28,8 +31,17 @@ final class PresenceViewModel {
     
     /// Fetches persons from the database and add them to our model
     func fetchPerson() {
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "FR-fr")
+        
+        var dateChoice = now
+        if let dateSelected = dateSelected {
+            dateChoice = dateSelected
+        }
+        let dateString = dateFormatter.string(from: dateChoice)
         isLoading = true
-        FirestorePersonManager.fetchPersons(from: group) { (persons, error) in
+        FirestorePersonManager.fetchPersons(from: group, date: dateString) { (persons, error) in
             if error != nil {
                 print("error while loading group")
                 self.error = "error while loading"
@@ -83,7 +95,7 @@ final class PresenceViewModel {
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale(identifier: "FR-fr")
-       
+        
         return dateFormatter.string(from: date)
     }
     
@@ -95,20 +107,33 @@ final class PresenceViewModel {
         
         if dateSelected == nil {
             let dateString = dateFormatter.string(from: now)
-            let path = convertDateString(dateString: dateString)
-             FirestorePersonManager.addPresence(personID: personID, from: group, stringDate: path, date: now, isPresent: isPresent)
+            FirestorePersonManager.addPresence(personID: personID, from: group, stringDate: dateString)
         } else {
             guard let dateSelected = dateSelected else { return }
             let dateString = dateFormatter.string(from: dateSelected)
-            let path = convertDateString(dateString: dateString)
-            FirestorePersonManager.addPresence(personID: personID, from: group, stringDate: path, date: dateSelected, isPresent: isPresent)
+            FirestorePersonManager.addPresence(personID: personID, from: group, stringDate: dateString)
         }
-       
     }
     
-    func convertDateString(dateString: String) -> String {
-        let path = dateString.replacingOccurrences(of: "/", with: "-")
+    /// Returns a boolean indicating if the switch is supposed to be on or off
+    /// - Parameter person: We need a person to access to its array of presences
+    func switchState(person: Person) -> Bool {
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "FR-fr")
         
-        return path
+        for date in person.presences {
+            if dateSelected != nil {
+                guard let dateSelected = dateSelected else { return false }
+                if date == dateFormatter.string(from: dateSelected) {
+                    return true
+                }
+            } else {
+                if date == dateFormatter.string(from: now) {
+                    return true
+                }
+            }
+        }
+        return false
     }
 }

@@ -28,6 +28,7 @@ class PresenceController: UIViewController {
     var picker = UIDatePicker()
     var activitySubscriber: AnyCancellable?
     var availlableDataSubscriber: AnyCancellable?
+    var presenceSubscriber: AnyCancellable?
     
     let gradient = CAGradientLayer()
     let cellSpacingHeight: CGFloat = 20
@@ -83,6 +84,30 @@ class PresenceController: UIViewController {
         viewModel.fetchPerson()
     }
     
+//    private func loadPresence() {
+//        print("10 load presence")
+//        guard let viewModel = viewModel else {
+//            print("11 guard view model")
+//            return
+//        }
+//
+//        guard let persons = viewModel.persons else {
+//            print("12 guard viewModel.persons")
+//            return
+//        }
+//
+//        guard let group = group else {
+//            print("13 guard group")
+//            return
+//        }
+//
+//        for person in persons {
+//            viewModel.fetchPresenceDate(personID: person.personID, from: group)
+//            print("14 \(viewModel.presencePersons[person.personID])")
+//        }
+//
+//    }
+    
     // MARK: - UI Setup
     
     /// Setsup the background with our custom colors
@@ -124,13 +149,9 @@ class PresenceController: UIViewController {
     /// Create a subscriber to listen for update from the viewModel if the access value change
     ///
     /// This function uses the Publisher/Subscriber model to update the interface accordingly to the modele.
-    /// When the value access change in the view model, we perform a segue if the value is true.
-    /// If not, we show an alert with the contextual error
+    /// When the value availlable data change in the view model we update our interface
     private func createAvaillableDataSubscriber() {
-        guard let viewModel = viewModel else {
-            print("pas de view model")
-            return
-        }
+        guard let viewModel = viewModel else { return }
         
         availlableDataSubscriber = viewModel.$dataAvaillable.receive(on: DispatchQueue.main).sink(receiveValue: { (data) in
             if data {
@@ -138,6 +159,17 @@ class PresenceController: UIViewController {
             }
         })
     }
+    
+//    private func createPresenceSubscriber() {
+//        guard let viewModel = viewModel else { return }
+//
+//        presenceSubscriber = viewModel.$presenceAvaillable.receive(on: DispatchQueue.main).sink(receiveValue: { (reload) in
+//            if reload {
+//                self.tableView.reloadData()
+//            }
+//        })
+//
+//    }
     
     // MARK: - Action
     
@@ -220,6 +252,7 @@ class PresenceController: UIViewController {
         
         if let date = sender?.date {
             dateLabel.text = viewModel.printDate(from: date)
+            tableView.reloadData()
         }
     }
     
@@ -254,10 +287,12 @@ extension PresenceController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let person = persons[indexPath.section]
+        let active = viewModel.switchState(person: person)
+        
         
         cell.configure(lastName: person.lastName, firstName: person.firstName)
         cell.isPresentSwitch.tag = indexPath.section
-        
+        cell.isPresentSwitch.isOn = active
         return cell
     }
     

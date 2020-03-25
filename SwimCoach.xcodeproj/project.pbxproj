@@ -10,7 +10,6 @@
 		4F5116FFF050B1917581CF1F /* Pods_SwimCoachTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34DF73A3FD18F706B4ADAB9A /* Pods_SwimCoachTests.framework */; };
 		AF001EE66FF87657DDB441B2 /* Pods_SwimCoach.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB8102709173DE25BD3E4E /* Pods_SwimCoach.framework */; };
 		FA1616AE24069D7A009C6148 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1616AD24069D7A009C6148 /* UIImageExtension.swift */; };
-		FA171A5C24225E8C0038F9B0 /* Presence.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA171A5B24225E8C0038F9B0 /* Presence.swift */; };
 		FA171A5E2422B3E10038F9B0 /* PresenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA171A5D2422B3E10038F9B0 /* PresenceViewModel.swift */; };
 		FA171A602422B8F00038F9B0 /* FirestorePersonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA171A5F2422B8F00038F9B0 /* FirestorePersonManager.swift */; };
 		FA2A5659241F7EF70037128F /* CreateUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A5658241F7EF70037128F /* CreateUserViewModel.swift */; };
@@ -32,6 +31,7 @@
 		FA9855F123FEDD4300B6CF3F /* GroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9855F023FEDD4300B6CF3F /* GroupController.swift */; };
 		FA9CFCE2242383D800CB7FCB /* PersonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CFCE1242383D800CB7FCB /* PersonViewCell.swift */; };
 		FABAD7BC23FEBC5100E573AF /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABAD7BB23FEBC5100E573AF /* FirestoreService.swift */; };
+		FAC8C20E242A8F1100E7E96D /* TrainingGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */; };
 		FAD03DB7241A58D1001DC925 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03DB6241A58D1001DC925 /* LoginViewModel.swift */; };
 		FAD71AC924112CC50047B885 /* FolderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD71AC824112CC50047B885 /* FolderCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -54,7 +54,6 @@
 		86CB8102709173DE25BD3E4E /* Pods_SwimCoach.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwimCoach.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD61F4A8222AEC68211F8336 /* Pods-SwimCoach.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwimCoach.debug.xcconfig"; path = "Target Support Files/Pods-SwimCoach/Pods-SwimCoach.debug.xcconfig"; sourceTree = "<group>"; };
 		FA1616AD24069D7A009C6148 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
-		FA171A5B24225E8C0038F9B0 /* Presence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presence.swift; sourceTree = "<group>"; };
 		FA171A5D2422B3E10038F9B0 /* PresenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceViewModel.swift; sourceTree = "<group>"; };
 		FA171A5F2422B8F00038F9B0 /* FirestorePersonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestorePersonManager.swift; sourceTree = "<group>"; };
 		FA2A5658241F7EF70037128F /* CreateUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModel.swift; sourceTree = "<group>"; };
@@ -80,6 +79,7 @@
 		FA9855F023FEDD4300B6CF3F /* GroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupController.swift; sourceTree = "<group>"; };
 		FA9CFCE1242383D800CB7FCB /* PersonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewCell.swift; sourceTree = "<group>"; };
 		FABAD7BB23FEBC5100E573AF /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrainingGroupController.swift; path = Training/TrainingGroupController.swift; sourceTree = "<group>"; };
 		FAD03DB6241A58D1001DC925 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FAD71AC824112CC50047B885 /* FolderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,9 +181,8 @@
 		FA7814D223FE91230011A69B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FA8CB8F6242A8B6700145575 /* Presence */,
 				FA82DF9B2412C9AD0053BA2C /* Group.swift */,
-				FA82DF9D2412C9E90053BA2C /* Person.swift */,
-				FA171A5B24225E8C0038F9B0 /* Presence.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,9 +200,9 @@
 		FA7814D423FE91420011A69B /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				FA8CB8F4242A8B0D00145575 /* Presence */,
 				FABAD7BB23FEBC5100E573AF /* FirestoreService.swift */,
 				FA82DF992412C9290053BA2C /* FirestoreGroupManager.swift */,
-				FA171A5F2422B8F00038F9B0 /* FirestorePersonManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -222,21 +221,70 @@
 		FA7814D723FE91790011A69B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FA7814B123FE90C90011A69B /* LoginController.swift */,
-				FA9855EE23FED97F00B6CF3F /* CreateUserController.swift */,
+				FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */,
+				FA8CB8F1242A8A5300145575 /* Login */,
+				FA8CB8F0242A8A3800145575 /* Presence */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FA8CB8F0242A8A3800145575 /* Presence */ = {
+			isa = PBXGroup;
+			children = (
 				FA9855F023FEDD4300B6CF3F /* GroupController.swift */,
 				FA7125BC24211BFD00C98323 /* PresenceController.swift */,
 			);
-			path = Controller;
+			path = Presence;
+			sourceTree = "<group>";
+		};
+		FA8CB8F1242A8A5300145575 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FA7814B123FE90C90011A69B /* LoginController.swift */,
+				FA9855EE23FED97F00B6CF3F /* CreateUserController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		FA8CB8F2242A8AD100145575 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FAD03DB6241A58D1001DC925 /* LoginViewModel.swift */,
+				FA2A5658241F7EF70037128F /* CreateUserViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		FA8CB8F3242A8AE300145575 /* Presence */ = {
+			isa = PBXGroup;
+			children = (
+				FA171A5D2422B3E10038F9B0 /* PresenceViewModel.swift */,
+			);
+			path = Presence;
+			sourceTree = "<group>";
+		};
+		FA8CB8F4242A8B0D00145575 /* Presence */ = {
+			isa = PBXGroup;
+			children = (
+				FA171A5F2422B8F00038F9B0 /* FirestorePersonManager.swift */,
+			);
+			path = Presence;
+			sourceTree = "<group>";
+		};
+		FA8CB8F6242A8B6700145575 /* Presence */ = {
+			isa = PBXGroup;
+			children = (
+				FA82DF9D2412C9E90053BA2C /* Person.swift */,
+			);
+			path = Presence;
 			sourceTree = "<group>";
 		};
 		FAD03DB5241A58B1001DC925 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
-				FAD03DB6241A58D1001DC925 /* LoginViewModel.swift */,
-				FA2A5658241F7EF70037128F /* CreateUserViewModel.swift */,
 				FA2A565C241F96640037128F /* GroupViewModel.swift */,
-				FA171A5D2422B3E10038F9B0 /* PresenceViewModel.swift */,
+				FA8CB8F3242A8AE300145575 /* Presence */,
+				FA8CB8F2242A8AD100145575 /* Login */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -412,7 +460,6 @@
 			files = (
 				FABAD7BC23FEBC5100E573AF /* FirestoreService.swift in Sources */,
 				FA9CFCE2242383D800CB7FCB /* PersonViewCell.swift in Sources */,
-				FA171A5C24225E8C0038F9B0 /* Presence.swift in Sources */,
 				FAD71AC924112CC50047B885 /* FolderCollectionViewCell.swift in Sources */,
 				FA9855F123FEDD4300B6CF3F /* GroupController.swift in Sources */,
 				FA9855EF23FED97F00B6CF3F /* CreateUserController.swift in Sources */,
@@ -420,6 +467,7 @@
 				FA82DF9E2412C9E90053BA2C /* Person.swift in Sources */,
 				FA171A5E2422B3E10038F9B0 /* PresenceViewModel.swift in Sources */,
 				FA7814B223FE90C90011A69B /* LoginController.swift in Sources */,
+				FAC8C20E242A8F1100E7E96D /* TrainingGroupController.swift in Sources */,
 				FA82DF9C2412C9AD0053BA2C /* Group.swift in Sources */,
 				FAD03DB7241A58D1001DC925 /* LoginViewModel.swift in Sources */,
 				FA82DF9A2412C9290053BA2C /* FirestoreGroupManager.swift in Sources */,
