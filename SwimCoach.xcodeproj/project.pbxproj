@@ -30,6 +30,8 @@
 		FA9855EF23FED97F00B6CF3F /* CreateUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9855EE23FED97F00B6CF3F /* CreateUserController.swift */; };
 		FA9855F123FEDD4300B6CF3F /* GroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9855F023FEDD4300B6CF3F /* GroupController.swift */; };
 		FA9CFCE2242383D800CB7FCB /* PersonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CFCE1242383D800CB7FCB /* PersonViewCell.swift */; };
+		FAB152D6242B56EB006820A5 /* MonthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB152D5242B56EB006820A5 /* MonthController.swift */; };
+		FAB152D9242B6214006820A5 /* MonthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB152D8242B6214006820A5 /* MonthViewModel.swift */; };
 		FABAD7BC23FEBC5100E573AF /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABAD7BB23FEBC5100E573AF /* FirestoreService.swift */; };
 		FAC8C20E242A8F1100E7E96D /* TrainingGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */; };
 		FAD03DB7241A58D1001DC925 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03DB6241A58D1001DC925 /* LoginViewModel.swift */; };
@@ -78,6 +80,8 @@
 		FA9855EE23FED97F00B6CF3F /* CreateUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserController.swift; sourceTree = "<group>"; };
 		FA9855F023FEDD4300B6CF3F /* GroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupController.swift; sourceTree = "<group>"; };
 		FA9CFCE1242383D800CB7FCB /* PersonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewCell.swift; sourceTree = "<group>"; };
+		FAB152D5242B56EB006820A5 /* MonthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthController.swift; sourceTree = "<group>"; };
+		FAB152D8242B6214006820A5 /* MonthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewModel.swift; sourceTree = "<group>"; };
 		FABAD7BB23FEBC5100E573AF /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingGroupController.swift; sourceTree = "<group>"; };
 		FAD03DB6241A58D1001DC925 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -283,6 +287,15 @@
 			isa = PBXGroup;
 			children = (
 				FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */,
+				FAB152D5242B56EB006820A5 /* MonthController.swift */,
+			);
+			path = Training;
+			sourceTree = "<group>";
+		};
+		FAB152D7242B61F8006820A5 /* Training */ = {
+			isa = PBXGroup;
+			children = (
+				FAB152D8242B6214006820A5 /* MonthViewModel.swift */,
 			);
 			path = Training;
 			sourceTree = "<group>";
@@ -290,6 +303,7 @@
 		FAD03DB5241A58B1001DC925 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				FAB152D7242B61F8006820A5 /* Training */,
 				FA2A565C241F96640037128F /* GroupViewModel.swift */,
 				FA8CB8F3242A8AE300145575 /* Presence */,
 				FA8CB8F2242A8AD100145575 /* Login */,
@@ -469,6 +483,7 @@
 				FABAD7BC23FEBC5100E573AF /* FirestoreService.swift in Sources */,
 				FA9CFCE2242383D800CB7FCB /* PersonViewCell.swift in Sources */,
 				FAD71AC924112CC50047B885 /* FolderCollectionViewCell.swift in Sources */,
+				FAB152D6242B56EB006820A5 /* MonthController.swift in Sources */,
 				FA9855F123FEDD4300B6CF3F /* GroupController.swift in Sources */,
 				FA9855EF23FED97F00B6CF3F /* CreateUserController.swift in Sources */,
 				FA2A565D241F96640037128F /* GroupViewModel.swift in Sources */,
@@ -476,6 +491,7 @@
 				FA171A5E2422B3E10038F9B0 /* PresenceViewModel.swift in Sources */,
 				FA7814B223FE90C90011A69B /* LoginController.swift in Sources */,
 				FAC8C20E242A8F1100E7E96D /* TrainingGroupController.swift in Sources */,
+				FAB152D9242B6214006820A5 /* MonthViewModel.swift in Sources */,
 				FA82DF9C2412C9AD0053BA2C /* Group.swift in Sources */,
 				FAD03DB7241A58D1001DC925 /* LoginViewModel.swift in Sources */,
 				FA82DF9A2412C9290053BA2C /* FirestoreGroupManager.swift in Sources */,
