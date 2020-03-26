@@ -7,19 +7,29 @@
 //
 
 import UIKit
+import Combine
 
 class TrainingController: UIViewController {
 
-    
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var activityWheel: UIActivityIndicatorView!
     
     let gradient = CAGradientLayer()
+    let viewModel = TrainingViewModel()
+    
+    var group: Group?
+    var month: String?
+    
+    var activitySubscriber: AnyCancellable?
+    var availlableDataSubscriber: AnyCancellable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createActivitySubscriber()
+        createDataSubscriber()
         setupBackground()
         setupDelegate()
-
+        loadData()
     }
 
     override func viewDidLayoutSubviews() {
@@ -29,13 +39,21 @@ class TrainingController: UIViewController {
     
     // MARK: - Setup
     
+    /// Setsup the delegate for the collection view
     private func setupDelegate() {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
     
+    private func loadData() {
+        guard let group = group else { return }
+        guard let month = month else { return }
+        viewModel.fetchWorkout(from: group, for: month)
+    }
+    
     // MARK: - UI Setup
     
+    /// Setsup the background with a gradient
     private func setupBackground() {
         guard let backStartColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
         guard let backEndColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
@@ -43,19 +61,46 @@ class TrainingController: UIViewController {
         gradient.colors = [backStartColor.cgColor, backEndColor.cgColor]
         view.layer.insertSublayer(gradient, at: 0)
     }
+    
+    // MARK: - Subscriber
+    
+    /// Creates a subscriber for activity evenment
+    ///
+    /// When the view model change his state it is reflected on the view controller with the activity subscriber.
+    /// The activity subscriber then activate or stop the activity indicator view
+    private func createActivitySubscriber() {
+        activitySubscriber = viewModel.$isLoading.receive(on: DispatchQueue.main).sink(receiveValue: { (loading) in
+            if loading {
+                self.activityWheel.isHidden = !loading
+                self.activityWheel.startAnimating()
+            } else {
+                self.activityWheel.isHidden = !loading
+                self.activityWheel.stopAnimating()
+            }
+        })
+    }
+    
+    private func createDataSubscriber() {
+        availlableDataSubscriber = viewModel.$dataAvaillable.receive(on: DispatchQueue.main).sink(receiveValue: { (data) in
+            if data {
+                self.collectionView.reloadData()
+            }
+        })
+    }
 }
 
 extension TrainingController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return viewModel.numberOfItem()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trainingCell", for: indexPath) as? TrainingCollectionViewCell else { return UICollectionViewCell() }
+        guard let workouts = viewModel.workouts else { return UICollectionViewCell() }
         
-        
-        cell.configure(date: "25/03/2020", titreSeance: "Vitesse", distance: "Distance: 4500")
+        let workout = workouts[indexPath.item]
+        cell.configure(date: workout.date, titreSeance: workout.title, distance: workout.getDistance())
         
         return cell
     }

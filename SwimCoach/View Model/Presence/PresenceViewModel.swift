@@ -12,7 +12,6 @@ import Combine
 final class PresenceViewModel {
     
     var persons: [Person]?
-    var presencePersons: [String : Bool] = [:]
     
     var group: Group
     var error: String = ""

@@ -10,12 +10,18 @@ import UIKit
 
 class MonthController: UIViewController {
 
+    // MARK: - Variable
+    
     var group: Group?
     
     let gradient = CAGradientLayer()
     let viewModel = MonthViewModel()
     
+    // MARK: - Outlet
+    
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    // MARK: View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +32,20 @@ class MonthController: UIViewController {
     override func viewDidLayoutSubviews() {
         gradient.frame = view.bounds
         setupBackground()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "trainingSegue" {
+            let destVC: TrainingController = segue.destination as! TrainingController
+            destVC.group = group
+            
+            let indexPath = collectionView.indexPathsForSelectedItems
+        
+            guard let index = indexPath else { return }
+            let item = index[0].item
+            destVC.navigationItem.title = viewModel.months[item]
+            destVC.month = viewModel.months[item]
+        }
     }
     
     // MARK: - Setup

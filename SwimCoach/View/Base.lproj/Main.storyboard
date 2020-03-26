@@ -446,7 +446,7 @@
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" rowHeight="130" translatesAutoresizingMaskIntoConstraints="NO" id="AXF-Y3-xDL" customClass="PersonViewCell" customModule="SwimCoach" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" rowHeight="130" translatesAutoresizingMaskIntoConstraints="NO" id="AXF-Y3-xDL" customClass="PersonViewCell" customModule="SwimCoach" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="AXF-Y3-xDL" id="5iW-hb-U7g">
@@ -643,7 +643,7 @@
                                         <connections>
                                             <outlet property="folderImage" destination="5lp-zx-wSp" id="fw0-ej-lo8"/>
                                             <outlet property="groupeName" destination="d8I-4K-0Pg" id="Bpc-vb-zUq"/>
-                                            <segue destination="ntE-RN-XBj" kind="show" identifier="trainingSegue" id="aqM-cH-4tf"/>
+                                            <segue destination="ntE-RN-XBj" kind="show" identifier="monthSegue" id="aqM-cH-4tf"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -730,7 +730,7 @@
                                         <connections>
                                             <outlet property="folderImage" destination="ETe-a0-4xz" id="abk-4T-WMj"/>
                                             <outlet property="groupeName" destination="saI-q1-G9z" id="3Tx-FW-sAD"/>
-                                            <segue destination="RJG-Qq-Xhk" kind="show" id="aRj-eB-FXU"/>
+                                            <segue destination="RJG-Qq-Xhk" kind="show" identifier="trainingSegue" id="aRj-eB-FXU"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -832,10 +832,17 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="MTI-A4-nEx">
+                                <rect key="frame" x="169" y="387.66666666666669" width="37" height="37"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Bcb-92-9on" firstAttribute="trailing" secondItem="por-GJ-G6V" secondAttribute="trailing" id="4aM-Qi-4cm"/>
+                            <constraint firstItem="MTI-A4-nEx" firstAttribute="centerY" secondItem="IxA-Js-arV" secondAttribute="centerY" id="4oJ-TU-G3K"/>
+                            <constraint firstItem="MTI-A4-nEx" firstAttribute="centerX" secondItem="IxA-Js-arV" secondAttribute="centerX" id="73F-lH-TGJ"/>
                             <constraint firstItem="Bcb-92-9on" firstAttribute="bottom" secondItem="por-GJ-G6V" secondAttribute="bottom" id="9wb-d8-sKF"/>
                             <constraint firstItem="por-GJ-G6V" firstAttribute="top" secondItem="Bcb-92-9on" secondAttribute="top" id="Kyl-su-Uat"/>
                             <constraint firstItem="por-GJ-G6V" firstAttribute="leading" secondItem="Bcb-92-9on" secondAttribute="leading" id="Y5h-Sv-2eO"/>
@@ -848,6 +855,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityWheel" destination="MTI-A4-nEx" id="Fyd-NP-jin"/>
                         <outlet property="collectionView" destination="por-GJ-G6V" id="osC-p8-jXC"/>
                     </connections>
                 </viewController>

@@ -43,7 +43,7 @@ class TrainingGroupController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "trainingSegue" {
+        if segue.identifier == "monthSegue" {
             let destVC: MonthController = segue.destination as! MonthController
             let indexPath = collectionView.indexPathsForSelectedItems
             

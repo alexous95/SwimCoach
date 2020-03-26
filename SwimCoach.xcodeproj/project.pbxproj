@@ -25,6 +25,9 @@
 		FA7814C823FE90CE0011A69B /* SwimCoachTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7814C723FE90CE0011A69B /* SwimCoachTests.swift */; };
 		FA7814DA23FE965B0011A69B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA7814D923FE965B0011A69B /* GoogleService-Info.plist */; };
 		FA812F03242C9AAE0073EDB6 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA812F02242C9AAE0073EDB6 /* Workout.swift */; };
+		FA812F05242CA4990073EDB6 /* WorkoutLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA812F04242CA4990073EDB6 /* WorkoutLine.swift */; };
+		FA812F07242CA6100073EDB6 /* TrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA812F06242CA6100073EDB6 /* TrainingViewModel.swift */; };
+		FA812F0A242CAA8E0073EDB6 /* FirestoreWorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA812F09242CAA8D0073EDB6 /* FirestoreWorkoutManager.swift */; };
 		FA82DF9A2412C9290053BA2C /* FirestoreGroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82DF992412C9290053BA2C /* FirestoreGroupManager.swift */; };
 		FA82DF9C2412C9AD0053BA2C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82DF9B2412C9AD0053BA2C /* Group.swift */; };
 		FA82DF9E2412C9E90053BA2C /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82DF9D2412C9E90053BA2C /* Person.swift */; };
@@ -78,6 +81,9 @@
 		FA7814C923FE90CE0011A69B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA7814D923FE965B0011A69B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA812F02242C9AAE0073EDB6 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		FA812F04242CA4990073EDB6 /* WorkoutLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutLine.swift; sourceTree = "<group>"; };
+		FA812F06242CA6100073EDB6 /* TrainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewModel.swift; sourceTree = "<group>"; };
+		FA812F09242CAA8D0073EDB6 /* FirestoreWorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreWorkoutManager.swift; sourceTree = "<group>"; };
 		FA82DF992412C9290053BA2C /* FirestoreGroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGroupManager.swift; sourceTree = "<group>"; };
 		FA82DF9B2412C9AD0053BA2C /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		FA82DF9D2412C9E90053BA2C /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -211,6 +217,7 @@
 		FA7814D423FE91420011A69B /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				FA812F08242CAA670073EDB6 /* Training */,
 				FA8CB8F4242A8B0D00145575 /* Presence */,
 				FABAD7BB23FEBC5100E573AF /* FirestoreService.swift */,
 				FA82DF992412C9290053BA2C /* FirestoreGroupManager.swift */,
@@ -244,6 +251,15 @@
 			isa = PBXGroup;
 			children = (
 				FA812F02242C9AAE0073EDB6 /* Workout.swift */,
+				FA812F04242CA4990073EDB6 /* WorkoutLine.swift */,
+			);
+			path = Training;
+			sourceTree = "<group>";
+		};
+		FA812F08242CAA670073EDB6 /* Training */ = {
+			isa = PBXGroup;
+			children = (
+				FA812F09242CAA8D0073EDB6 /* FirestoreWorkoutManager.swift */,
 			);
 			path = Training;
 			sourceTree = "<group>";
@@ -313,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				FAB152D8242B6214006820A5 /* MonthViewModel.swift */,
+				FA812F06242CA6100073EDB6 /* TrainingViewModel.swift */,
 			);
 			path = Training;
 			sourceTree = "<group>";
@@ -499,12 +516,14 @@
 			files = (
 				FABAD7BC23FEBC5100E573AF /* FirestoreService.swift in Sources */,
 				FA9CFCE2242383D800CB7FCB /* PersonViewCell.swift in Sources */,
+				FA812F07242CA6100073EDB6 /* TrainingViewModel.swift in Sources */,
 				FAD71AC924112CC50047B885 /* FolderCollectionViewCell.swift in Sources */,
 				FAB152DD242B6CEC006820A5 /* TrainingController.swift in Sources */,
 				FAB152D6242B56EB006820A5 /* MonthController.swift in Sources */,
 				FA9855F123FEDD4300B6CF3F /* GroupController.swift in Sources */,
 				FA9855EF23FED97F00B6CF3F /* CreateUserController.swift in Sources */,
 				FA2A565D241F96640037128F /* GroupViewModel.swift in Sources */,
+				FA812F0A242CAA8E0073EDB6 /* FirestoreWorkoutManager.swift in Sources */,
 				FA82DF9E2412C9E90053BA2C /* Person.swift in Sources */,
 				FA171A5E2422B3E10038F9B0 /* PresenceViewModel.swift in Sources */,
 				FAB152DB242B6CB3006820A5 /* TrainingCollectionViewCell.swift in Sources */,
@@ -518,6 +537,7 @@
 				FA171A602422B8F00038F9B0 /* FirestorePersonManager.swift in Sources */,
 				FA7814B023FE90C90011A69B /* SceneDelegate.swift in Sources */,
 				FA7125BD24211BFD00C98323 /* PresenceController.swift in Sources */,
+				FA812F05242CA4990073EDB6 /* WorkoutLine.swift in Sources */,
 				FA2A5659241F7EF70037128F /* CreateUserViewModel.swift in Sources */,
 				FA1616AE24069D7A009C6148 /* UIImageExtension.swift in Sources */,
 				FA812F03242C9AAE0073EDB6 /* Workout.swift in Sources */,

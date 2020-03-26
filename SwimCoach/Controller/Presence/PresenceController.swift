@@ -28,7 +28,6 @@ class PresenceController: UIViewController {
     var picker = UIDatePicker()
     var activitySubscriber: AnyCancellable?
     var availlableDataSubscriber: AnyCancellable?
-    var presenceSubscriber: AnyCancellable?
     
     let gradient = CAGradientLayer()
     let cellSpacingHeight: CGFloat = 20
@@ -83,31 +82,7 @@ class PresenceController: UIViewController {
         guard let viewModel = viewModel else { return }
         viewModel.fetchPerson()
     }
-    
-//    private func loadPresence() {
-//        print("10 load presence")
-//        guard let viewModel = viewModel else {
-//            print("11 guard view model")
-//            return
-//        }
-//
-//        guard let persons = viewModel.persons else {
-//            print("12 guard viewModel.persons")
-//            return
-//        }
-//
-//        guard let group = group else {
-//            print("13 guard group")
-//            return
-//        }
-//
-//        for person in persons {
-//            viewModel.fetchPresenceDate(personID: person.personID, from: group)
-//            print("14 \(viewModel.presencePersons[person.personID])")
-//        }
-//
-//    }
-    
+        
     // MARK: - UI Setup
     
     /// Setsup the background with our custom colors
@@ -159,17 +134,6 @@ class PresenceController: UIViewController {
             }
         })
     }
-    
-//    private func createPresenceSubscriber() {
-//        guard let viewModel = viewModel else { return }
-//
-//        presenceSubscriber = viewModel.$presenceAvaillable.receive(on: DispatchQueue.main).sink(receiveValue: { (reload) in
-//            if reload {
-//                self.tableView.reloadData()
-//            }
-//        })
-//
-//    }
     
     // MARK: - Action
     
