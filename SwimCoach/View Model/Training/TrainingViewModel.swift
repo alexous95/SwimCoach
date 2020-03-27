@@ -19,7 +19,6 @@ final class TrainingViewModel {
     
     func numberOfItem() -> Int {
         guard let workouts = workouts else {
-            print("10. guard workouts")
             return 0
         }
         return workouts.count
@@ -29,7 +28,6 @@ final class TrainingViewModel {
         isLoading = true
         FirestoreWorkoutManager.fetchWorkout(from: group, for: month) { (workouts, error) in
             if error != nil {
-                print("30, error loading documents")
                 self.error = error.debugDescription
                 self.isLoading = false
                 return

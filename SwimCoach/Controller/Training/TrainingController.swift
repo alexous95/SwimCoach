@@ -37,6 +37,18 @@ class TrainingController: UIViewController {
         setupBackground()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailWorkout" {
+            let destVC: DetailWorkoutController = segue.destination as! DetailWorkoutController
+            let indexPath = collectionView.indexPathsForSelectedItems
+            guard let index = indexPath else { return }
+            let item = index[0].item
+            
+            guard let workouts = viewModel.workouts else { return }
+            destVC.workout = workouts[item]
+        }
+    }
+    
     // MARK: - Setup
     
     /// Setsup the delegate for the collection view
@@ -100,7 +112,7 @@ extension TrainingController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let workouts = viewModel.workouts else { return UICollectionViewCell() }
         
         let workout = workouts[indexPath.item]
-        cell.configure(date: workout.date, titreSeance: workout.title, distance: workout.getDistance())
+        cell.configure(date: workout.date, titreSeance: workout.title, distance: String(workout.getDistance()))
         
         return cell
     }

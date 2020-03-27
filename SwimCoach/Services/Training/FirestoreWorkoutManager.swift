@@ -19,6 +19,7 @@ final class FirestoreWorkoutManager {
             
             ref.getDocuments { (snapshot, error) in
                 if error != nil {
+                    print("40: error")
                     completion(workouts, error)
                     return
                 } else {
@@ -30,10 +31,14 @@ final class FirestoreWorkoutManager {
                     
                     for document in documents {
                         guard let workout = Workout(document: document.data()) else {
+                            print("On est la")
                             return
                         }
+                        print("on est la 2")
                         FirestoreWorkoutManager.fetchWorkoutLines(from: group, for: month, for: workout.workoutID) { (workoutLines, error) in
+                            print(workout.workoutID)
                             if error != nil {
+                                print("41: error fetching lines")
                             } else {
                                 workout.workoutLines = workoutLines
                             }
@@ -47,6 +52,7 @@ final class FirestoreWorkoutManager {
     }
     
     static func fetchWorkoutLines(from group: Group, for month: String, for workoutID: String, completion: @escaping ([WorkoutLine], Error?) -> () ){
+
         
         var workoutLines = [WorkoutLine]()
         
@@ -55,9 +61,11 @@ final class FirestoreWorkoutManager {
             
             ref.getDocuments { (snapshot, error) in
                 if error != nil {
+                    print("error")
                     completion(workoutLines, error)
                 } else {
                     guard let snapshot = snapshot else {
+                        print("31 error snapshot")
                         return
                     }
                     
@@ -65,9 +73,12 @@ final class FirestoreWorkoutManager {
                     
                     for document in documents {
                         guard let workoutLine = WorkoutLine(document: document.data()) else {
+                            print("33: error guard data")
                             return
                         }
+                        print(workoutLine.getZ1())
                         workoutLines.append(workoutLine)
+                        
                     }
                     completion(workoutLines, nil)
                 }

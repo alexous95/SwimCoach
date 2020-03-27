@@ -28,8 +28,9 @@ final class WorkoutLine {
     var nageC: Double = 0.0
     var jbs: Double = 0.0
     var bras: Double = 0.0
+    var workoutLineID: String
     
-    init(text: String, zone1: Double, zone2: Double, zone3: Double, zone4: Double, zone5: Double, zone6: Double, zone7: Double, ampM: Double, coorM: Double, endM: Double, educ: Double, crawl: Double, medley: Double, spe: Double, nageC: Double, jbs: Double, bras: Double) {
+    init(text: String, zone1: Double, zone2: Double, zone3: Double, zone4: Double, zone5: Double, zone6: Double, zone7: Double, ampM: Double, coorM: Double, endM: Double, educ: Double, crawl: Double, medley: Double, spe: Double, nageC: Double, jbs: Double, bras: Double, workoutLineID: String) {
         self.text = text
         self.zone1 = zone1
         self.zone2 = zone2
@@ -48,6 +49,7 @@ final class WorkoutLine {
         self.nageC = nageC
         self.jbs = jbs
         self.bras = bras
+        self.workoutLineID = workoutLineID
     }
     
     var dictionnary: [String : Any] {
@@ -69,6 +71,7 @@ final class WorkoutLine {
                 "nageC" : self.nageC,
                 "jbs" : self.jbs,
                 "bras" : self.bras,
+                "workoutLineID" : self.workoutLineID
         ]
     }
     
@@ -91,8 +94,9 @@ final class WorkoutLine {
         guard let nageC = document["nageC"] as? Double else { return nil }
         guard let jbs = document["jbs"] as? Double else { return nil }
         guard let bras = document["bras"] as? Double else { return nil }
+        guard let workoutLineID = document["workoutLineID"] as? String else { return nil }
         
-        self.init(text: text, zone1: zone1, zone2: zone2, zone3: zone3, zone4: zone4, zone5: zone5, zone6: zone6, zone7: zone7, ampM: ampM, coorM: coorM, endM: endM, educ: educ, crawl: crawl, medley: medley, spe: spe, nageC: nageC, jbs: jbs, bras: bras)
+        self.init(text: text, zone1: zone1, zone2: zone2, zone3: zone3, zone4: zone4, zone5: zone5, zone6: zone6, zone7: zone7, ampM: ampM, coorM: coorM, endM: endM, educ: educ, crawl: crawl, medley: medley, spe: spe, nageC: nageC, jbs: jbs, bras: bras, workoutLineID: workoutLineID)
     }
     
     func getDistance() -> Double {
@@ -103,27 +107,55 @@ final class WorkoutLine {
         zone1 += distance
     }
     
+    func getZ1() -> Double {
+        return zone1
+    }
+    
     func addZ2(distance: Double) {
         zone2 += distance
+    }
+    
+    func getZ2() -> Double {
+        return zone2
     }
     
     func addZ3(distance: Double) {
         zone3 += distance
     }
     
+    func getZ3() -> Double {
+        return zone3
+    }
+    
     func addZ4(distance: Double) {
         zone4 += distance
+    }
+    
+    func getZ4() -> Double {
+        return zone4
     }
     
     func addZ5(distance: Double) {
         zone5 += distance
     }
     
+    func getZ5() -> Double {
+        return zone5
+    }
+    
     func addZ6(distance: Double) {
         zone6 += distance
     }
     
+    func getZ6() -> Double {
+        return zone6
+    }
+    
     func addZ7(distance: Double) {
         zone7 += distance
+    }
+    
+    func getZ7() -> Double {
+        return zone7
     }
 }

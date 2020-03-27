@@ -29,6 +29,7 @@ class TrainingCollectionViewCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 10
     }
     
+    // This methodes is used to apply our gradient and to force our cells to layout again
     override func layoutSubviews() {
         super.layoutSubviews()
         gradient.frame = contentView.bounds
