@@ -63,17 +63,7 @@ class TrainingGroupController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-    
-    /// Setsup the background
-//    private func setupBackground() {
-//        guard let backStartColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
-//        guard let backEndColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
-//
-//        gradient.colors = [backStartColor.cgColor, backEndColor.cgColor]
-//        view.layer.insertSublayer(gradient, at: 0)
-//
-//    }
-    
+        
     /// Add a little image below the nav bar
     private func setupNavBar() {
         self.navigationController?.navigationBar.shadowImage = UIImage.imageWithColor(color: UIColor.white)

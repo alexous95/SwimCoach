@@ -12,10 +12,9 @@ class FolderCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var folderImage: UIImageView!
     @IBOutlet weak var groupeName: UILabel!
-    
+ 
     func configure(name: String) {
         groupeName.text = name
         
     }
-    
 }

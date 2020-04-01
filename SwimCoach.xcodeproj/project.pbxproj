@@ -16,6 +16,9 @@
 		FA2A5659241F7EF70037128F /* CreateUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A5658241F7EF70037128F /* CreateUserViewModel.swift */; };
 		FA2A565B241F8B6A0037128F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A565A241F8B6A0037128F /* UIViewController+Alert.swift */; };
 		FA2A565D241F96640037128F /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2A565C241F96640037128F /* GroupViewModel.swift */; };
+		FA3B50802434CC5F0020EAE4 /* AddWorkoutLineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B507F2434CC5F0020EAE4 /* AddWorkoutLineController.swift */; };
+		FA3B50822434D4CB0020EAE4 /* AddWorkoutLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B50812434D4CB0020EAE4 /* AddWorkoutLineViewModel.swift */; };
+		FA3B50842434E9BD0020EAE4 /* AddWorkoutLineDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B50832434E9BD0020EAE4 /* AddWorkoutLineDetailController.swift */; };
 		FA708BFC242E396B0096FF5A /* DetailWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA708BFB242E396B0096FF5A /* DetailWorkoutViewModel.swift */; };
 		FA7125BD24211BFD00C98323 /* PresenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7125BC24211BFD00C98323 /* PresenceController.swift */; };
 		FA7814AE23FE90C90011A69B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7814AD23FE90C90011A69B /* AppDelegate.swift */; };
@@ -74,6 +77,9 @@
 		FA2A5658241F7EF70037128F /* CreateUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModel.swift; sourceTree = "<group>"; };
 		FA2A565A241F8B6A0037128F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		FA2A565C241F96640037128F /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		FA3B507F2434CC5F0020EAE4 /* AddWorkoutLineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutLineController.swift; sourceTree = "<group>"; };
+		FA3B50812434D4CB0020EAE4 /* AddWorkoutLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutLineViewModel.swift; sourceTree = "<group>"; };
+		FA3B50832434E9BD0020EAE4 /* AddWorkoutLineDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutLineDetailController.swift; sourceTree = "<group>"; };
 		FA708BFB242E396B0096FF5A /* DetailWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorkoutViewModel.swift; sourceTree = "<group>"; };
 		FA7125BC24211BFD00C98323 /* PresenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceController.swift; sourceTree = "<group>"; };
 		FA7814AA23FE90C90011A69B /* SwimCoach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwimCoach.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -354,6 +360,7 @@
 				FAB152D5242B56EB006820A5 /* MonthController.swift */,
 				FAB152DC242B6CEC006820A5 /* TrainingController.swift */,
 				FA812F0B242D0C660073EDB6 /* DetailWorkoutController.swift */,
+				FA3B507F2434CC5F0020EAE4 /* AddWorkoutLineController.swift */,
 			);
 			path = Training;
 			sourceTree = "<group>";
@@ -364,6 +371,8 @@
 				FAB152D8242B6214006820A5 /* MonthViewModel.swift */,
 				FA812F06242CA6100073EDB6 /* TrainingViewModel.swift */,
 				FA708BFB242E396B0096FF5A /* DetailWorkoutViewModel.swift */,
+				FA3B50812434D4CB0020EAE4 /* AddWorkoutLineViewModel.swift */,
+				FA3B50832434E9BD0020EAE4 /* AddWorkoutLineDetailController.swift */,
 			);
 			path = Training;
 			sourceTree = "<group>";
@@ -550,11 +559,14 @@
 			files = (
 				FABAD7BC23FEBC5100E573AF /* FirestoreService.swift in Sources */,
 				FA9CFCE2242383D800CB7FCB /* PersonViewCell.swift in Sources */,
+				FA3B50842434E9BD0020EAE4 /* AddWorkoutLineDetailController.swift in Sources */,
 				FA812F07242CA6100073EDB6 /* TrainingViewModel.swift in Sources */,
+				FA3B50802434CC5F0020EAE4 /* AddWorkoutLineController.swift in Sources */,
 				FAD71AC924112CC50047B885 /* FolderCollectionViewCell.swift in Sources */,
 				FAB152DD242B6CEC006820A5 /* TrainingController.swift in Sources */,
 				FAB152D6242B56EB006820A5 /* MonthController.swift in Sources */,
 				FA9855F123FEDD4300B6CF3F /* GroupController.swift in Sources */,
+				FA3B50822434D4CB0020EAE4 /* AddWorkoutLineViewModel.swift in Sources */,
 				FA9855EF23FED97F00B6CF3F /* CreateUserController.swift in Sources */,
 				FA2A565D241F96640037128F /* GroupViewModel.swift in Sources */,
 				FA812F0A242CAA8E0073EDB6 /* FirestoreWorkoutManager.swift in Sources */,
