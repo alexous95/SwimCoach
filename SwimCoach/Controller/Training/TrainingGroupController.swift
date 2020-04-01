@@ -28,10 +28,10 @@ class TrainingGroupController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavBar()
         createActivitySubscriber()
         createDataAvaillableSubscriber()
         setupCollectionDelegate()
-        setupNavBar()
         loadData()
     }
     

@@ -28,12 +28,14 @@ class GroupController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavBar()
         createActivitySubscriber()
         createDataAvaillableSubscriber()
         setupCollectionDelegate()
-        setupNavBar()
         loadData()
     }
+    
+    
     
     // Sets the gradient's frame to the new bounds of the view to apply dark mode correctly
     override func viewDidLayoutSubviews() {
@@ -143,6 +145,45 @@ class GroupController: UIViewController {
         present(alert, animated: true)
     }
     
+    // MARK: - Private
+    
+    private func deleteItem(at indexPath: IndexPath) {
+        guard let groups = viewModel.groups else {
+            print("ca marche pas")
+            return
+        }
+        viewModel.deleteGroup(group: groups[indexPath.item])
+    }
+    
+    
+    private func makePreviewController() -> UIViewController {
+        let viewController = UIViewController()
+        
+        guard let image = UIImage(systemName: "folder") else {
+            print("pas d'image")
+            return UIViewController()
+        }
+        
+        let imageView = UIImageView(image: image)
+        imageView.tintColor = .white
+        viewController.view = imageView
+        
+        imageView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        imageView.translatesAutoresizingMaskIntoConstraints = true
+        
+        // 3
+        switch traitCollection.userInterfaceStyle {
+        case .dark :
+            viewController.view.backgroundColor = .green
+        default:
+            viewController.view.backgroundColor = .systemBlue
+        }
+        
+        viewController.preferredContentSize = imageView.frame.size
+        
+        return viewController
+    }
+    
 }
 
 // MARK: - Extension
@@ -169,4 +210,24 @@ extension GroupController: UICollectionViewDelegate, UICollectionViewDataSource 
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+       
+        let index = indexPath.item
+        
+        let identifier = "\(index)" as NSString
+        
+        let configuration = UIContextMenuConfiguration(identifier: identifier, previewProvider: makePreviewController){ action in
+          
+            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), attributes: .destructive, handler: { action in
+                self.deleteItem(at: indexPath)
+                print("delete clicked.")
+            })
+            
+            return UIMenu(title: "options", image: nil, identifier: nil, options: [.displayInline], children: [delete])
+        }
+        
+        return configuration
+    }
+    
 }

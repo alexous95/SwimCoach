@@ -25,7 +25,7 @@ class MonthController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBackground()
+        setupNavBar()
         setupDelegate()
     }
     
@@ -65,6 +65,9 @@ class MonthController: UIViewController {
         view.layer.insertSublayer(gradient, at: 0)
     }
     
+    private func setupNavBar() {
+        self.navigationController?.navigationBar.shadowImage = UIImage.imageWithColor(color: UIColor.white)
+    }
     
 }
 

@@ -15,9 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-        
-        guard let image = UIImage(named: "transparent") else { return false }
-        UINavigationBar.appearance().setBackgroundImage(image, for: .default )
+        guard UIImage(named: "transparent") != nil else {
+            return false
+        }
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UITextField.appearance().tintColor = UIColor.white
         return true
     }

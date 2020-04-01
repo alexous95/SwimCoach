@@ -52,4 +52,21 @@ final class FirestoreGroupManager {
             ref.document(group.groupName).setData(group.dictionnary)
         }
     }
+    
+    static func deleteGroup(group: Group) {
+        if let user = Auth.auth().currentUser {
+            let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups")
+            
+            let deleteRef = ref.document(group.groupName)
+            
+            deleteRef.delete { (error) in
+                if error !=  nil {
+                    print("Error while deleting")
+                    print(error.debugDescription)
+                } else {
+                    print("Deletion succesful")
+                }
+            }
+        }
+    }
 }

@@ -49,4 +49,9 @@ final class GroupViewModel {
         fetchGroup()
     }
     
+    func deleteGroup(group: Group) {
+        FirestoreGroupManager.deleteGroup(group: group)
+        fetchGroup()
+    }
+    
 }
