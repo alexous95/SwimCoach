@@ -31,7 +31,7 @@ class MonthController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         gradient.frame = view.bounds
-        setupBackground()
+        setupBackground(gradient: gradient)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -57,13 +57,13 @@ class MonthController: UIViewController {
     
     // MARK: - UI Setup
     
-    private func setupBackground() {
-        guard let backStartColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
-        guard let backEndColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
-        
-        gradient.colors = [backStartColor.cgColor, backEndColor.cgColor]
-        view.layer.insertSublayer(gradient, at: 0)
-    }
+//    private func setupBackground() {
+//        guard let backStartColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
+//        guard let backEndColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
+//
+//        gradient.colors = [backStartColor.cgColor, backEndColor.cgColor]
+//        view.layer.insertSublayer(gradient, at: 0)
+//    }
     
     private func setupNavBar() {
         self.navigationController?.navigationBar.shadowImage = UIImage.imageWithColor(color: UIColor.white)

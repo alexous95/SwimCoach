@@ -46,6 +46,8 @@
 		FAC8C20E242A8F1100E7E96D /* TrainingGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */; };
 		FAD03DB7241A58D1001DC925 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03DB6241A58D1001DC925 /* LoginViewModel.swift */; };
 		FAD71AC924112CC50047B885 /* FolderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD71AC824112CC50047B885 /* FolderCollectionViewCell.swift */; };
+		FADFFEE0243497340011C773 /* UIController+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFFEDF243497340011C773 /* UIController+Background.swift */; };
+		FADFFEE22434A2AA0011C773 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFFEE12434A2AA0011C773 /* PreviewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,8 @@
 		FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingGroupController.swift; sourceTree = "<group>"; };
 		FAD03DB6241A58D1001DC925 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FAD71AC824112CC50047B885 /* FolderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCollectionViewCell.swift; sourceTree = "<group>"; };
+		FADFFEDF243497340011C773 /* UIController+Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIController+Background.swift"; sourceTree = "<group>"; };
+		FADFFEE12434A2AA0011C773 /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +157,7 @@
 			children = (
 				FA1616AD24069D7A009C6148 /* UIImageExtension.swift */,
 				FA2A565A241F8B6A0037128F /* UIViewController+Alert.swift */,
+				FADFFEDF243497340011C773 /* UIController+Background.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 				FAB152D4242B53BA006820A5 /* Training */,
 				FA8CB8F1242A8A5300145575 /* Login */,
 				FA8CB8F0242A8A3800145575 /* Presence */,
+				FADFFEE12434A2AA0011C773 /* PreviewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -556,11 +562,13 @@
 				FA171A5E2422B3E10038F9B0 /* PresenceViewModel.swift in Sources */,
 				FAB152DB242B6CB3006820A5 /* TrainingCollectionViewCell.swift in Sources */,
 				FA7814B223FE90C90011A69B /* LoginController.swift in Sources */,
+				FADFFEE0243497340011C773 /* UIController+Background.swift in Sources */,
 				FAC8C20E242A8F1100E7E96D /* TrainingGroupController.swift in Sources */,
 				FAB152D9242B6214006820A5 /* MonthViewModel.swift in Sources */,
 				FA1F1809242DECFE008BFAF8 /* ZoneCell.swift in Sources */,
 				FA708BFC242E396B0096FF5A /* DetailWorkoutViewModel.swift in Sources */,
 				FA82DF9C2412C9AD0053BA2C /* Group.swift in Sources */,
+				FADFFEE22434A2AA0011C773 /* PreviewController.swift in Sources */,
 				FAD03DB7241A58D1001DC925 /* LoginViewModel.swift in Sources */,
 				FA82DF9A2412C9290053BA2C /* FirestoreGroupManager.swift in Sources */,
 				FA7814AE23FE90C90011A69B /* AppDelegate.swift in Sources */,

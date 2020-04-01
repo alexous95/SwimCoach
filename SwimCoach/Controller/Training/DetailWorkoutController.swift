@@ -20,26 +20,26 @@ class DetailWorkoutController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewModel()
-        setupBackground()
+        setupBackground(gradient: gradient)
         setupDelegate()
         
     }
 
     override func viewDidLayoutSubviews() {
         gradient.frame = view.bounds
-        setupBackground()
+        setupBackground(gradient: gradient)
     }
     
     // MARK: - UI Setup
     
     /// Setsup the background with a gradient
-    private func setupBackground() {
-        guard let backStartColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
-        guard let backEndColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
-        
-        gradient.colors = [backStartColor.cgColor, backEndColor.cgColor]
-        view.layer.insertSublayer(gradient, at: 0)
-    }
+//    private func setupBackground() {
+//        guard let backStartColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
+//        guard let backEndColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
+//        
+//        gradient.colors = [backStartColor.cgColor, backEndColor.cgColor]
+//        view.layer.insertSublayer(gradient, at: 0)
+//    }
     
     // MARK: - Setup
     

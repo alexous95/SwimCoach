@@ -35,13 +35,11 @@ class GroupController: UIViewController {
         loadData()
     }
     
-    
-    
     // Sets the gradient's frame to the new bounds of the view to apply dark mode correctly
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         gradient.frame = view.bounds
-        setupBackground()
+        setupBackground(gradient: gradient)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -66,16 +64,7 @@ class GroupController: UIViewController {
         collectionView.dataSource = self
     }
     
-    /// Setsup the background
-    private func setupBackground() {
-        guard let backStartColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
-        guard let backEndColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
-        
-        gradient.colors = [backStartColor.cgColor, backEndColor.cgColor]
-        view.layer.insertSublayer(gradient, at: 0)
-        
-    }
-    
+
     /// Add a little image below the nav bar
     private func setupNavBar() {
         self.navigationController?.navigationBar.shadowImage = UIImage.imageWithColor(color: UIColor.white)
@@ -157,29 +146,9 @@ class GroupController: UIViewController {
     
     
     private func makePreviewController() -> UIViewController {
-        let viewController = UIViewController()
+        let viewController = PreviewController()
         
-        guard let image = UIImage(systemName: "folder") else {
-            print("pas d'image")
-            return UIViewController()
-        }
-        
-        let imageView = UIImageView(image: image)
-        imageView.tintColor = .white
-        viewController.view = imageView
-        
-        imageView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
-        imageView.translatesAutoresizingMaskIntoConstraints = true
-        
-        // 3
-        switch traitCollection.userInterfaceStyle {
-        case .dark :
-            viewController.view.backgroundColor = .green
-        default:
-            viewController.view.backgroundColor = .systemBlue
-        }
-        
-        viewController.preferredContentSize = imageView.frame.size
+        viewController.preferredContentSize = viewController.imageView.frame.size
         
         return viewController
     }
@@ -224,7 +193,7 @@ extension GroupController: UICollectionViewDelegate, UICollectionViewDataSource 
                 print("delete clicked.")
             })
             
-            return UIMenu(title: "options", image: nil, identifier: nil, options: [.displayInline], children: [delete])
+            return UIMenu(title: "Options", image: nil, identifier: nil, options: [.displayInline], children: [delete])
         }
         
         return configuration

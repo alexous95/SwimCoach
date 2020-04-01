@@ -27,14 +27,14 @@ class TrainingController: UIViewController {
         super.viewDidLoad()
         createActivitySubscriber()
         createDataSubscriber()
-        setupBackground()
+        setupBackground(gradient: gradient)
         setupDelegate()
         loadData()
     }
 
     override func viewDidLayoutSubviews() {
         gradient.frame = view.bounds
-        setupBackground()
+        setupBackground(gradient: gradient)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -66,13 +66,13 @@ class TrainingController: UIViewController {
     // MARK: - UI Setup
     
     /// Setsup the background with a gradient
-    private func setupBackground() {
-        guard let backStartColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
-        guard let backEndColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
-        
-        gradient.colors = [backStartColor.cgColor, backEndColor.cgColor]
-        view.layer.insertSublayer(gradient, at: 0)
-    }
+//    private func setupBackground() {
+//        guard let backStartColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
+//        guard let backEndColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
+//
+//        gradient.colors = [backStartColor.cgColor, backEndColor.cgColor]
+//        view.layer.insertSublayer(gradient, at: 0)
+//    }
     
     // MARK: - Subscriber
     

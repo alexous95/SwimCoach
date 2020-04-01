@@ -35,7 +35,6 @@ class PresenceController: UIViewController {
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
-        setupBackground()
         setupNavBar()
         initialiseViewModel()
         setupDelegate()
@@ -48,7 +47,7 @@ class PresenceController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         gradient.frame = view.bounds
-        setupBackground()
+        setupBackground(gradient: gradient)
         
     }
     
@@ -84,15 +83,6 @@ class PresenceController: UIViewController {
     }
         
     // MARK: - UI Setup
-    
-    /// Setsup the background with our custom colors
-    private func setupBackground() {
-        guard let backStartColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
-        guard let backEndColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
-        
-        gradient.colors = [backStartColor.cgColor, backEndColor.cgColor]
-        view.layer.insertSublayer(gradient, at: 0)
-    }
     
     /// Add a little image below the nav bar
     private func setupNavBar() {

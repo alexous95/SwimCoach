@@ -43,7 +43,7 @@ class CreateUserController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         gradient.frame = view.bounds
-        setupBackground()
+        setupBackground(gradient: gradient)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,13 +53,13 @@ class CreateUserController: UIViewController {
     // MARK: - UI Setup
     
     /// Setsup the backgound with a gradient of color
-    private func setupBackground() {
-        guard let startColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
-        guard let endColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
-        
-        gradient.colors = [startColor.cgColor, endColor.cgColor]
-        view.layer.insertSublayer(gradient, at: 0)
-    }
+//    private func setupBackground() {
+//        guard let startColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
+//        guard let endColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
+//
+//        gradient.colors = [startColor.cgColor, endColor.cgColor]
+//        view.layer.insertSublayer(gradient, at: 0)
+//    }
     
     /// Setsup the delegates and the design of the textfields
     private func setupTextfields() {
