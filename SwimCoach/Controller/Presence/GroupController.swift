@@ -28,7 +28,7 @@ class GroupController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavBar()
+        //setupNavBar()
         createActivitySubscriber()
         createDataAvaillableSubscriber()
         setupCollectionDelegate()
@@ -40,8 +40,8 @@ class GroupController: UIViewController {
     // Sets the gradient's frame to the new bounds of the view to apply dark mode correctly
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        gradient.frame = view.bounds
-        setupBackground()
+       //gradient.frame = view.bounds
+        //setupBackground()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -213,11 +213,11 @@ extension GroupController: UICollectionViewDelegate, UICollectionViewDataSource 
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
        
-        let index = indexPath.item
-        
-        let identifier = "\(index)" as NSString
-        
-        let configuration = UIContextMenuConfiguration(identifier: identifier, previewProvider: makePreviewController){ action in
+//        let index = indexPath.item
+//
+//        let identifier = "\(index)" as NSString
+//        
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil){ action in
           
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), attributes: .destructive, handler: { action in
                 self.deleteItem(at: indexPath)
