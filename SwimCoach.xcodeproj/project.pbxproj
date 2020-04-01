@@ -356,6 +356,7 @@
 		FAB152D4242B53BA006820A5 /* Training */ = {
 			isa = PBXGroup;
 			children = (
+				FA3B50832434E9BD0020EAE4 /* AddWorkoutLineDetailController.swift */,
 				FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */,
 				FAB152D5242B56EB006820A5 /* MonthController.swift */,
 				FAB152DC242B6CEC006820A5 /* TrainingController.swift */,
@@ -372,7 +373,6 @@
 				FA812F06242CA6100073EDB6 /* TrainingViewModel.swift */,
 				FA708BFB242E396B0096FF5A /* DetailWorkoutViewModel.swift */,
 				FA3B50812434D4CB0020EAE4 /* AddWorkoutLineViewModel.swift */,
-				FA3B50832434E9BD0020EAE4 /* AddWorkoutLineDetailController.swift */,
 			);
 			path = Training;
 			sourceTree = "<group>";
