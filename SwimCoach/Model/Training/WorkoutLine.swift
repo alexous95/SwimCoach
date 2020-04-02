@@ -10,7 +10,7 @@ import Foundation
 
 final class WorkoutLine {
     
-    var text: String = ""
+    var text: String = "Write your workout normally here \nDon't forget to fill all the cell if you want a precise analyse"
     var zone1: Double = 0.0
     var zone2: Double = 0.0
     var zone3: Double = 0.0
@@ -28,7 +28,11 @@ final class WorkoutLine {
     var nageC: Double = 0.0
     var jbs: Double = 0.0
     var bras: Double = 0.0
-    var workoutLineID: String
+    var workoutLineID: String = ""
+    
+    init() {
+        
+    }
     
     init(text: String, zone1: Double, zone2: Double, zone3: Double, zone4: Double, zone5: Double, zone6: Double, zone7: Double, ampM: Double, coorM: Double, endM: Double, educ: Double, crawl: Double, medley: Double, spe: Double, nageC: Double, jbs: Double, bras: Double, workoutLineID: String) {
         self.text = text
@@ -104,7 +108,7 @@ final class WorkoutLine {
     }
     
     func addZ1(distance: Double) {
-        zone1 += distance
+        zone1 = distance
     }
     
     func getZ1() -> Double {
@@ -112,7 +116,7 @@ final class WorkoutLine {
     }
     
     func addZ2(distance: Double) {
-        zone2 += distance
+        zone2 = distance
     }
     
     func getZ2() -> Double {
@@ -120,7 +124,7 @@ final class WorkoutLine {
     }
     
     func addZ3(distance: Double) {
-        zone3 += distance
+        zone3 = distance
     }
     
     func getZ3() -> Double {
@@ -128,7 +132,7 @@ final class WorkoutLine {
     }
     
     func addZ4(distance: Double) {
-        zone4 += distance
+        zone4 = distance
     }
     
     func getZ4() -> Double {
@@ -136,7 +140,7 @@ final class WorkoutLine {
     }
     
     func addZ5(distance: Double) {
-        zone5 += distance
+        zone5 = distance
     }
     
     func getZ5() -> Double {
@@ -144,7 +148,7 @@ final class WorkoutLine {
     }
     
     func addZ6(distance: Double) {
-        zone6 += distance
+        zone6 = distance
     }
     
     func getZ6() -> Double {
@@ -152,7 +156,7 @@ final class WorkoutLine {
     }
     
     func addZ7(distance: Double) {
-        zone7 += distance
+        zone7 = distance
     }
     
     func getZ7() -> Double {
@@ -163,40 +167,80 @@ final class WorkoutLine {
         return ampM
     }
     
+    func addAmpM(distance: Double){
+        ampM = distance
+    }
+    
     func getCoorM() -> Double {
         return coorM
+    }
+    
+    func addCoorM(distance: Double) {
+        coorM = distance
     }
     
     func getEndM() -> Double {
         return endM
     }
     
+    func addEndM(distance: Double) {
+        endM = distance
+    }
+    
     func getEduc() -> Double {
         return educ
+    }
+    
+    func addEduc(distance: Double) {
+        educ = distance
     }
     
     func getCrawl() -> Double {
         return crawl
     }
     
+    func addCrawl(distance: Double) {
+        crawl = distance
+    }
+    
     func getMedley() -> Double {
         return medley
+    }
+    
+    func addMedley(distance: Double) {
+        medley = distance
     }
     
     func getSpe() -> Double {
         return spe
     }
     
+    func addSpe(distance: Double) {
+        spe = distance
+    }
+    
     func getNageC() -> Double {
         return nageC
+    }
+    
+    func addNageC(distance: Double) {
+        nageC = distance
     }
     
     func getJbs() -> Double {
         return jbs
     }
     
+    func addJbs(distance: Double) {
+        jbs = distance
+    }
+    
     func getBras() -> Double {
         return bras
+    }
+    
+    func addBras(distance: Double){
+        bras = distance
     }
     
 }

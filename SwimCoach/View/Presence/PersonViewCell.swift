@@ -14,8 +14,6 @@ class PersonViewCell: UITableViewCell {
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var isPresentSwitch: UISwitch!
     
-    let gradient = CAGradientLayer()
-    
     override func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: self.layer)
         switch traitCollection.userInterfaceStyle {
