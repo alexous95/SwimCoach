@@ -158,4 +158,45 @@ final class WorkoutLine {
     func getZ7() -> Double {
         return zone7
     }
+    
+    func getAmpM() -> Double {
+        return ampM
+    }
+    
+    func getCoorM() -> Double {
+        return coorM
+    }
+    
+    func getEndM() -> Double {
+        return endM
+    }
+    
+    func getEduc() -> Double {
+        return educ
+    }
+    
+    func getCrawl() -> Double {
+        return crawl
+    }
+    
+    func getMedley() -> Double {
+        return medley
+    }
+    
+    func getSpe() -> Double {
+        return spe
+    }
+    
+    func getNageC() -> Double {
+        return nageC
+    }
+    
+    func getJbs() -> Double {
+        return jbs
+    }
+    
+    func getBras() -> Double {
+        return bras
+    }
+    
 }

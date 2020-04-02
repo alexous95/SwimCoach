@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 
 class AddWorkoutViewModel {
     
@@ -14,6 +15,10 @@ class AddWorkoutViewModel {
     
     func getNumberOfLines() -> Int {
         return workoutLines.count
+    }
+    
+    func addWorkout() {
+        
     }
     
     

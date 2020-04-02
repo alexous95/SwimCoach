@@ -13,6 +13,7 @@ class TextViewCell: UITableViewCell {
     @IBOutlet weak var trainingText: UITextView!
     
     func configure(text: String) {
+        print("on a configurer le text")
         trainingText.text = text
     }
 

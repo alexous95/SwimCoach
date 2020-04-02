@@ -51,6 +51,56 @@ final class DetailWorkoutViewModel {
         return convertToString(distance: distance)
     }
     
+    func getPercentageAmpM() -> String {
+        let distance = (workout.getDistanceAmpM()/workout.getDistance()) * 100
+        return convertToString(distance: distance)
+    }
+    
+    func getPercentageCoorM() -> String {
+        let distance = (workout.getDistanceCoorM()/workout.getDistance()) * 100
+        return convertToString(distance: distance)
+    }
+    
+    func getPercentageEndM() -> String {
+        let distance = (workout.getDistanceEndM()/workout.getDistance()) * 100
+        return convertToString(distance: distance)
+    }
+    
+    func getPercentageEduc() -> String {
+        let distance = (workout.getDistanceEduc()/workout.getDistance()) * 100
+        return convertToString(distance: distance)
+    }
+    
+    func getPercentageCrawl() -> String {
+        let distance = (workout.getDistanceCrawl()/workout.getDistance()) * 100
+        return convertToString(distance: distance)
+    }
+    
+    func getPercentageMedley() -> String {
+        let distance = (workout.getDistanceMedley()/workout.getDistance()) * 100
+        return convertToString(distance: distance)
+    }
+    
+    func getPercentageSpe() -> String {
+        let distance = (workout.getDistanceSpe()/workout.getDistance()) * 100
+        return convertToString(distance: distance)
+    }
+    
+    func getPercentageNageC() -> String {
+        let distance = (workout.getDistanceNageC()/workout.getDistance()) * 100
+        return convertToString(distance: distance)
+    }
+    
+    func getPercentageJbs() -> String {
+        let distance = (workout.getDistanceJbs()/workout.getDistance()) * 100
+        return convertToString(distance: distance)
+    }
+    
+    func getPercentageBras() -> String {
+        let distance = (workout.getDistanceBras()/workout.getDistance()) * 100
+        return convertToString(distance: distance)
+    }
+    
     func convertToString(distance: Double) -> String {
         return String(format: "%.1f", distance)
     }

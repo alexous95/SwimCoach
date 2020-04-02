@@ -27,7 +27,6 @@ class TrainingController: UIViewController {
         super.viewDidLoad()
         createActivitySubscriber()
         createDataSubscriber()
-        setupBackground(gradient: gradient)
         setupDelegate()
         loadData()
     }
@@ -47,6 +46,15 @@ class TrainingController: UIViewController {
             guard let workouts = viewModel.workouts else { return }
             destVC.workout = workouts[item]
         }
+        if segue.identifier == "addWorkoutLineSegue" {
+            let destVC: AddWorkoutLineController = segue.destination as! AddWorkoutLineController
+            
+            guard let group = group else { return }
+            guard let month = month else { return }
+            
+            destVC.group = group
+            destVC.month = month
+        }
     }
     
     // MARK: - Setup
@@ -64,16 +72,7 @@ class TrainingController: UIViewController {
     }
     
     // MARK: - UI Setup
-    
-    /// Setsup the background with a gradient
-//    private func setupBackground() {
-//        guard let backStartColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
-//        guard let backEndColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
-//
-//        gradient.colors = [backStartColor.cgColor, backEndColor.cgColor]
-//        view.layer.insertSublayer(gradient, at: 0)
-//    }
-    
+        
     // MARK: - Subscriber
     
     /// Creates a subscriber for activity evenment

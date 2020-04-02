@@ -30,16 +30,6 @@ class DetailWorkoutController: UIViewController {
         setupBackground(gradient: gradient)
     }
     
-    // MARK: - UI Setup
-    
-    /// Setsup the background with a gradient
-//    private func setupBackground() {
-//        guard let backStartColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
-//        guard let backEndColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
-//        
-//        gradient.colors = [backStartColor.cgColor, backEndColor.cgColor]
-//        view.layer.insertSublayer(gradient, at: 0)
-//    }
     
     // MARK: - Setup
     
@@ -60,12 +50,27 @@ extension DetailWorkoutController: UITableViewDataSource, UITableViewDelegate {
         return 3
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return nil
+        case 1:
+            return "% by zone"
+        case 2:
+            return "% by stroke"
+        default:
+            return nil
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 1
         case 1:
             return 7
+        case 2:
+            return 10
         default:
             return 0
         }
@@ -92,7 +97,9 @@ extension DetailWorkoutController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "zoneCell", for: indexPath)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "zoneCell", for: indexPath) as? ZoneCell else {
+                return UITableViewCell()
+            }
             
             switch indexPath.row {
             case 0:
@@ -121,6 +128,50 @@ extension DetailWorkoutController: UITableViewDataSource, UITableViewDelegate {
             }
             
             return cell
+            
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "zoneCell", for: indexPath)
+            
+            switch indexPath.row {
+                
+            case 0:
+                cell.textLabel?.text = "AmpM: " + String(workout.getDistanceAmpM()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageAmpM() + "%"
+            case 1:
+                cell.textLabel?.text = "CoorM: " + String(workout.getDistanceCoorM()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageCoorM() + "%"
+            case 2:
+                cell.textLabel?.text = "EndM: " + String(workout.getDistanceEndM()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageEndM() + "%"
+            case 3:
+                cell.textLabel?.text = "Educ: " + String(workout.getDistanceEduc()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageEduc() + "%"
+            case 4:
+                cell.textLabel?.text = "Crawl: " + String(workout.getDistanceCrawl()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageCrawl() + "%"
+            case 5:
+                cell.textLabel?.text = "medley: " + String(workout.getDistanceMedley()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageMedley() + "%"
+            case 6:
+                cell.textLabel?.text = "Spe: " + String(workout.getDistanceSpe()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageSpe() + "%"
+            case 7:
+                cell.textLabel?.text = "NageC: " + String(workout.getDistanceNageC()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageNageC() + "%"
+            case 8 :
+                cell.textLabel?.text = "Jbs: " + String(workout.getDistanceJbs()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageJbs() + "%"
+            case 9:
+                cell.textLabel?.text = "Bras: " + String(workout.getDistanceBras()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageBras() + "%"
+                
+            default :
+                cell.textLabel?.text = "fail"
+                cell.detailTextLabel?.text = "fail2"
+            }
+            
+            return cell
+            
         default:
             return UITableViewCell()
         }

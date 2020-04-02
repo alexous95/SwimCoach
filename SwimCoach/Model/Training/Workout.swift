@@ -126,4 +126,104 @@ final class Workout {
         return descriptionLine
     }
     
+    func getDistanceAmpM() -> Double {
+        var distance = 0.0
+        
+        for workout in workoutLines {
+            distance += workout.getAmpM()
+        }
+        
+        return distance
+    }
+    
+    func getDistanceCoorM() -> Double {
+        var distance = 0.0
+        
+        for workout in workoutLines {
+            distance += workout.getCoorM()
+        }
+        
+        return distance
+    }
+    
+    func getDistanceEndM() -> Double {
+        var distance = 0.0
+        
+        for workout in workoutLines {
+            distance += workout.getEndM()
+        }
+        
+        return distance
+    }
+    
+    func getDistanceEduc() -> Double {
+        var distance = 0.0
+        
+        for workout in workoutLines {
+            distance += workout.getEduc()
+        }
+        
+        return distance
+    }
+    
+    func getDistanceCrawl() -> Double {
+        var distance = 0.0
+        
+        for workout in workoutLines {
+            distance += workout.getCrawl()
+        }
+        
+        return distance
+    }
+    
+    func getDistanceMedley() -> Double {
+        var distance = 0.0
+        
+        for workout in workoutLines {
+            distance += workout.getMedley()
+        }
+        
+        return distance
+    }
+    
+    func getDistanceSpe() -> Double {
+        var distance = 0.0
+        
+        for workout in workoutLines {
+            distance += workout.getSpe()
+        }
+        
+        return distance
+    }
+    
+    func getDistanceNageC() -> Double {
+        var distance = 0.0
+        
+        for workout in workoutLines {
+            distance += workout.getNageC()
+        }
+        
+        return distance
+    }
+    
+    func getDistanceJbs() -> Double {
+        var distance = 0.0
+        
+        for workout in workoutLines {
+            distance += workout.getJbs()
+        }
+        
+        return distance
+    }
+    
+    func getDistanceBras() -> Double {
+        var distance = 0.0
+        
+        for workout in workoutLines {
+            distance += workout.getBras()
+        }
+        
+        return distance
+    }
+    
 }
