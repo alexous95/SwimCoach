@@ -51,6 +51,8 @@ extension AddWorkoutLineDetailController: UITableViewDelegate, UITableViewDataSo
             return 1
         case 1:
             return 7
+        case 2:
+            return 4
         default:
             return 0
         }

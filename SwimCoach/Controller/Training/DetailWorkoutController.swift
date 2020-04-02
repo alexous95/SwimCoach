@@ -47,7 +47,7 @@ class DetailWorkoutController: UIViewController {
 
 extension DetailWorkoutController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 5
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -57,7 +57,11 @@ extension DetailWorkoutController: UITableViewDataSource, UITableViewDelegate {
         case 1:
             return "% by zone"
         case 2:
+            return "% by motricity"
+        case 3:
             return "% by stroke"
+        case 4:
+            return "% by exercice"
         default:
             return nil
         }
@@ -70,7 +74,11 @@ extension DetailWorkoutController: UITableViewDataSource, UITableViewDelegate {
         case 1:
             return 7
         case 2:
-            return 10
+            return 3
+        case 3:
+            return 3
+        case 4:
+            return 4
         default:
             return 0
         }
@@ -86,21 +94,13 @@ extension DetailWorkoutController: UITableViewDataSource, UITableViewDelegate {
         switch indexPath.section {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "textViewCell", for: indexPath) as? TextViewCell else { return UITableViewCell() }
-            
 
-            // A ajouter au futur view model
-            let fullWorkout = workout.description().joined(separator: "\n \n")
-            let correctWorkout = fullWorkout.replacingOccurrences(of: "\\n", with: "\n")
-            
-            cell.configure(text: correctWorkout)
+            cell.configure(text: viewModel.getWorkoutText())
             
             return cell
             
         case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "zoneCell", for: indexPath) as? ZoneCell else {
-                return UITableViewCell()
-            }
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "zoneCell", for: indexPath)
             switch indexPath.row {
             case 0:
                 cell.textLabel!.text = "Z1: " + String(workout.getDistanceZ1()) + "m"
@@ -143,33 +143,63 @@ extension DetailWorkoutController: UITableViewDataSource, UITableViewDelegate {
             case 2:
                 cell.textLabel?.text = "EndM: " + String(workout.getDistanceEndM()) + "m"
                 cell.detailTextLabel?.text = viewModel.getPercentageEndM() + "%"
-            case 3:
-                cell.textLabel?.text = "Educ: " + String(workout.getDistanceEduc()) + "m"
-                cell.detailTextLabel?.text = viewModel.getPercentageEduc() + "%"
-            case 4:
-                cell.textLabel?.text = "Crawl: " + String(workout.getDistanceCrawl()) + "m"
-                cell.detailTextLabel?.text = viewModel.getPercentageCrawl() + "%"
-            case 5:
-                cell.textLabel?.text = "medley: " + String(workout.getDistanceMedley()) + "m"
-                cell.detailTextLabel?.text = viewModel.getPercentageMedley() + "%"
-            case 6:
-                cell.textLabel?.text = "Spe: " + String(workout.getDistanceSpe()) + "m"
-                cell.detailTextLabel?.text = viewModel.getPercentageSpe() + "%"
-            case 7:
-                cell.textLabel?.text = "NageC: " + String(workout.getDistanceNageC()) + "m"
-                cell.detailTextLabel?.text = viewModel.getPercentageNageC() + "%"
-            case 8 :
-                cell.textLabel?.text = "Jbs: " + String(workout.getDistanceJbs()) + "m"
-                cell.detailTextLabel?.text = viewModel.getPercentageJbs() + "%"
-            case 9:
-                cell.textLabel?.text = "Bras: " + String(workout.getDistanceBras()) + "m"
-                cell.detailTextLabel?.text = viewModel.getPercentageBras() + "%"
                 
             default :
                 cell.textLabel?.text = "fail"
                 cell.detailTextLabel?.text = "fail2"
             }
+            return cell
             
+        case 3:
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "zoneCell", for: indexPath)
+            
+            switch indexPath.row {
+                
+            case 0:
+                cell.textLabel?.text = "Crawl: " + String(workout.getDistanceCrawl()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageCrawl() + "%"
+                
+            case 1:
+                cell.textLabel?.text = "Medley: " + String(workout.getDistanceMedley()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageMedley() + "%"
+                
+            case 2:
+                cell.textLabel?.text = "Spe: " + String(workout.getDistanceSpe()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageSpe() + "%"
+            default:
+                cell.textLabel?.text = "fail"
+                cell.detailTextLabel?.text = "fail2"
+            }
+            
+            return cell
+            
+        case 4:
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "zoneCell", for: indexPath)
+            
+            switch indexPath.row {
+                
+            case 0:
+                cell.textLabel?.text = "NageC: " + String(workout.getDistanceNageC()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageNageC() + "%"
+                
+            case 1:
+                cell.textLabel?.text = "Educ: " + String(workout.getDistanceEduc()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageEduc() + "%"
+                
+            case 2:
+                cell.textLabel?.text = "Jbs: " + String(workout.getDistanceJbs()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageJbs() + "%"
+                
+            case 3:
+                cell.textLabel?.text = "Bras: " + String(workout.getDistanceBras()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageBras() + "%"
+                
+            default:
+                cell.textLabel?.text = "fail"
+                cell.detailTextLabel?.text = "fail2"
+            }
             return cell
             
         default:

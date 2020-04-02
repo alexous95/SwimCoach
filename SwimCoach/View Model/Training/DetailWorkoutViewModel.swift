@@ -101,6 +101,13 @@ final class DetailWorkoutViewModel {
         return convertToString(distance: distance)
     }
     
+    func getWorkoutText() -> String {
+        let fullWorkout = workout.description().joined(separator: "\n \n")
+        let correctWorkout = fullWorkout.replacingOccurrences(of: "\\n", with: "\n")
+        
+        return correctWorkout
+    }
+    
     func convertToString(distance: Double) -> String {
         return String(format: "%.1f", distance)
     }

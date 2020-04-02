@@ -17,7 +17,7 @@ class AddWorkoutViewModel {
         return workoutLines.count
     }
     
-    func addWorkout() {
+    func addWorkoutLine() {
         
     }
     
