@@ -9,7 +9,7 @@
 import Foundation
 import FirebaseAuth
 
-final class FirestoreGroupManager: NetworkGroupService {
+class FirestoreGroupManager: NetworkGroupService {
     
     /// Fetch the documents from the group's collection
     /// - Parameter completion: An escaping closure of type ([Group], Error?) to pass data to another class
@@ -37,7 +37,7 @@ final class FirestoreGroupManager: NetworkGroupService {
             }
         }
     }
-        
+    
     /// Add a document to the group's collection
     /// - Parameter group: The object that will be added to the database
     ///
