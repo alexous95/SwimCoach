@@ -18,6 +18,7 @@ class TextViewCell: UITableViewCell {
         trainingText.delegate = self
         trainingText.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender: )))
     }
+    
     func configure(text: String) {
         trainingText.text = text
     }

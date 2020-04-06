@@ -17,10 +17,10 @@ class AddWorkoutLineController: UIViewController {
     
     // MARK: - Variables
     
-    let gradient = CAGradientLayer()
     var group: Group?
     var month: String?
     
+    let gradient = CAGradientLayer()
     let viewModel = AddWorkoutViewModel()
     
     // MARK: View Life Cycle
@@ -37,6 +37,12 @@ class AddWorkoutLineController: UIViewController {
         setupBackground(gradient: gradient)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailWorkoutLine" {
+            let destVC: AddWorkoutLineDetailController = segue.destination as! AddWorkoutLineDetailController
+            destVC.delegate = self
+        }
+    }
     // MARK: - Setup
     
     private func setupDelegate() {
@@ -66,14 +72,14 @@ extension AddWorkoutLineController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.getNumberOfLines()
+        return viewModel.getNumberOfLines()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "workoutLineCell", for: indexPath)
         
-        cell.textLabel?.text = "test"
-        cell.detailTextLabel?.text = "test2"
+        cell.textLabel?.text = viewModel.workoutLines[indexPath.row].workoutLineTitle
+        cell.detailTextLabel?.text = String(format: "%.0f", viewModel.workoutLines[indexPath.row].getDistance())
         
         return cell
     }
@@ -100,6 +106,11 @@ extension AddWorkoutLineController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 100
     }
-    
-    
+}
+
+extension AddWorkoutLineController: TransfertDataProtocol {
+    func getData(data: WorkoutLine) {
+        viewModel.addWorkoutLine(data)
+        tableView.reloadData()
+    }
 }

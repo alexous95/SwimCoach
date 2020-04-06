@@ -147,11 +147,13 @@ class LoginController: UIViewController {
         email.layer.borderColor = UIColor.white.cgColor
         email.layer.borderWidth = 1.0
         email.layer.cornerRadius = 10.0
+        email.layer.masksToBounds = true
         
         password.delegate = self
         password.layer.borderColor = UIColor.white.cgColor
         password.layer.borderWidth = 1.0
         password.layer.cornerRadius = 10.0
+        email.layer.masksToBounds = true
     }
     
     /// Setsup the buttons with a white border and rounded corner
@@ -159,10 +161,12 @@ class LoginController: UIViewController {
         login.layer.borderWidth = 1.0
         login.layer.borderColor = UIColor.white.cgColor
         login.layer.cornerRadius = 10.0
+        email.layer.masksToBounds = true
         
         create.layer.borderColor = UIColor.white.cgColor
         create.layer.borderWidth = 1.0
         create.layer.cornerRadius = 10.0
+        email.layer.masksToBounds = true
     }
     
     /// Configures a tap gesture to end dismiss the keyboard

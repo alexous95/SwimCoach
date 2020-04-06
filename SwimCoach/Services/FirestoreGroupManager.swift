@@ -9,12 +9,12 @@
 import Foundation
 import FirebaseAuth
 
-final class FirestoreGroupManager {
+final class FirestoreGroupManager: NetworkGroupService {
     
     /// Fetch the documents from the group's collection
     /// - Parameter completion: An escaping closure of type ([Group], Error?) to pass data to another class
     /// We use this class to populate our model in the viewModel
-    static func fetchGroupe(completion: @escaping ([Group], Error?) -> () ) {
+    func fetchGroup(completion: @escaping ([Group], Error?) -> ()) {
         var groups = [Group]()
         
         if let user = Auth.auth().currentUser {
@@ -37,12 +37,12 @@ final class FirestoreGroupManager {
             }
         }
     }
-    
+        
     /// Add a document to the group's collection
     /// - Parameter group: The object that will be added to the database
     ///
     /// The group model has a property dictionnary of type [String : Any] used to add data to firestore
-    static func addGroup(group: Group) {
+    func addGroup(group: Group) {
         if let user = Auth.auth().currentUser{
             let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups")
             
@@ -53,7 +53,7 @@ final class FirestoreGroupManager {
         }
     }
     
-    static func deleteGroup(group: Group) {
+    func deleteGroup(group: Group) {
         if let user = Auth.auth().currentUser {
             let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups")
             

@@ -955,8 +955,38 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="workoutTitleCell" rowHeight="100" id="rpm-hg-wbk" customClass="WorkoutTitleCell" customModule="SwimCoach" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rpm-hg-wbk" id="rZl-97-m1Y">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Workout's line title?" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q9F-5w-92a">
+                                                    <rect key="frame" x="93.666666666666671" y="33" width="187.66666666666663" height="34"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldChanged:" destination="Hjq-aR-lqv" eventType="editingChanged" id="5Dl-Mx-htU"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="Q9F-5w-92a" firstAttribute="centerY" secondItem="rZl-97-m1Y" secondAttribute="centerY" id="0ow-iW-8SY"/>
+                                                <constraint firstItem="Q9F-5w-92a" firstAttribute="width" secondItem="rZl-97-m1Y" secondAttribute="width" multiplier="0.5" id="EAJ-ch-snj"/>
+                                                <constraint firstItem="Q9F-5w-92a" firstAttribute="centerX" secondItem="rZl-97-m1Y" secondAttribute="centerX" id="sXo-nG-War"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="title" destination="Q9F-5w-92a" id="76z-uQ-AaF"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="workoutTextCell" rowHeight="300" id="6GL-7r-dH8" customClass="TextViewCell" customModule="SwimCoach" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="300"/>
+                                        <rect key="frame" x="0.0" y="128" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6GL-7r-dH8" id="3hv-y6-n7z">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
@@ -988,7 +1018,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="workoutDetailsCell" rowHeight="100" id="CRF-Ze-gqK" customClass="ZoneCell" customModule="SwimCoach" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="328" width="375" height="100"/>
+                                        <rect key="frame" x="0.0" y="428" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CRF-Ze-gqK" id="cYg-BE-alm">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
@@ -1053,7 +1083,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qjP-fa-2jF"/>
                     </view>
-                    <navigationItem key="navigationItem" id="fjq-Lp-Qh0"/>
+                    <navigationItem key="navigationItem" id="fjq-Lp-Qh0">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="HF5-Yt-Amf">
+                            <connections>
+                                <action selector="saveWorkoutLine:" destination="Hjq-aR-lqv" id="fM7-86-K6b"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="fPT-Mr-P9i" id="GDS-pZ-TxW"/>
                     </connections>

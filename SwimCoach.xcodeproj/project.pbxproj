@@ -19,6 +19,7 @@
 		FA3B50802434CC5F0020EAE4 /* AddWorkoutLineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B507F2434CC5F0020EAE4 /* AddWorkoutLineController.swift */; };
 		FA3B50822434D4CB0020EAE4 /* AddWorkoutLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B50812434D4CB0020EAE4 /* AddWorkoutLineViewModel.swift */; };
 		FA3B50842434E9BD0020EAE4 /* AddWorkoutLineDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B50832434E9BD0020EAE4 /* AddWorkoutLineDetailController.swift */; };
+		FA5E06C9243B26900004B94E /* NetworkGroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E06C8243B26900004B94E /* NetworkGroupService.swift */; };
 		FA708BFC242E396B0096FF5A /* DetailWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA708BFB242E396B0096FF5A /* DetailWorkoutViewModel.swift */; };
 		FA7125BD24211BFD00C98323 /* PresenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7125BC24211BFD00C98323 /* PresenceController.swift */; };
 		FA7814AE23FE90C90011A69B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7814AD23FE90C90011A69B /* AppDelegate.swift */; };
@@ -51,8 +52,10 @@
 		FAC8C20E242A8F1100E7E96D /* TrainingGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */; };
 		FAD03DB7241A58D1001DC925 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03DB6241A58D1001DC925 /* LoginViewModel.swift */; };
 		FAD71AC924112CC50047B885 /* FolderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD71AC824112CC50047B885 /* FolderCollectionViewCell.swift */; };
+		FAD96C4B24376F3800DD14C8 /* WorkoutTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD96C4A24376F3800DD14C8 /* WorkoutTitleCell.swift */; };
 		FADFFEE0243497340011C773 /* UIController+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFFEDF243497340011C773 /* UIController+Background.swift */; };
 		FADFFEE22434A2AA0011C773 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFFEE12434A2AA0011C773 /* PreviewController.swift */; };
+		FAF69D372437341D00FBEEB5 /* TransfertDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF69D362437341D00FBEEB5 /* TransfertDataProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +85,7 @@
 		FA3B507F2434CC5F0020EAE4 /* AddWorkoutLineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutLineController.swift; sourceTree = "<group>"; };
 		FA3B50812434D4CB0020EAE4 /* AddWorkoutLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutLineViewModel.swift; sourceTree = "<group>"; };
 		FA3B50832434E9BD0020EAE4 /* AddWorkoutLineDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutLineDetailController.swift; sourceTree = "<group>"; };
+		FA5E06C8243B26900004B94E /* NetworkGroupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkGroupService.swift; sourceTree = "<group>"; };
 		FA708BFB242E396B0096FF5A /* DetailWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorkoutViewModel.swift; sourceTree = "<group>"; };
 		FA7125BC24211BFD00C98323 /* PresenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceController.swift; sourceTree = "<group>"; };
 		FA7814AA23FE90C90011A69B /* SwimCoach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwimCoach.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,8 +122,10 @@
 		FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingGroupController.swift; sourceTree = "<group>"; };
 		FAD03DB6241A58D1001DC925 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FAD71AC824112CC50047B885 /* FolderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAD96C4A24376F3800DD14C8 /* WorkoutTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTitleCell.swift; sourceTree = "<group>"; };
 		FADFFEDF243497340011C773 /* UIController+Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIController+Background.swift"; sourceTree = "<group>"; };
 		FADFFEE12434A2AA0011C773 /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
+		FAF69D362437341D00FBEEB5 /* TransfertDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfertDataProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +193,7 @@
 				FAB152DA242B6CB3006820A5 /* TrainingCollectionViewCell.swift */,
 				FA812F0D242D0E840073EDB6 /* TextViewCell.swift */,
 				FA1F1808242DECFE008BFAF8 /* ZoneCell.swift */,
+				FAD96C4A24376F3800DD14C8 /* WorkoutTitleCell.swift */,
 			);
 			path = Training;
 			sourceTree = "<group>";
@@ -214,6 +221,7 @@
 		FA7814AC23FE90C90011A69B /* SwimCoach */ = {
 			isa = PBXGroup;
 			children = (
+				FAF69D35243733E500FBEEB5 /* Protocol */,
 				FA1616AC24069D66009C6148 /* Extensions */,
 				FA7814D323FE912C0011A69B /* Supporting Files */,
 				FA7814D423FE91420011A69B /* Services */,
@@ -361,11 +369,11 @@
 		FAB152D4242B53BA006820A5 /* Training */ = {
 			isa = PBXGroup;
 			children = (
-				FA3B50832434E9BD0020EAE4 /* AddWorkoutLineDetailController.swift */,
 				FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */,
 				FAB152D5242B56EB006820A5 /* MonthController.swift */,
 				FAB152DC242B6CEC006820A5 /* TrainingController.swift */,
 				FA812F0B242D0C660073EDB6 /* DetailWorkoutController.swift */,
+				FA3B50832434E9BD0020EAE4 /* AddWorkoutLineDetailController.swift */,
 				FA3B507F2434CC5F0020EAE4 /* AddWorkoutLineController.swift */,
 			);
 			path = Training;
@@ -392,6 +400,15 @@
 				FA8CB8F2242A8AD100145575 /* Login */,
 			);
 			path = "View Model";
+			sourceTree = "<group>";
+		};
+		FAF69D35243733E500FBEEB5 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				FAF69D362437341D00FBEEB5 /* TransfertDataProtocol.swift */,
+				FA5E06C8243B26900004B94E /* NetworkGroupService.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -578,6 +595,7 @@
 				FA2A565D241F96640037128F /* GroupViewModel.swift in Sources */,
 				FA812F0A242CAA8E0073EDB6 /* FirestoreWorkoutManager.swift in Sources */,
 				FA82DF9E2412C9E90053BA2C /* Person.swift in Sources */,
+				FAD96C4B24376F3800DD14C8 /* WorkoutTitleCell.swift in Sources */,
 				FA171A5E2422B3E10038F9B0 /* PresenceViewModel.swift in Sources */,
 				FAB152DB242B6CB3006820A5 /* TrainingCollectionViewCell.swift in Sources */,
 				FA7814B223FE90C90011A69B /* LoginController.swift in Sources */,
@@ -590,6 +608,7 @@
 				FADFFEE22434A2AA0011C773 /* PreviewController.swift in Sources */,
 				FAD03DB7241A58D1001DC925 /* LoginViewModel.swift in Sources */,
 				FA82DF9A2412C9290053BA2C /* FirestoreGroupManager.swift in Sources */,
+				FAF69D372437341D00FBEEB5 /* TransfertDataProtocol.swift in Sources */,
 				FA7814AE23FE90C90011A69B /* AppDelegate.swift in Sources */,
 				FA171A602422B8F00038F9B0 /* FirestorePersonManager.swift in Sources */,
 				FA87951E2436299F0028BBE1 /* AddWorkoutLineDetailViewModel.swift in Sources */,
@@ -601,6 +620,7 @@
 				FA1616AE24069D7A009C6148 /* UIImageExtension.swift in Sources */,
 				FA812F0E242D0E840073EDB6 /* TextViewCell.swift in Sources */,
 				FA812F03242C9AAE0073EDB6 /* Workout.swift in Sources */,
+				FA5E06C9243B26900004B94E /* NetworkGroupService.swift in Sources */,
 				FA2A565B241F8B6A0037128F /* UIViewController+Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,12 +19,18 @@ final class GroupViewModel {
     
     var groups: [Group]?
     
+    private let network: NetworkGroupService
+    
+    init(manager: NetworkGroupService = FirestoreGroupManager()) {
+        self.network = manager
+    }
+        
     /// Fetch data from FireStore and updates the publisher to signal there is data availlable
     ///
     /// In this function we change the value of our publisher to update the UI in the view controller
     func fetchGroup() {
         isLoading = true
-        FirestoreGroupManager.fetchGroupe { (groups, error) in
+        network.fetchGroup { (groups, error) in
             if error != nil {
                 print("error while loading groups")
                 self.isLoading = false
@@ -45,12 +51,12 @@ final class GroupViewModel {
     
     func addGroup(groupName: String) {
         let group = Group(groupName: groupName)
-        FirestoreGroupManager.addGroup(group: group)
+        network.addGroup(group: group)
         fetchGroup()
     }
     
     func deleteGroup(group: Group) {
-        FirestoreGroupManager.deleteGroup(group: group)
+        network.deleteGroup(group: group)
         fetchGroup()
     }
     

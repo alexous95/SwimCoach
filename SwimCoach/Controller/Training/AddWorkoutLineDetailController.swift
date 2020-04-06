@@ -18,13 +18,20 @@ class AddWorkoutLineDetailController: UIViewController {
     // MARK: - Variables
     
     let gradient = CAGradientLayer()
+    
+    var delegate: TransfertDataProtocol?
     var viewModel = AddWorkoutLineDetailViewModel()
+    
+    var tmp = ""
     
     // MARK: - Subscribers variables
     
     @Published var workoutText: String = ""
+    @Published var workoutLineTitle: String = ""
     
     var workoutSubscriber: AnyCancellable?
+    var workoutTitleSubscriber: AnyCancellable?
+    
     
     // MARK: - View Life Cycle
     
@@ -52,6 +59,12 @@ class AddWorkoutLineDetailController: UIViewController {
     private func setupWorkoutTextSubscriber() {
         workoutSubscriber = $workoutText.receive(on: DispatchQueue.main).sink(receiveValue: { (text) in
             self.viewModel.updateWorkoutText(text: text)
+        })
+    }
+    
+    private func setupWorkoutTitleSubscriber() {
+        workoutTitleSubscriber = $workoutLineTitle.receive(on: DispatchQueue.main).sink(receiveValue: { (text) in
+            self.viewModel.updateWorkoutTitle(text: text)
         })
     }
     
@@ -93,6 +106,32 @@ class AddWorkoutLineDetailController: UIViewController {
         present(alert, animated: true)
     }
     
+    @IBAction func saveWorkoutLine(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Saving", message: "Do you want to save now ?", preferredStyle: .alert)
+        
+        let save = UIAlertAction(title: "Save", style: .default) { (_) in
+            self.delegate?.getData(data: self.viewModel.workoutLine)
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        
+        alert.addAction(save)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true)
+    }
+    
+    // We use this action to update our model when the user enter a new title in the uitextfields
+    
+    @IBAction func textFieldChanged(_ sender: UITextField) {
+        if let text = sender.text {
+             workoutLineTitle = text
+            print(text)
+        }
+    }
+    
 }
 
 
@@ -100,20 +139,22 @@ class AddWorkoutLineDetailController: UIViewController {
 
 extension AddWorkoutLineDetailController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 6
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return nil
+            return "Workout Title"
         case 1:
-            return "Distance by zone"
+            return "Workout text"
         case 2:
-            return "Distance by motricity"
+            return "Distance by zone"
         case 3:
-            return "Distance by stroke"
+            return "Distance by motricity"
         case 4:
+            return "Distance by stroke"
+        case 5:
             return "Distance by exercice"
         default:
             return nil
@@ -124,12 +165,14 @@ extension AddWorkoutLineDetailController: UITableViewDelegate, UITableViewDataSo
         case 0:
             return 1
         case 1:
-            return 7
+            return 1
         case 2:
-            return 3
+            return 7
         case 3:
             return 3
         case 4:
+            return 3
+        case 5:
             return 4
         default:
             return 0
@@ -140,6 +183,13 @@ extension AddWorkoutLineDetailController: UITableViewDelegate, UITableViewDataSo
         
         switch indexPath.section {
         case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "workoutTitleCell", for: indexPath) as? WorkoutTitleCell else {
+                return UITableViewCell()
+            }
+            
+            return cell
+            
+        case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "workoutTextCell", for: indexPath) as? TextViewCell else {
                 return UITableViewCell()
             }
@@ -155,7 +205,7 @@ extension AddWorkoutLineDetailController: UITableViewDelegate, UITableViewDataSo
             }
             return cell
             
-        case 1:
+        case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "workoutDetailsCell", for: indexPath) as? ZoneCell else {
                 return UITableViewCell()
             }
@@ -188,7 +238,7 @@ extension AddWorkoutLineDetailController: UITableViewDelegate, UITableViewDataSo
             
             return cell
             
-        case 2:
+        case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "workoutDetailsCell", for: indexPath) as? ZoneCell else {
                 return UITableViewCell()
             }
@@ -209,7 +259,7 @@ extension AddWorkoutLineDetailController: UITableViewDelegate, UITableViewDataSo
             
             return cell
             
-        case 3:
+        case 4:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "workoutDetailsCell", for: indexPath) as? ZoneCell else {
                 return UITableViewCell()
             }
@@ -229,7 +279,7 @@ extension AddWorkoutLineDetailController: UITableViewDelegate, UITableViewDataSo
             }
             return cell
             
-        case 4:
+        case 5:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "workoutDetailsCell", for: indexPath) as? ZoneCell else {
                 return UITableViewCell()
             }

@@ -29,12 +29,13 @@ final class WorkoutLine {
     var jbs: Double = 0.0
     var bras: Double = 0.0
     var workoutLineID: String = ""
+    var workoutLineTitle = ""
     
     init() {
         
     }
     
-    init(text: String, zone1: Double, zone2: Double, zone3: Double, zone4: Double, zone5: Double, zone6: Double, zone7: Double, ampM: Double, coorM: Double, endM: Double, educ: Double, crawl: Double, medley: Double, spe: Double, nageC: Double, jbs: Double, bras: Double, workoutLineID: String) {
+    init(text: String, zone1: Double, zone2: Double, zone3: Double, zone4: Double, zone5: Double, zone6: Double, zone7: Double, ampM: Double, coorM: Double, endM: Double, educ: Double, crawl: Double, medley: Double, spe: Double, nageC: Double, jbs: Double, bras: Double, workoutLineID: String, workoutLineTitle: String) {
         self.text = text
         self.zone1 = zone1
         self.zone2 = zone2
@@ -54,6 +55,7 @@ final class WorkoutLine {
         self.jbs = jbs
         self.bras = bras
         self.workoutLineID = workoutLineID
+        self.workoutLineTitle = workoutLineTitle
     }
     
     var dictionnary: [String : Any] {
@@ -75,7 +77,8 @@ final class WorkoutLine {
                 "nageC" : self.nageC,
                 "jbs" : self.jbs,
                 "bras" : self.bras,
-                "workoutLineID" : self.workoutLineID
+                "workoutLineID" : self.workoutLineID,
+                "workoutLineTitle" : self.workoutLineTitle
         ]
     }
     
@@ -99,12 +102,17 @@ final class WorkoutLine {
         guard let jbs = document["jbs"] as? Double else { return nil }
         guard let bras = document["bras"] as? Double else { return nil }
         guard let workoutLineID = document["workoutLineID"] as? String else { return nil }
+        guard let workoutLineTitle = document["workoutLineTitle"] as? String else { return nil }
         
-        self.init(text: text, zone1: zone1, zone2: zone2, zone3: zone3, zone4: zone4, zone5: zone5, zone6: zone6, zone7: zone7, ampM: ampM, coorM: coorM, endM: endM, educ: educ, crawl: crawl, medley: medley, spe: spe, nageC: nageC, jbs: jbs, bras: bras, workoutLineID: workoutLineID)
+        self.init(text: text, zone1: zone1, zone2: zone2, zone3: zone3, zone4: zone4, zone5: zone5, zone6: zone6, zone7: zone7, ampM: ampM, coorM: coorM, endM: endM, educ: educ, crawl: crawl, medley: medley, spe: spe, nageC: nageC, jbs: jbs, bras: bras, workoutLineID: workoutLineID, workoutLineTitle: workoutLineTitle)
     }
     
     func getDistance() -> Double {
         return zone1 + zone2 + zone3 + zone4 + zone5 + zone6 + zone7
+    }
+    
+    func getWorkoutTitle() -> String {
+        return workoutLineTitle
     }
     
     func addZ1(distance: Double) {
