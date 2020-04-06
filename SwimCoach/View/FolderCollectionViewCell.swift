@@ -48,7 +48,6 @@ class FolderCollectionViewCell: UICollectionViewCell {
         roundCorner()
         setupBackground()
         setCellShadow()
-        
     }
     
     private func setupBackground() {

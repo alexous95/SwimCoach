@@ -182,8 +182,13 @@ extension GroupController: UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            return CGSize(width: (view.frame.width / 3) - 20, height: 110)
+        default:
+            return CGSize(width: (view.frame.width / 2) - 20, height: 110)
+        }
         
-        return CGSize(width: (view.frame.width / 2) - 20, height: 110)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -193,15 +198,17 @@ extension GroupController: UICollectionViewDelegate, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
        
         let index = indexPath.item
+
+        let identifier = "\(index)" as NSString
         
-        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil){ action in
+        let configuration = UIContextMenuConfiguration(identifier: identifier, previewProvider: nil) { action in
           
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), attributes: .destructive, handler: { action in
                 self.deleteItem(at: indexPath)
                 print("delete clicked.")
             })
             
-            return UIMenu(title: "Options", image: nil, identifier: nil, options: [.displayInline], children: [delete])
+            return UIMenu(title: "", image: nil, identifier: nil, options: [.displayInline], children: [delete])
         }
         
         return configuration
