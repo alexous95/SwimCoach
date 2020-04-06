@@ -127,7 +127,7 @@ class AddWorkoutLineDetailController: UIViewController {
     
     @IBAction func textFieldChanged(_ sender: UITextField) {
         if let text = sender.text {
-             workoutLineTitle = text
+            workoutLineTitle = text
             print(text)
         }
     }

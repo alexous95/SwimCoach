@@ -14,8 +14,15 @@ final class TrainingViewModel {
     var workouts: [Workout]?
     var error: String = ""
     
+    private let network: NetworkWorkoutService
+    
     @Published var dataAvaillable: Bool = false
     @Published var isLoading: Bool = false
+    
+    
+    init(network: NetworkWorkoutService = FirestoreWorkoutManager()) {
+        self.network = network
+    }
     
     func numberOfItem() -> Int {
         guard let workouts = workouts else {
@@ -26,7 +33,7 @@ final class TrainingViewModel {
     
     func fetchWorkout(from group: Group, for month: String) {
         isLoading = true
-        FirestoreWorkoutManager.fetchWorkout(from: group, for: month) { (workouts, error) in
+        network.fetchWorkout(from: group, for: month) { (workouts, error) in
             if error != nil {
                 self.error = error.debugDescription
                 self.isLoading = false

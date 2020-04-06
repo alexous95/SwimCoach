@@ -23,6 +23,7 @@
 		FA5E06CB243B2F830004B94E /* NetworkPersonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E06CA243B2F830004B94E /* NetworkPersonService.swift */; };
 		FA5E06CD243B33EF0004B94E /* FirestorePresenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E06CC243B33EF0004B94E /* FirestorePresenceManager.swift */; };
 		FA5E06CF243B34B80004B94E /* NetworkPresenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E06CE243B34B80004B94E /* NetworkPresenceService.swift */; };
+		FA5E06D2243B42F40004B94E /* NetworkWorkoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E06D1243B42F40004B94E /* NetworkWorkoutService.swift */; };
 		FA708BFC242E396B0096FF5A /* DetailWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA708BFB242E396B0096FF5A /* DetailWorkoutViewModel.swift */; };
 		FA7125BD24211BFD00C98323 /* PresenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7125BC24211BFD00C98323 /* PresenceController.swift */; };
 		FA7814AE23FE90C90011A69B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7814AD23FE90C90011A69B /* AppDelegate.swift */; };
@@ -92,6 +93,7 @@
 		FA5E06CA243B2F830004B94E /* NetworkPersonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPersonService.swift; sourceTree = "<group>"; };
 		FA5E06CC243B33EF0004B94E /* FirestorePresenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestorePresenceManager.swift; sourceTree = "<group>"; };
 		FA5E06CE243B34B80004B94E /* NetworkPresenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPresenceService.swift; sourceTree = "<group>"; };
+		FA5E06D1243B42F40004B94E /* NetworkWorkoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWorkoutService.swift; sourceTree = "<group>"; };
 		FA708BFB242E396B0096FF5A /* DetailWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorkoutViewModel.swift; sourceTree = "<group>"; };
 		FA7125BC24211BFD00C98323 /* PresenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceController.swift; sourceTree = "<group>"; };
 		FA7814AA23FE90C90011A69B /* SwimCoach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwimCoach.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -416,6 +418,7 @@
 				FA5E06C8243B26900004B94E /* NetworkGroupService.swift */,
 				FA5E06CA243B2F830004B94E /* NetworkPersonService.swift */,
 				FA5E06CE243B34B80004B94E /* NetworkPresenceService.swift */,
+				FA5E06D1243B42F40004B94E /* NetworkWorkoutService.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				FAC8C20E242A8F1100E7E96D /* TrainingGroupController.swift in Sources */,
 				FAB152D9242B6214006820A5 /* MonthViewModel.swift in Sources */,
 				FA1F1809242DECFE008BFAF8 /* ZoneCell.swift in Sources */,
+				FA5E06D2243B42F40004B94E /* NetworkWorkoutService.swift in Sources */,
 				FA5E06CF243B34B80004B94E /* NetworkPresenceService.swift in Sources */,
 				FA708BFC242E396B0096FF5A /* DetailWorkoutViewModel.swift in Sources */,
 				FA82DF9C2412C9AD0053BA2C /* Group.swift in Sources */,

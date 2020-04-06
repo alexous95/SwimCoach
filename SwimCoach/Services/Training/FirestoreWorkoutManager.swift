@@ -9,9 +9,9 @@
 import Foundation
 import FirebaseAuth
 
-final class FirestoreWorkoutManager {
+class FirestoreWorkoutManager: NetworkWorkoutService {
     
-    static func fetchWorkout(from group: Group, for month: String, completion: @escaping ([Workout], Error?) -> ()) {
+    func fetchWorkout(from group: Group, for month: String, completion: @escaping ([Workout], Error?) -> ()) {
         var workouts = [Workout]()
         
         if let user = Auth.auth().currentUser {
@@ -35,7 +35,7 @@ final class FirestoreWorkoutManager {
                             return
                         }
                         print("on est la 2")
-                        FirestoreWorkoutManager.fetchWorkoutLines(from: group, for: month, for: workout.workoutID) { (workoutLines, error) in
+                        FirestoreWorkoutManager().fetchWorkoutLines(from: group, for: month, for: workout.workoutID) { (workoutLines, error) in
                             print(workout.workoutID)
                             if error != nil {
                                 print("41: error fetching lines")
@@ -51,9 +51,8 @@ final class FirestoreWorkoutManager {
         }
     }
     
-    static func fetchWorkoutLines(from group: Group, for month: String, for workoutID: String, completion: @escaping ([WorkoutLine], Error?) -> () ){
+    func fetchWorkoutLines(from group: Group, for month: String, for workoutID: String, completion: @escaping ([WorkoutLine], Error?) -> () ){
 
-        
         var workoutLines = [WorkoutLine]()
         
         if let user = Auth.auth().currentUser {

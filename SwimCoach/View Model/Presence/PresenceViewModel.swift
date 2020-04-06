@@ -13,7 +13,10 @@ final class PresenceViewModel {
     
     var persons: [Person]?
     
+    private let networkPerson: NetworkPersonService
+    private let networkPresence: NetworkPresenceService
     var group: Group
+    
     var error: String = ""
     var dateSelected: Date?
     
@@ -24,8 +27,10 @@ final class PresenceViewModel {
     @Published var isLoading: Bool = false
     @Published var presenceAvaillable: Bool = false
     
-    init(group: Group) {
+    init(group: Group, networkPerson: NetworkPersonService = FirestorePersonManager(), networkPresence: NetworkPresenceService = FirestorePresenceManager()) {
         self.group = group
+        self.networkPerson = networkPerson
+        self.networkPresence = networkPresence
     }
     
     /// Fetches persons from the database and add them to our model
@@ -40,7 +45,7 @@ final class PresenceViewModel {
         }
         let dateString = dateFormatter.string(from: dateChoice)
         isLoading = true
-        FirestorePersonManager.fetchPersons(from: group, date: dateString) { (persons, error) in
+        networkPerson.fetchPersons(from: group, date: dateString) { (persons, error) in
             if error != nil {
                 print("error while loading group")
                 self.error = "error while loading"
@@ -62,7 +67,7 @@ final class PresenceViewModel {
     ///
     /// This method calls a method from our service class that manage database operations
     func addPerson(lastName: String, firstName: String, to group: Group) {
-        FirestorePersonManager.addPerson(lastName: lastName, firstName: firstName, to: group)
+        networkPerson.addPerson(lastName: lastName, firstName: firstName, to: group)
         fetchPerson()
     }
     
@@ -72,7 +77,7 @@ final class PresenceViewModel {
     ///
     /// This method calls a method from our service class that manage database operations
     func deletePerson(personID: String, from group: Group) {
-        FirestorePersonManager.deletePerson(personID: personID, from: group)
+        networkPerson.deletePerson(personID: personID, from: group)
         fetchPerson()
     }
     
@@ -106,11 +111,11 @@ final class PresenceViewModel {
         
         if dateSelected == nil {
             let dateString = dateFormatter.string(from: now)
-            FirestorePersonManager.addPresence(personID: personID, from: group, stringDate: dateString)
+            networkPresence.addPresence(personID: personID, from: group, stringDate: dateString)
         } else {
             guard let dateSelected = dateSelected else { return }
             let dateString = dateFormatter.string(from: dateSelected)
-            FirestorePersonManager.addPresence(personID: personID, from: group, stringDate: dateString)
+            networkPresence.addPresence(personID: personID, from: group, stringDate: dateString)
         }
     }
     
