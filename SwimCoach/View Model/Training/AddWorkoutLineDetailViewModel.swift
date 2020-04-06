@@ -18,10 +18,7 @@ final class AddWorkoutLineDetailViewModel {
     }
     
     func updateWorkoutTitle(text: String) {
-        print("On est dans update workout title")
         workoutLine.workoutLineTitle = text
-        print("On test le workout title")
-        print(workoutLine.workoutLineTitle)
     }
     
     func defaultFunction(distance: Double) {}

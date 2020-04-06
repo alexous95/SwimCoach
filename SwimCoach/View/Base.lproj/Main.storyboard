@@ -326,27 +326,33 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JJb-jF-oyF">
-                                    <size key="itemSize" width="180" height="180"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LHk-dw-pak">
+                                    <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="groupeCell" id="Y5h-be-Ord" customClass="FolderCollectionViewCell" customModule="SwimCoach" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DIz-Js-hGl">
-                                            <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FLS-eS-OLo">
-                                                    <rect key="frame" x="0.0" y="1.3333333333333357" width="180" height="105.33333333333333"/>
+                                                    <rect key="frame" x="8" y="9.3333333333333321" width="36" height="33.333333333333343"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="36" id="bbn-uP-5nT"/>
+                                                        <constraint firstAttribute="height" constant="36" id="t4B-iY-gdO"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDv-qi-UQ1">
-                                                    <rect key="frame" x="9" y="117.99999999999999" width="162" height="20.333333333333329"/>
+                                                    <rect key="frame" x="8" y="62.000000000000007" width="41.666666666666664" height="20.333333333333336"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -356,13 +362,10 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="LDv-qi-UQ1" firstAttribute="top" secondItem="FLS-eS-OLo" secondAttribute="bottom" constant="10" id="22M-5p-tW8"/>
-                                                <constraint firstItem="FLS-eS-OLo" firstAttribute="top" secondItem="DIz-Js-hGl" secondAttribute="top" id="KyE-72-1e1"/>
-                                                <constraint firstAttribute="trailing" secondItem="FLS-eS-OLo" secondAttribute="trailing" id="arC-k8-mWh"/>
-                                                <constraint firstItem="LDv-qi-UQ1" firstAttribute="centerX" secondItem="DIz-Js-hGl" secondAttribute="centerX" id="eqE-LP-XDo"/>
-                                                <constraint firstItem="FLS-eS-OLo" firstAttribute="height" secondItem="DIz-Js-hGl" secondAttribute="height" multiplier="0.6" id="fqz-XM-467"/>
-                                                <constraint firstItem="FLS-eS-OLo" firstAttribute="leading" secondItem="DIz-Js-hGl" secondAttribute="leading" id="gRm-96-M4P"/>
-                                                <constraint firstItem="LDv-qi-UQ1" firstAttribute="width" secondItem="DIz-Js-hGl" secondAttribute="width" multiplier="0.9" id="r57-fc-vZh"/>
+                                                <constraint firstItem="FLS-eS-OLo" firstAttribute="top" secondItem="DIz-Js-hGl" secondAttribute="top" constant="8" id="KyE-72-1e1"/>
+                                                <constraint firstItem="LDv-qi-UQ1" firstAttribute="leading" secondItem="DIz-Js-hGl" secondAttribute="leading" constant="8" id="YjH-Yr-aLo"/>
+                                                <constraint firstItem="FLS-eS-OLo" firstAttribute="leading" secondItem="DIz-Js-hGl" secondAttribute="leading" constant="8" id="gRm-96-M4P"/>
+                                                <constraint firstItem="LDv-qi-UQ1" firstAttribute="top" secondItem="FLS-eS-OLo" secondAttribute="bottom" constant="18" id="rnd-ax-VMT"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -149,7 +149,7 @@ class GroupController: UIViewController {
         let viewController = PreviewController()
         
         viewController.preferredContentSize = viewController.imageView.frame.size
-        
+        viewController.view.backgroundColor = .clear
         return viewController
     }
     
@@ -157,7 +157,8 @@ class GroupController: UIViewController {
 
 // MARK: - Extension
 
-extension GroupController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension GroupController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItem()
     }
@@ -180,13 +181,20 @@ extension GroupController: UICollectionViewDelegate, UICollectionViewDataSource 
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: (view.frame.width / 2) - 20, height: 110)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
        
         let index = indexPath.item
-
-        let identifier = "\(index)" as NSString
         
-        let configuration = UIContextMenuConfiguration(identifier: identifier, previewProvider: makePreviewController){ action in
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil){ action in
           
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), attributes: .destructive, handler: { action in
                 self.deleteItem(at: indexPath)

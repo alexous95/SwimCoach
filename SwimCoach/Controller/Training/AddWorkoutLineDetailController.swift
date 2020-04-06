@@ -39,6 +39,7 @@ class AddWorkoutLineDetailController: UIViewController {
         super.viewDidLoad()
         setupDelegate()
         setupWorkoutTextSubscriber()
+        setupWorkoutTitleSubscriber()
     }
     
     override func viewDidLayoutSubviews() {
@@ -64,6 +65,7 @@ class AddWorkoutLineDetailController: UIViewController {
     
     private func setupWorkoutTitleSubscriber() {
         workoutTitleSubscriber = $workoutLineTitle.receive(on: DispatchQueue.main).sink(receiveValue: { (text) in
+            print("On affiche le text recu: \(text)")
             self.viewModel.updateWorkoutTitle(text: text)
         })
     }
@@ -128,7 +130,6 @@ class AddWorkoutLineDetailController: UIViewController {
     @IBAction func textFieldChanged(_ sender: UITextField) {
         if let text = sender.text {
             workoutLineTitle = text
-            print(text)
         }
     }
     

@@ -24,8 +24,7 @@ class FirestorePresenceManager: NetworkPresenceService {
         }
     }
     
-    /// fetches the presence for a person
-    ///
+    /// Fetches the presence for a person
     func fetchPresence(personID: String, date: String, from group: Group, completion: @escaping ([String], Error?) -> ()) {
         if let user = Auth.auth().currentUser {
             var presences: [String] = []

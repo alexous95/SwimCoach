@@ -16,14 +16,15 @@ class PreviewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .red
         setupImageView()
         view.frame = imageView.bounds
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        gradient.frame = view.bounds
-        setupBackground(gradient: gradient)
+        //gradient.frame = view.bounds
+        //setupBackground(gradient: gradient)
     }
     
     private func setupImageView() {

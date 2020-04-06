@@ -19,7 +19,6 @@ final class TrainingViewModel {
     @Published var dataAvaillable: Bool = false
     @Published var isLoading: Bool = false
     
-    
     init(network: NetworkWorkoutService = FirestoreWorkoutManager()) {
         self.network = network
     }
