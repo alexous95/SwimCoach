@@ -100,7 +100,7 @@ class TrainingController: UIViewController {
     }
 }
 
-extension TrainingController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension TrainingController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItem()
     }
@@ -116,5 +116,17 @@ extension TrainingController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            return CGSize(width: (view.frame.width / 3) - 20, height: 150)
+        default:
+            return CGSize(width: (view.frame.width / 2) - 20, height: 110)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
     
 }

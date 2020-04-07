@@ -18,8 +18,8 @@ class TrainingCollectionViewCell: UICollectionViewCell {
     let gradient = CAGradientLayer()
     
     private func setupBackground() {
-        guard let backStartColor = UIColor(named: "TrainingCellStart")?.resolvedColor(with: self.traitCollection) else { return }
-        guard let backEndColor = UIColor(named: "TrainingCellEnd")?.resolvedColor(with: self.traitCollection) else { return }
+        guard let backStartColor = UIColor(named: "FolderCellStart")?.resolvedColor(with: self.traitCollection) else { return }
+        guard let backEndColor = UIColor(named: "FolderCellEnd")?.resolvedColor(with: self.traitCollection) else { return }
         
         gradient.colors = [backStartColor.cgColor, backEndColor.cgColor]
         contentView.layer.insertSublayer(gradient, at: 0)

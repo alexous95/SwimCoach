@@ -14,11 +14,15 @@ class AddWorkoutLineController: UIViewController {
     
     @IBOutlet weak var addLine: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var workoutTitle: UITextField!
+    @IBOutlet weak var dateButton: UIButton!
     
     // MARK: - Variables
     
     var group: Group?
     var month: String?
+    var toolBar = UIToolbar()
+    var picker = UIDatePicker()
     
     let gradient = CAGradientLayer()
     let viewModel = AddWorkoutViewModel()
@@ -48,6 +52,12 @@ class AddWorkoutLineController: UIViewController {
     private func setupDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
+        
+        workoutTitle.delegate = self
+    }
+    
+    private func setupTextfield() {
+        
     }
     // MARK: - UI Setup
     
@@ -55,12 +65,55 @@ class AddWorkoutLineController: UIViewController {
         addLine.layer.cornerRadius = 10
         addLine.layer.borderColor = UIColor.white.cgColor
         addLine.layer.borderWidth = 1.0
+        
+        dateButton.layer.cornerRadius = 10
+        dateButton.layer.borderColor = UIColor.white.cgColor
+        dateButton.layer.borderWidth = 1.0
+        dateButton.setTitle(viewModel.printDate(), for: .normal)
     }
     
     // MARK: - OBJC Action
     
     @objc private func addWorkout() {
-        showAlert(withTitle: "test", message: "on test le bouton")
+        guard let title = workoutTitle.text else { return }
+        guard let group = group else { return }
+        guard let month = month else { return }
+        guard let date = dateButton.currentTitle else { return }
+        
+        viewModel.addWorkout(title: title, date: date, for: group, to: month)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func changeDate(_ sender: Any) {
+        picker = UIDatePicker.init()
+        picker.backgroundColor = .systemBackground
+        
+        picker.autoresizingMask = .flexibleWidth
+        picker.datePickerMode = .date
+        
+        picker.addTarget(self, action: #selector(self.dateChanged(_:)), for: .valueChanged)
+        picker.frame = CGRect(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+        self.view.addSubview(picker)
+        
+        // The toolbar is used to add a "done" button to dismiss the date picker
+        
+        toolBar = UIToolbar(frame: CGRect(x: 0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+        toolBar.barStyle = .default
+        toolBar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.onDoneButtonClick))]
+        toolBar.sizeToFit()
+        self.view.addSubview(toolBar)
+        
+    }
+    
+    @objc func dateChanged(_ sender: UIDatePicker?) {
+        if let date = sender?.date {
+            dateButton.setTitle(viewModel.printDate(from: date), for: .normal)
+        }
+    }
+    
+    @objc func onDoneButtonClick() {
+        toolBar.removeFromSuperview()
+        picker.removeFromSuperview()
     }
 }
 
@@ -115,5 +168,16 @@ extension AddWorkoutLineController: TransfertDataProtocol {
     func getData(data: WorkoutLine) {
         viewModel.addWorkoutLine(data)
         tableView.reloadData()
+    }
+}
+
+
+extension AddWorkoutLineController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("On est dans le should return")
+        guard let text = textField.text else { return false }
+        viewModel.title = text
+        self.view.endEditing(true)
+        return true
     }
 }

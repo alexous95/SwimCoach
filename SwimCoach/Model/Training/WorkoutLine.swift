@@ -31,9 +31,7 @@ final class WorkoutLine {
     var workoutLineID: String = ""
     var workoutLineTitle = ""
     
-    init() {
-        
-    }
+    init() {}
     
     init(text: String, zone1: Double, zone2: Double, zone3: Double, zone4: Double, zone5: Double, zone6: Double, zone7: Double, ampM: Double, coorM: Double, endM: Double, educ: Double, crawl: Double, medley: Double, spe: Double, nageC: Double, jbs: Double, bras: Double, workoutLineID: String, workoutLineTitle: String) {
         self.text = text

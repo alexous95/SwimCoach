@@ -72,4 +72,37 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
             }
         }
     }
+    
+    func addWorkout(to group: Group, for month: String, title: String, date: String, workoutLines: [WorkoutLine]) {
+        
+        if let user = Auth.auth().currentUser {
+            
+            let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("Month").document(month).collection("workouts")
+            
+            let id = ref.document().documentID
+            let workout = Workout(title: title, date: date, workoutID: id)
+            
+            for workoutLine in workoutLines {
+                addWorkoutLine(to: group, for: month, workoutID: id, workoutLine: workoutLine)
+            }
+            
+            ref.document().setData(workout.dictionnary)
+            
+        }
+    }
+    
+    private func addWorkoutLine(to group: Group, for month: String, workoutID: String, workoutLine: WorkoutLine) {
+        if let user = Auth.auth().currentUser {
+        
+            let newWorkout = workoutLine
+            
+            let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("Month").document(month).collection("workouts").document(workoutID).collection("workoutLines")
+            
+            let id = ref.document().documentID
+            
+            newWorkout.workoutLineID = id
+            
+            ref.document(id).setData(newWorkout.dictionnary)
+            }
+        }
 }

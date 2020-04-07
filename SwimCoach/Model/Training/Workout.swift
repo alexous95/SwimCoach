@@ -10,17 +10,19 @@ import Foundation
 
 final class Workout {
     
-    let title: String
-    let date: String
-    let workoutID: String
+    var title: String = ""
+    var date: String = ""
+    var workoutID: String = ""
     
     var workoutLines: [WorkoutLine] = []
     
-    init(title: String, date: String, workoutID: String) {
+    init(title: String, date: String, workoutID: String, workoutLines: [WorkoutLine] = []) {
         self.title = title
         self.date = date
         self.workoutID = workoutID
     }
+    
+    init() {}
     
     var dictionnary: [String : Any] {
         return ["title" : self.title,

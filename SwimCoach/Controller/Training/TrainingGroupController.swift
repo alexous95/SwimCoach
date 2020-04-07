@@ -42,6 +42,11 @@ class TrainingGroupController: UIViewController {
         setupBackground(gradient: gradient)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "monthSegue" {
             let destVC: MonthController = segue.destination as! MonthController
@@ -72,6 +77,10 @@ class TrainingGroupController: UIViewController {
     // Loads data from the view model
     private func loadData() {
         viewModel.fetchGroup()
+    }
+    
+    private func deleteItem(at: IndexPath) {
+        print("coucou")
     }
     
     // MARK: - Subscribers
@@ -108,7 +117,8 @@ class TrainingGroupController: UIViewController {
 
 // MARK: - Extension
 
-extension TrainingGroupController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension TrainingGroupController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItem()
     }
@@ -128,5 +138,37 @@ extension TrainingGroupController: UICollectionViewDelegate, UICollectionViewDat
         cell.configure(name: group.groupName)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            return CGSize(width: (view.frame.width / 3) - 20, height: 150)
+        default:
+            return CGSize(width: (view.frame.width / 2) - 20, height: 110)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        let index = indexPath.item
+        
+        let identifier = "\(index)" as NSString
+        
+        let configuration = UIContextMenuConfiguration(identifier: identifier, previewProvider: nil) { action in
+            
+            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), attributes: .destructive, handler: { action in
+                self.deleteItem(at: indexPath)
+                print("delete clicked.")
+            })
+            
+            return UIMenu(title: "", image: nil, identifier: nil, options: [.displayInline], children: [delete])
+        }
+        
+        return configuration
     }
 }

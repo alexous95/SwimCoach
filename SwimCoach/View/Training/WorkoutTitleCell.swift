@@ -32,7 +32,8 @@ class WorkoutTitleCell: UITableViewCell {
 
 extension WorkoutTitleCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        resignFirstResponder()
+        title.resignFirstResponder()
+        return true
     }
     
 }
