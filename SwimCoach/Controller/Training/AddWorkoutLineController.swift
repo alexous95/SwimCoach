@@ -91,7 +91,7 @@ extension AddWorkoutLineController: UITableViewDataSource, UITableViewDelegate {
         guard let buttonColor = UIColor(named: "FolderCellEnd")?.resolvedColor(with: self.traitCollection) else {
             return nil }
         
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: newView.frame.width * 0.35, height: 40))
+        let button = CustomButton(frame: CGRect(x: 0, y: 0, width: newView.frame.width * 0.35, height: 40))
         button.center = newView.center
         button.backgroundColor = buttonColor
         button.setTitle("Add", for: .normal)
