@@ -22,17 +22,17 @@ class WorkoutTitleCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         title.layer.cornerRadius = 10
         title.layer.borderColor = UIColor.white.cgColor
         title.layer.borderWidth = 1
         title.layer.masksToBounds = true
     }
     
-    
 }
 
 extension WorkoutTitleCell: UITextFieldDelegate {
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        resignFirstResponder()
+    }
     
 }

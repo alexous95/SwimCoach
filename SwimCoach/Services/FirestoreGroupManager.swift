@@ -17,23 +17,25 @@ class FirestoreGroupManager: NetworkGroupService {
     func fetchGroup(completion: @escaping ([Group], Error?) -> ()) {
         var groups = [Group]()
         
-        if let user = Auth.auth().currentUser {
-            let ref = FirestoreService.database.collection("users").document(user.uid)
-            
-            ref.collection("groups").getDocuments { (snapshot, error) in
-                if error != nil {
-                    completion(groups, error!)
-                    return
-                }
+        DispatchQueue.main.async {
+            if let user = Auth.auth().currentUser {
+                let ref = FirestoreService.database.collection("users").document(user.uid)
                 
-                guard let snapshot = snapshot else { return }
-                let documents = snapshot.documents
-                
-                for document in documents {
-                    guard let group = Group(document: document.data()) else { return }
-                    groups.append(group)
+                ref.collection("groups").getDocuments { (snapshot, error) in
+                    if error != nil {
+                        completion(groups, error!)
+                        return
+                    }
+                    
+                    guard let snapshot = snapshot else { return }
+                    let documents = snapshot.documents
+                    
+                    for document in documents {
+                        guard let group = Group(document: document.data()) else { return }
+                        groups.append(group)
+                    }
+                    completion(groups, nil)
                 }
-                completion(groups, nil)
             }
         }
     }
@@ -43,28 +45,33 @@ class FirestoreGroupManager: NetworkGroupService {
     ///
     /// The group model has a property dictionnary of type [String : Any] used to add data to firestore
     func addGroup(group: Group) {
-        if let user = Auth.auth().currentUser{
-            let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups")
+        DispatchQueue.main.async {
             
-            // We create here a new document which name is the group name
-            // We set the data with dictionnary property of the group model
-            
-            ref.document(group.groupName).setData(group.dictionnary)
+            if let user = Auth.auth().currentUser{
+                let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups")
+                
+                // We create here a new document which name is the group name
+                // We set the data with dictionnary property of the group model
+                
+                ref.document(group.groupName).setData(group.dictionnary)
+            }
         }
     }
     
     func deleteGroup(group: Group) {
-        if let user = Auth.auth().currentUser {
-            let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups")
-            
-            let deleteRef = ref.document(group.groupName)
-            
-            deleteRef.delete { (error) in
-                if error !=  nil {
-                    print("Error while deleting")
-                    print(error.debugDescription)
-                } else {
-                    print("Deletion succesful")
+        DispatchQueue.main.async {
+            if let user = Auth.auth().currentUser {
+                let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups")
+                
+                let deleteRef = ref.document(group.groupName)
+                
+                deleteRef.delete { (error) in
+                    if error !=  nil {
+                        print("Error while deleting")
+                        print(error.debugDescription)
+                    } else {
+                        print("Deletion succesful")
+                    }
                 }
             }
         }

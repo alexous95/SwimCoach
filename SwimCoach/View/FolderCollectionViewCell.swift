@@ -22,7 +22,6 @@ class FolderCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        print("on est la")
         gradient.frame = contentView.bounds
         setupBackground()
     }
@@ -40,6 +39,7 @@ class FolderCollectionViewCell: UICollectionViewCell {
     func roundCorner() {
         self.contentView.layer.cornerRadius = 12.0
         self.contentView.layer.masksToBounds = true
+        self.contentView.clipsToBounds = true
         self.contentView.layer.borderWidth = 1.0
         self.contentView.layer.borderColor = UIColor.clear.cgColor
     }

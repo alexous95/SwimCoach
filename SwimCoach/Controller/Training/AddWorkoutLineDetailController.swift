@@ -53,6 +53,7 @@ class AddWorkoutLineDetailController: UIViewController {
     private func setupDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.keyboardDismissMode = .onDrag
     }
     
     // MARK: - Subscriber
@@ -65,7 +66,6 @@ class AddWorkoutLineDetailController: UIViewController {
     
     private func setupWorkoutTitleSubscriber() {
         workoutTitleSubscriber = $workoutLineTitle.receive(on: DispatchQueue.main).sink(receiveValue: { (text) in
-            print("On affiche le text recu: \(text)")
             self.viewModel.updateWorkoutTitle(text: text)
         })
     }
@@ -77,7 +77,6 @@ class AddWorkoutLineDetailController: UIViewController {
         
         // This two lines are used to avoid duplicated code in the methode
         // We return a function from our viewModel and then use it to update the model inside the viewModel
-        
         var function: (Double) -> ()
         function = viewModel.chooseFunc(from: sender.tag)
         
@@ -163,15 +162,11 @@ extension AddWorkoutLineDetailController: UITableViewDelegate, UITableViewDataSo
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0:
-            return 1
-        case 1:
+        case 0, 1:
             return 1
         case 2:
             return 7
-        case 3:
-            return 3
-        case 4:
+        case 3, 4:
             return 3
         case 5:
             return 4
@@ -214,25 +209,25 @@ extension AddWorkoutLineDetailController: UITableViewDelegate, UITableViewDataSo
             switch indexPath.row {
             case 0:
                 cell.configure(quantif: "Z1 :", dist: String(format: "%.0f" , viewModel.workoutLine.getZ1()))
-                cell.distance.tag = 1
+                cell.distance.tag = indexPath.row + 1
             case 1:
                 cell.configure(quantif: "Z2 :", dist: String(format: "%.0f", viewModel.workoutLine.getZ2()))
-                cell.distance.tag = 2
+                cell.distance.tag = indexPath.row + 1
             case 2:
                 cell.configure(quantif: "Z3 :", dist: String(format: "%.0f", viewModel.workoutLine.getZ3()))
-                cell.distance.tag = 3
+                cell.distance.tag = indexPath.row + 1
             case 3:
                 cell.configure(quantif: "Z4 :", dist: String(format: "%.0f", viewModel.workoutLine.getZ4()))
-                cell.distance.tag = 4
+                cell.distance.tag = indexPath.row + 1
             case 4:
                 cell.configure(quantif: "Z5 :", dist: String(format: "%.0f", viewModel.workoutLine.getZ5()))
-                cell.distance.tag = 5
+                cell.distance.tag = indexPath.row + 1
             case 5:
                 cell.configure(quantif: "Z6 :", dist: String(format: "%.0f", viewModel.workoutLine.getZ6()))
-                cell.distance.tag = 6
+                cell.distance.tag = indexPath.row + 1
             case 6:
                 cell.configure(quantif: "Z7 :", dist: String(format: "%.0f", viewModel.workoutLine.getZ7()))
-                cell.distance.tag = 7
+                cell.distance.tag = indexPath.row + 1
             default:
                 cell.configure(quantif: "fail", dist: "fail")
             }
@@ -247,13 +242,13 @@ extension AddWorkoutLineDetailController: UITableViewDelegate, UITableViewDataSo
             switch indexPath.row {
             case 0:
                 cell.configure(quantif: "AmpM :", dist: String(format: "%.0f", viewModel.workoutLine.getAmpM()))
-                cell.distance.tag = 10
+                cell.distance.tag = indexPath.row + 10
             case 1:
                 cell.configure(quantif: "CoorM", dist: String(format: "%.0f", viewModel.workoutLine.getCoorM()))
-                cell.distance.tag = 11
+                cell.distance.tag = indexPath.row + 10
             case 2:
                 cell.configure(quantif: "EndM", dist: String(format: "%.0f", viewModel.workoutLine.getEndM()))
-                cell.distance.tag = 12
+                cell.distance.tag = indexPath.row + 10
             default:
                 cell.configure(quantif: "fail", dist: "fail")
             }
@@ -268,13 +263,13 @@ extension AddWorkoutLineDetailController: UITableViewDelegate, UITableViewDataSo
             switch indexPath.row {
             case 0:
                 cell.configure(quantif: "Crawl", dist: String(format: "%.0f", viewModel.workoutLine.getCrawl()))
-                cell.distance.tag = 20
+                cell.distance.tag = indexPath.row + 20
             case 1:
                 cell.configure(quantif: "Medley", dist: String(format: "%.0f", viewModel.workoutLine.getMedley()))
-                cell.distance.tag = 21
+                cell.distance.tag = indexPath.row + 20
             case 2:
                 cell.configure(quantif: "Spe", dist: String(format: "%.0f", viewModel.workoutLine.getSpe()))
-                cell.distance.tag = 22
+                cell.distance.tag = indexPath.row + 20
             default:
                 cell.configure(quantif: "fail", dist: "fail")
             }
@@ -288,16 +283,16 @@ extension AddWorkoutLineDetailController: UITableViewDelegate, UITableViewDataSo
             switch indexPath.row {
             case 0:
                 cell.configure(quantif: "NageC", dist: String(format: "%.0f", viewModel.workoutLine.getNageC()))
-                cell.distance.tag = 30
+                cell.distance.tag = indexPath.row + 30
             case 1:
                 cell.configure(quantif: "Educ", dist: String(format: "%.0f", viewModel.workoutLine.getEduc()))
-                cell.distance.tag = 31
+                cell.distance.tag = indexPath.row + 30
             case 2:
                 cell.configure(quantif: "Jbs", dist: String(format: "%.0f", viewModel.workoutLine.getJbs()))
-                cell.distance.tag = 32
+                cell.distance.tag = indexPath.row + 30
             case 3:
                 cell.configure(quantif: "bras", dist: String(format: "%.0f", viewModel.workoutLine.getBras()))
-                cell.distance.tag = 33
+                cell.distance.tag = indexPath.row + 30
             default:
                 cell.configure(quantif: "fail", dist: "fail")
             }

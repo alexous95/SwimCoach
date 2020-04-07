@@ -19,7 +19,6 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
             
             ref.getDocuments { (snapshot, error) in
                 if error != nil {
-                    print("40: error")
                     completion(workouts, error)
                     return
                 } else {
@@ -30,11 +29,7 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
                     let documents = snapshot.documents
                     
                     for document in documents {
-                        guard let workout = Workout(document: document.data()) else {
-                            print("On est la")
-                            return
-                        }
-                        print("on est la 2")
+                        guard let workout = Workout(document: document.data()) else { return }
                         FirestoreWorkoutManager().fetchWorkoutLines(from: group, for: month, for: workout.workoutID) { (workoutLines, error) in
                             print(workout.workoutID)
                             if error != nil {
@@ -63,19 +58,12 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
                     print("error")
                     completion(workoutLines, error)
                 } else {
-                    guard let snapshot = snapshot else {
-                        print("31 error snapshot")
-                        return
-                    }
+                    guard let snapshot = snapshot else { return }
                     
                     let documents = snapshot.documents
                     
                     for document in documents {
-                        guard let workoutLine = WorkoutLine(document: document.data()) else {
-                            print("33: error guard data")
-                            return
-                        }
-                        print(workoutLine.getZ1())
+                        guard let workoutLine = WorkoutLine(document: document.data()) else { return }
                         workoutLines.append(workoutLine)
                         
                     }

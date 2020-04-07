@@ -12,6 +12,7 @@ class TextViewCell: UITableViewCell {
 
     @IBOutlet weak var trainingText: UITextView!
     var textChanged: ((String) -> Void)?
+    var textViewClearedOnInitialEdit = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,8 +41,11 @@ class TextViewCell: UITableViewCell {
 
 extension TextViewCell: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
-        textView.textColor = .white
+        if !textViewClearedOnInitialEdit {
+            textView.text = ""
+            textView.textColor = .white
+            textViewClearedOnInitialEdit = true
+        }
+       
     }
-    
 }

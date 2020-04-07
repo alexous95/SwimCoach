@@ -341,12 +341,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FLS-eS-OLo">
-                                                    <rect key="frame" x="8" y="9.3333333333333321" width="32" height="29.333333333333339"/>
+                                                    <rect key="frame" x="5" y="6.3333333333333321" width="40" height="37.333333333333343"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="XJ3-I2-gqk"/>
+                                                        <constraint firstAttribute="height" constant="40" id="zkI-op-SZD"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDv-qi-UQ1">
-                                                    <rect key="frame" x="8" y="65" width="41.666666666666664" height="20.333333333333329"/>
+                                                    <rect key="frame" x="8" y="70" width="41.666666666666664" height="20.333333333333329"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -359,18 +363,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LDv-qi-UQ1" secondAttribute="trailing" constant="20" symbolic="YES" id="9fN-xb-pkQ"/>
-                                                <constraint firstItem="FLS-eS-OLo" firstAttribute="top" secondItem="DIz-Js-hGl" secondAttribute="top" constant="8" id="KyE-72-1e1"/>
+                                                <constraint firstItem="FLS-eS-OLo" firstAttribute="top" secondItem="DIz-Js-hGl" secondAttribute="top" constant="5" id="KyE-72-1e1"/>
                                                 <constraint firstItem="LDv-qi-UQ1" firstAttribute="leading" secondItem="DIz-Js-hGl" secondAttribute="leading" constant="8" id="YjH-Yr-aLo"/>
-                                                <constraint firstItem="FLS-eS-OLo" firstAttribute="width" secondItem="DIz-Js-hGl" secondAttribute="width" multiplier="0.25" id="bim-lI-GnV"/>
-                                                <constraint firstItem="FLS-eS-OLo" firstAttribute="leading" secondItem="DIz-Js-hGl" secondAttribute="leading" constant="8" id="gRm-96-M4P"/>
-                                                <constraint firstItem="FLS-eS-OLo" firstAttribute="height" secondItem="DIz-Js-hGl" secondAttribute="height" multiplier="0.25" id="phh-bM-4wJ"/>
+                                                <constraint firstItem="FLS-eS-OLo" firstAttribute="leading" secondItem="DIz-Js-hGl" secondAttribute="leading" constant="5" id="gRm-96-M4P"/>
                                                 <constraint firstItem="LDv-qi-UQ1" firstAttribute="top" secondItem="FLS-eS-OLo" secondAttribute="bottom" constant="25" id="rnd-ax-VMT"/>
                                             </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="rect" keyPath="keyPath">
-                                                    <rect key="value" x="0.0" y="0.0" width="0.0" height="0.0"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
@@ -839,11 +836,6 @@
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="customSize" width="180" height="122"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="12"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="dateLabel" destination="etN-Ou-CPu" id="Em4-eb-n1v"/>
                                             <outlet property="distanceLabel" destination="kqg-Vk-Mzw" id="jEc-zV-Jvu"/>

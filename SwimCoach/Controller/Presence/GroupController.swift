@@ -184,7 +184,7 @@ extension GroupController: UICollectionViewDelegate, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch UIDevice.current.userInterfaceIdiom {
         case .pad:
-            return CGSize(width: (view.frame.width / 3) - 20, height: 110)
+            return CGSize(width: (view.frame.width / 3) - 20, height: 150)
         default:
             return CGSize(width: (view.frame.width / 2) - 20, height: 110)
         }
