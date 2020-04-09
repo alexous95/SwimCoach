@@ -74,6 +74,10 @@ class TrainingController: UIViewController {
         viewModel.fetchWorkout(from: group, for: month)
     }
     
+    private func deleteItem(at: IndexPath) {
+        print("coucou")
+    }
+    
     // MARK: - UI Setup
         
     // MARK: - Subscriber
@@ -132,4 +136,22 @@ extension TrainingController: UICollectionViewDelegate, UICollectionViewDataSour
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
     
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        let index = indexPath.item
+        
+        let identifier = "\(index)" as NSString
+        
+        let configuration = UIContextMenuConfiguration(identifier: identifier, previewProvider: nil) { action in
+            
+            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), attributes: .destructive, handler: { action in
+                self.deleteItem(at: indexPath)
+                print("delete clicked.")
+            })
+            
+            return UIMenu(title: "", image: nil, identifier: nil, options: [.displayInline], children: [delete])
+        }
+        
+        return configuration
+    }
 }

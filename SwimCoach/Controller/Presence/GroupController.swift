@@ -42,6 +42,11 @@ class GroupController: UIViewController {
         setupBackground(gradient: gradient)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "presenceSegue" {
             let destVC: PresenceController = segue.destination as! PresenceController
@@ -137,10 +142,7 @@ class GroupController: UIViewController {
     // MARK: - Private
     
     private func deleteItem(at indexPath: IndexPath) {
-        guard let groups = viewModel.groups else {
-            print("ca marche pas")
-            return
-        }
+        guard let groups = viewModel.groups else { return }
         viewModel.deleteGroup(group: groups[indexPath.item])
     }
     

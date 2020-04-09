@@ -44,6 +44,7 @@ class AddWorkoutLineController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("view model z1 = \(viewModel.workoutLines[0].getZ1())")
         tableView.reloadData()
     }
     
@@ -63,6 +64,8 @@ class AddWorkoutLineController: UIViewController {
             destVC.viewModel.workoutLine = workoutLine
             destVC.viewModel.workoutText = workoutLine.text
             destVC.viewModel.workoutLineTitle = workoutLine.workoutLineTitle
+            destVC.textViewClearedOnEdit = true
+            destVC.delegate = self
         }
     }
     

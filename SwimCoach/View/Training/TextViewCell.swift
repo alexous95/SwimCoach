@@ -49,6 +49,5 @@ extension TextViewCell: UITextViewDelegate {
             textView.textColor = .white
             textViewClearedOnInitialEdit = true
         }
-       
     }
 }

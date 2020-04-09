@@ -14,14 +14,21 @@ final class AddWorkoutLineDetailViewModel {
     @Published var workoutText: String = ""
     @Published var workoutLineTitle: String = ""
     
-    var workoutLine: WorkoutLine = WorkoutLine()
+    var temporaryWorkoutLine: WorkoutLine = WorkoutLine()
+    
+    var workoutLine = WorkoutLine()
     
     func updateWorkoutText(text: String) {
-        workoutLine.text = text
+        temporaryWorkoutLine.text = text
     }
     
     func updateWorkoutTitle(text: String) {
-        workoutLine.workoutLineTitle = text
+        temporaryWorkoutLine.workoutLineTitle = text
+    }
+    
+    func save() {
+        temporaryWorkoutLine.workoutLineID = workoutLine.workoutLineID
+        workoutLine = temporaryWorkoutLine
     }
     
     func defaultFunction(distance: Double) {}
@@ -29,39 +36,39 @@ final class AddWorkoutLineDetailViewModel {
     func chooseFunc(from choice: Int) -> ( (Double) -> () ) {
         switch choice {
         case 1:
-            return workoutLine.addZ1(distance:)
+            return temporaryWorkoutLine.addZ1(distance:)
         case 2:
-            return workoutLine.addZ2(distance:)
+            return temporaryWorkoutLine.addZ2(distance:)
         case 3:
-            return workoutLine.addZ3(distance:)
+            return temporaryWorkoutLine.addZ3(distance:)
         case 4:
-            return workoutLine.addZ4(distance:)
+            return temporaryWorkoutLine.addZ4(distance:)
         case 5:
-            return workoutLine.addZ5(distance:)
+            return temporaryWorkoutLine.addZ5(distance:)
         case 6:
-            return workoutLine.addZ6(distance:)
+            return temporaryWorkoutLine.addZ6(distance:)
         case 7:
-            return workoutLine.addZ7(distance:)
+            return temporaryWorkoutLine.addZ7(distance:)
         case 10:
-            return workoutLine.addAmpM(distance:)
+            return temporaryWorkoutLine.addAmpM(distance:)
         case 11:
-            return workoutLine.addCoorM(distance:)
+            return temporaryWorkoutLine.addCoorM(distance:)
         case 12:
-            return workoutLine.addEndM(distance:)
+            return temporaryWorkoutLine.addEndM(distance:)
         case 20:
-            return workoutLine.addCrawl(distance:)
+            return temporaryWorkoutLine.addCrawl(distance:)
         case 21:
-            return workoutLine.addMedley(distance:)
+            return temporaryWorkoutLine.addMedley(distance:)
         case 22:
-            return workoutLine.addSpe(distance:)
+            return temporaryWorkoutLine.addSpe(distance:)
         case 30:
-            return workoutLine.addNageC(distance:)
+            return temporaryWorkoutLine.addNageC(distance:)
         case 31:
-            return workoutLine.addEduc(distance:)
+            return temporaryWorkoutLine.addEduc(distance:)
         case 32:
-            return workoutLine.addJbs(distance:)
+            return temporaryWorkoutLine.addJbs(distance:)
         case 33:
-            return workoutLine.addBras(distance:)
+            return temporaryWorkoutLine.addBras(distance:)
         default:
             return defaultFunction(distance:)
         }

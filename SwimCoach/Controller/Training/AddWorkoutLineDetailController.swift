@@ -21,13 +21,10 @@ class AddWorkoutLineDetailController: UIViewController {
     
     var delegate: TransfertDataProtocol?
     var viewModel = AddWorkoutLineDetailViewModel()
-    var textViewClearedOnEdit = true
+    var textViewClearedOnEdit = false
         
     // MARK: - Subscribers variables
-    
-//    @Published var workoutText: String = ""
-//    @Published var workoutLineTitle: String = ""
-    
+        
     var workoutSubscriber: AnyCancellable?
     var workoutTitleSubscriber: AnyCancellable?
     
@@ -45,7 +42,6 @@ class AddWorkoutLineDetailController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-        textViewClearedOnEdit = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -67,14 +63,12 @@ class AddWorkoutLineDetailController: UIViewController {
     
     private func setupWorkoutTextSubscriber() {
         workoutSubscriber = viewModel.$workoutText.receive(on: DispatchQueue.main).sink(receiveValue: { (text) in
-            print("workout text: \(text)")
             self.viewModel.updateWorkoutText(text: text)
         })
     }
     
     private func setupWorkoutTitleSubscriber() {
         workoutTitleSubscriber = viewModel.$workoutLineTitle.receive(on: DispatchQueue.main).sink(receiveValue: { (text) in
-            print("workout title: \(text)")
             self.viewModel.updateWorkoutTitle(text: text)
         })
     }
@@ -121,6 +115,7 @@ class AddWorkoutLineDetailController: UIViewController {
         let alert = UIAlertController(title: "Saving", message: "Do you want to save now ?", preferredStyle: .alert)
         
         let save = UIAlertAction(title: "Save", style: .default) { (_) in
+            self.viewModel.save()
             self.delegate?.getData(data: self.viewModel.workoutLine)
             self.navigationController?.popViewController(animated: true)
         }

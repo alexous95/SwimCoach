@@ -79,8 +79,9 @@ class TrainingGroupController: UIViewController {
         viewModel.fetchGroup()
     }
     
-    private func deleteItem(at: IndexPath) {
-        print("coucou")
+    private func deleteItem(at indexPath: IndexPath) {
+        guard let groups = viewModel.groups else { return }
+        viewModel.deleteGroup(group: groups[indexPath.item])
     }
     
     // MARK: - Subscribers
@@ -163,6 +164,7 @@ extension TrainingGroupController: UICollectionViewDelegate, UICollectionViewDat
             
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), attributes: .destructive, handler: { action in
                 self.deleteItem(at: indexPath)
+                collectionView.reloadData()
                 print("delete clicked.")
             })
             
