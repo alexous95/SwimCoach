@@ -45,7 +45,10 @@ class TrainingController: UIViewController {
             
             guard let workouts = viewModel.workouts else { return }
             destVC.workout = workouts[item]
+            destVC.group = group
+            destVC.month = month
         }
+        
         if segue.identifier == "addWorkoutLineSegue" {
             let destVC: AddWorkoutLineController = segue.destination as! AddWorkoutLineController
             

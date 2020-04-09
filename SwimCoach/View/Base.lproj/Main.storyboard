@@ -919,6 +919,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <segue destination="Hjq-aR-lqv" kind="show" identifier="detailWorkoutTableSegue" id="dzM-Gv-kj4"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1221,7 +1224,11 @@
                         <viewLayoutGuide key="safeArea" id="NFZ-cx-H6q"/>
                     </view>
                     <navigationItem key="navigationItem" id="iW3-nl-26o">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Cvo-H9-uw2"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Cvo-H9-uw2">
+                            <connections>
+                                <segue destination="bC9-Eu-fd2" kind="show" identifier="editWorkoutSegue" id="LLZ-4l-fj0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="flp-g9-gJ6" id="fEL-p8-glE"/>
@@ -1233,6 +1240,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="dzM-Gv-kj4"/>
+        <segue reference="LLZ-4l-fj0"/>
         <segue reference="fTP-56-R6L"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -14,6 +14,8 @@ class DetailWorkoutController: UIViewController {
     
     let gradient = CAGradientLayer()
     var workout: Workout?
+    var group: Group?
+    var month: String?
     
     var viewModel: DetailWorkoutViewModel?
     
@@ -30,6 +32,18 @@ class DetailWorkoutController: UIViewController {
         setupBackground(gradient: gradient)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editWorkoutSegue" {
+            guard let workout = workout else { return }
+            
+            let destVC: AddWorkoutLineController = segue.destination as! AddWorkoutLineController
+            destVC.viewModel.workoutLines = workout.workoutLines
+            destVC.viewModel.title = workout.title
+            destVC.group = group
+            destVC.month = month
+            destVC.viewModel.workout = workout
+        }
+    }
     
     // MARK: - Setup
     
@@ -73,9 +87,7 @@ extension DetailWorkoutController: UITableViewDataSource, UITableViewDelegate {
             return 1
         case 1:
             return 7
-        case 2:
-            return 3
-        case 3:
+        case 2, 3:
             return 3
         case 4:
             return 4

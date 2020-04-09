@@ -25,7 +25,7 @@ class AddWorkoutLineController: UIViewController {
     var picker = UIDatePicker()
     
     let gradient = CAGradientLayer()
-    let viewModel = AddWorkoutViewModel()
+    let viewModel = AddWorkoutLineViewModel()
     
     // MARK: View Life Cycle
     
@@ -33,6 +33,7 @@ class AddWorkoutLineController: UIViewController {
         super.viewDidLoad()
         setupButton()
         setupDelegate()
+        setupTextfield()
     }
 
     override func viewDidLayoutSubviews() {
@@ -41,12 +42,30 @@ class AddWorkoutLineController: UIViewController {
         setupBackground(gradient: gradient)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailWorkoutLine" {
             let destVC: AddWorkoutLineDetailController = segue.destination as! AddWorkoutLineDetailController
             destVC.delegate = self
         }
+        
+        if segue.identifier == "detailWorkoutTableSegue" {
+            let destVC: AddWorkoutLineDetailController = segue.destination as! AddWorkoutLineDetailController
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            let index = indexPath.row
+        
+            let workoutLine = viewModel.workoutLines[index]
+            destVC.viewModel.workoutLine = workoutLine
+            destVC.viewModel.workoutText = workoutLine.text
+            destVC.viewModel.workoutLineTitle = workoutLine.workoutLineTitle
+        }
     }
+    
     // MARK: - Setup
     
     private func setupDelegate() {
@@ -55,10 +74,8 @@ class AddWorkoutLineController: UIViewController {
         
         workoutTitle.delegate = self
     }
+   
     
-    private func setupTextfield() {
-        
-    }
     // MARK: - UI Setup
     
     private func setupButton() {
@@ -72,15 +89,27 @@ class AddWorkoutLineController: UIViewController {
         dateButton.setTitle(viewModel.printDate(), for: .normal)
     }
     
+    
+    private func setupTextfield() {
+        if viewModel.title != "" {
+            workoutTitle.text = viewModel.title
+        }
+        
+        workoutTitle.layer.cornerRadius = 10
+        workoutTitle.layer.borderColor = UIColor.white.cgColor
+        workoutTitle.layer.borderWidth = 1.0
+        workoutTitle.layer.masksToBounds = true
+    }
+    
     // MARK: - OBJC Action
     
-    @objc private func addWorkout() {
+    @objc private func addNewWorkout() {
         guard let title = workoutTitle.text else { return }
         guard let group = group else { return }
         guard let month = month else { return }
         guard let date = dateButton.currentTitle else { return }
         
-        viewModel.addWorkout(title: title, date: date, for: group, to: month)
+        viewModel.addNewWorkout(title: title, date: date, for: group, to: month)
         navigationController?.popViewController(animated: true)
     }
     
@@ -148,7 +177,7 @@ extension AddWorkoutLineController: UITableViewDataSource, UITableViewDelegate {
         button.center = newView.center
         button.backgroundColor = buttonColor
         button.setTitle("Add", for: .normal)
-        button.addTarget(self, action: #selector(addWorkout), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addNewWorkout), for: .touchUpInside)
         button.tintColor = .white
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1

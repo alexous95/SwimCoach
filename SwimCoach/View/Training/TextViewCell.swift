@@ -23,6 +23,9 @@ class TextViewCell: UITableViewCell {
     func configure(text: String) {
         trainingText.text = text
     }
+    func configureWithTitle(_ title: String, text: String) {
+        trainingText.text = title + "\n\n" + text
+    }
     
     func textChange(action: @escaping (String) -> Void) {
         self.textChanged = action

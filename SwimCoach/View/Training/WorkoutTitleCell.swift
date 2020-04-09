@@ -28,6 +28,10 @@ class WorkoutTitleCell: UITableViewCell {
         title.layer.masksToBounds = true
     }
     
+    func configure(newTitle: String) {
+        title.text = newTitle
+    }
+    
 }
 
 extension WorkoutTitleCell: UITextFieldDelegate {

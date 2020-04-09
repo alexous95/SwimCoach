@@ -31,7 +31,6 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
                     for document in documents {
                         guard let workout = Workout(document: document.data()) else { return }
                         FirestoreWorkoutManager().fetchWorkoutLines(from: group, for: month, for: workout.workoutID) { (workoutLines, error) in
-                            print(workout.workoutID)
                             if error != nil {
                                 print("41: error fetching lines")
                             } else {
@@ -47,7 +46,7 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
     }
     
     func fetchWorkoutLines(from group: Group, for month: String, for workoutID: String, completion: @escaping ([WorkoutLine], Error?) -> () ){
-
+        
         var workoutLines = [WorkoutLine]()
         
         if let user = Auth.auth().currentUser {
@@ -72,37 +71,65 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
             }
         }
     }
-    
-    func addWorkout(to group: Group, for month: String, title: String, date: String, workoutLines: [WorkoutLine]) {
-        
+
+    func addWorkout(to group: Group, for month: String, workout: Workout, workoutLines: [WorkoutLine]) {
         if let user = Auth.auth().currentUser {
             
             let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("Month").document(month).collection("workouts")
             
-            let id = ref.document().documentID
-            let workout = Workout(title: title, date: date, workoutID: id)
+            let ref2 = ref.document(workout.workoutID)
             
-            for workoutLine in workoutLines {
-                addWorkoutLine(to: group, for: month, workoutID: id, workoutLine: workoutLine)
+            ref2.getDocument { (snapshot, error) in
+                if error != nil {
+                    let id = ref.document().documentID
+                    let newWorkout = workout
+                    newWorkout.workoutID = id
+                    
+                    for workoutLine in workoutLines {
+                        self.addWorkoutLine(to: group, for: month, workoutID: id, workoutLine: workoutLine)
+                    }
+                    
+                    ref.document().setData(newWorkout.dictionnary)
+                } else {
+                    
+                    for workoutLine in workoutLines {
+                        self.addWorkoutLine(to: group, for: month, workoutID: workout.workoutID, workoutLine: workoutLine)
+                    }
+                    ref2.updateData(workout.dictionnary) { (error) in
+                        if error != nil {
+                            print(error?.localizedDescription)
+                        }
+                    }
+                }
             }
-            
-            ref.document().setData(workout.dictionnary)
-            
         }
     }
     
     private func addWorkoutLine(to group: Group, for month: String, workoutID: String, workoutLine: WorkoutLine) {
         if let user = Auth.auth().currentUser {
-        
+            
             let newWorkout = workoutLine
             
             let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("Month").document(month).collection("workouts").document(workoutID).collection("workoutLines")
             
-            let id = ref.document().documentID
+            let ref2 = ref.document(workoutLine.workoutLineID)
             
-            newWorkout.workoutLineID = id
-            
-            ref.document(id).setData(newWorkout.dictionnary)
+            ref2.getDocument { (snapshot, error) in
+                if error != nil {
+                    let id = ref.document().documentID
+                    newWorkout.workoutLineID = id
+                    
+                    ref.document(id).setData(newWorkout.dictionnary)
+                } else {
+                    ref2.updateData(workoutLine.dictionnary) { (error) in
+                        if error != nil {
+                            print("erreur 2")
+                        }
+                        
+                    }
+                }
             }
+            
         }
+    }
 }

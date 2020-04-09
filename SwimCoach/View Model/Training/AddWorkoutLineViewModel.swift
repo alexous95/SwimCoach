@@ -7,15 +7,14 @@
 //
 
 import Foundation
-import Combine
 
-class AddWorkoutViewModel {
+class AddWorkoutLineViewModel {
     
-    @Published var title: String = ""
-    
-    
+    var title: String = ""
     let now = Date()
     let dateFormatter = DateFormatter()
+    
+    var workout: Workout?
     
     var dateSelected: Date?
     var workoutLines: [WorkoutLine] = []
@@ -28,10 +27,18 @@ class AddWorkoutViewModel {
         workoutLines.append(workoutLine)
     }
     
-    func addWorkout(title: String, date: String, for group: Group, to month: String) {
-        FirestoreWorkoutManager().addWorkout(to: group, for: month, title: title, date: date, workoutLines: self.workoutLines)
+    func addNewWorkout(title: String, date: String, for group: Group, to month: String) {
+        if workout == nil {
+            workout = Workout(title: title, date: date, workoutID: "", workoutLines: self.workoutLines)
+            guard let workout = workout else { return }
+            
+            FirestoreWorkoutManager().addWorkout(to: group, for: month, workout: workout, workoutLines: workoutLines)
+        } else {
+            guard let workout = workout else { return }
+        
+            FirestoreWorkoutManager().addWorkout(to: group, for: month, workout: workout, workoutLines: workoutLines)
+        }
     }
-    
     
     func printDate() -> String {
         dateFormatter.dateStyle = .short

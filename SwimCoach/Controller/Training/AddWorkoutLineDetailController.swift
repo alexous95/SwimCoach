@@ -21,13 +21,12 @@ class AddWorkoutLineDetailController: UIViewController {
     
     var delegate: TransfertDataProtocol?
     var viewModel = AddWorkoutLineDetailViewModel()
-    
-    var tmp = ""
-    
+    var textViewClearedOnEdit = true
+        
     // MARK: - Subscribers variables
     
-    @Published var workoutText: String = ""
-    @Published var workoutLineTitle: String = ""
+//    @Published var workoutText: String = ""
+//    @Published var workoutLineTitle: String = ""
     
     var workoutSubscriber: AnyCancellable?
     var workoutTitleSubscriber: AnyCancellable?
@@ -38,8 +37,15 @@ class AddWorkoutLineDetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
+        //setupTitle()
         setupWorkoutTextSubscriber()
         setupWorkoutTitleSubscriber()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+        textViewClearedOnEdit = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -56,16 +62,19 @@ class AddWorkoutLineDetailController: UIViewController {
         tableView.keyboardDismissMode = .onDrag
     }
     
+    
     // MARK: - Subscriber
     
     private func setupWorkoutTextSubscriber() {
-        workoutSubscriber = $workoutText.receive(on: DispatchQueue.main).sink(receiveValue: { (text) in
+        workoutSubscriber = viewModel.$workoutText.receive(on: DispatchQueue.main).sink(receiveValue: { (text) in
+            print("workout text: \(text)")
             self.viewModel.updateWorkoutText(text: text)
         })
     }
     
     private func setupWorkoutTitleSubscriber() {
-        workoutTitleSubscriber = $workoutLineTitle.receive(on: DispatchQueue.main).sink(receiveValue: { (text) in
+        workoutTitleSubscriber = viewModel.$workoutLineTitle.receive(on: DispatchQueue.main).sink(receiveValue: { (text) in
+            print("workout title: \(text)")
             self.viewModel.updateWorkoutTitle(text: text)
         })
     }
@@ -128,7 +137,7 @@ class AddWorkoutLineDetailController: UIViewController {
     
     @IBAction func textFieldChanged(_ sender: UITextField) {
         if let text = sender.text {
-            workoutLineTitle = text
+            viewModel.workoutLineTitle = text
         }
     }
     
@@ -183,6 +192,7 @@ extension AddWorkoutLineDetailController: UITableViewDelegate, UITableViewDataSo
                 return UITableViewCell()
             }
             
+            cell.configure(newTitle: viewModel.workoutLine.workoutLineTitle)
             return cell
             
         case 1:
@@ -191,9 +201,10 @@ extension AddWorkoutLineDetailController: UITableViewDelegate, UITableViewDataSo
             }
             
             cell.configure(text: viewModel.workoutLine.text)
+            cell.textViewClearedOnInitialEdit = textViewClearedOnEdit
             
             cell.textChanged =  { [weak tableView] (newText: String) in
-                self.workoutText = newText
+                self.viewModel.workoutText = newText
                 DispatchQueue.main.async {
                     tableView?.beginUpdates()
                     tableView?.endUpdates()

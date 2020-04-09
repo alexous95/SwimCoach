@@ -11,6 +11,9 @@ import Combine
 
 final class AddWorkoutLineDetailViewModel {
     
+    @Published var workoutText: String = ""
+    @Published var workoutLineTitle: String = ""
+    
     var workoutLine: WorkoutLine = WorkoutLine()
     
     func updateWorkoutText(text: String) {

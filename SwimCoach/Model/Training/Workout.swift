@@ -118,11 +118,12 @@ final class Workout {
         return distance
     }
     
+   
     func description() -> [String] {
         var descriptionLine = [String]()
         
         for workout in workoutLines {
-            descriptionLine.append(workout.text)
+            descriptionLine.append(workout.workoutLineTitle + "\n \n" + workout.text)
         }
         
         return descriptionLine

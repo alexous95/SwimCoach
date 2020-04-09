@@ -385,8 +385,8 @@
 				FAB152D5242B56EB006820A5 /* MonthController.swift */,
 				FAB152DC242B6CEC006820A5 /* TrainingController.swift */,
 				FA812F0B242D0C660073EDB6 /* DetailWorkoutController.swift */,
-				FA3B50832434E9BD0020EAE4 /* AddWorkoutLineDetailController.swift */,
 				FA3B507F2434CC5F0020EAE4 /* AddWorkoutLineController.swift */,
+				FA3B50832434E9BD0020EAE4 /* AddWorkoutLineDetailController.swift */,
 			);
 			path = Training;
 			sourceTree = "<group>";
