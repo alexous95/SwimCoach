@@ -108,13 +108,11 @@ class AddWorkoutLineController: UIViewController {
     
     // MARK: - OBJC Action
     
-    @objc private func addNewWorkout() {
-        guard let title = workoutTitle.text else { return }
+    @objc private func addLineToWorkout() {
         guard let group = group else { return }
         guard let month = month else { return }
-        guard let date = dateButton.currentTitle else { return }
         
-        viewModel.addNewWorkout(title: title, date: date, for: group, to: month)
+        viewModel.addLineToWorkout(to: group, for: month)
         navigationController?.popViewController(animated: true)
     }
     
@@ -159,7 +157,7 @@ class AddWorkoutLineController: UIViewController {
             guard let group = group else { return }
             guard let month = month else { return }
             let workout = Workout(title: title, date: date, workoutID: "")
-            let id = FirestoreWorkoutManager().addWorkout(to: group, for: month, workout: workout, workoutLines: [])
+            let id = FirestoreWorkoutManager().addWorkout(to: group, for: month, workout: workout)
             workout.workoutID = id
             viewModel.workout = workout
         }
@@ -197,7 +195,7 @@ extension AddWorkoutLineController: UITableViewDataSource, UITableViewDelegate {
         button.center = newView.center
         button.backgroundColor = buttonColor
         button.setTitle("Add", for: .normal)
-        button.addTarget(self, action: #selector(addNewWorkout), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addLineToWorkout), for: .touchUpInside)
         button.tintColor = .white
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1

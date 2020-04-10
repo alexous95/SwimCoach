@@ -36,16 +36,17 @@ class AddWorkoutLineViewModel {
         workoutLines.append(workoutLine)
     }
     
-    func addNewWorkout(title: String, date: String, for group: Group, to month: String) {
+    func addLineToWorkout(to group: Group, for month: String) {
         if workout == nil {
-            workout = Workout(title: title, date: date, workoutID: "", workoutLines: self.workoutLines)
-            guard let workout = workout else { return }
-            
-            let _ = FirestoreWorkoutManager().addWorkout(to: group, for: month, workout: workout, workoutLines: workoutLines)
+            print("erreur add line workout")
+            return
         } else {
+            print("On est la 60")
             guard let workout = workout else { return }
-        
-            let _ = FirestoreWorkoutManager().addWorkout(to: group, for: month, workout: workout, workoutLines: workoutLines)
+            print("On est la 61")
+            for workoutLine in workoutLines {
+                FirestoreWorkoutManager().addWorkoutLine(to: group, for: month, workoutID: workout.workoutID , workoutLine: workoutLine)
+            }
         }
     }
     
