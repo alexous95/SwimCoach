@@ -72,12 +72,13 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
         }
     }
 
-    func addWorkout(to group: Group, for month: String, workout: Workout, workoutLines: [WorkoutLine]) {
+    func addWorkout(to group: Group, for month: String, workout: Workout, workoutLines: [WorkoutLine]) -> String {
         if let user = Auth.auth().currentUser {
             
             let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("Month").document(month).collection("workouts")
             
             if workout.workoutID != "" {
+                print("Workout sans ID")
                 let ref2 = ref.document(workout.workoutID)
                 for workoutLine in workoutLines {
                     self.addWorkoutLine(to: group, for: month, workoutID: workout.workoutID, workoutLine: workoutLine)
@@ -88,6 +89,7 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
                     }
                 }
             } else {
+                print("Workout avec ID")
                 let id = ref.document().documentID
                 let newWorkout = workout
                 newWorkout.workoutID = id
@@ -98,11 +100,14 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
                 
                 print("On est la 13")
                 ref.document(id).setData(newWorkout.dictionnary)
+                return id
             }
         }
+        
+        return ""
     }
     
-    private func addWorkoutLine(to group: Group, for month: String, workoutID: String, workoutLine: WorkoutLine) {
+    func addWorkoutLine(to group: Group, for month: String, workoutID: String, workoutLine: WorkoutLine) {
         if let user = Auth.auth().currentUser {
             
             let newWorkout = workoutLine
@@ -110,6 +115,7 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
             let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("Month").document(month).collection("workouts").document(workoutID).collection("workoutLines")
             
             if workoutLine.workoutLineID != "" {
+                print("Workout line avec ID")
                 let ref2 = ref.document(workoutLine.workoutLineID)
                 ref2.updateData(workoutLine.dictionnary) { (error) in
                     if error != nil {
@@ -117,6 +123,7 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
                     }
                 }
             } else {
+                print("workoutLine sans ID")
                 let id = ref.document().documentID
                 newWorkout.workoutLineID = id
                 ref.document(id).setData(newWorkout.dictionnary)

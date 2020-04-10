@@ -25,9 +25,10 @@ final class AddWorkoutLineDetailViewModel {
         temporaryWorkoutLine.workoutLineTitle = text
     }
     
-    func save() {
+    func save(for group: Group, for month: String, workout: Workout) {
         temporaryWorkoutLine.workoutLineID = workoutLine.workoutLineID
         workoutLine = temporaryWorkoutLine
+        FirestoreWorkoutManager().addWorkoutLine(to: group, for: month, workoutID: workout.workoutID, workoutLine: workoutLine)
     }
     
     func prepareForDisplay() {

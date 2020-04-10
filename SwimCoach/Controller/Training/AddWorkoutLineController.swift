@@ -51,6 +51,9 @@ class AddWorkoutLineController: UIViewController {
         if segue.identifier == "detailWorkoutLine" {
             let destVC: AddWorkoutLineDetailController = segue.destination as! AddWorkoutLineDetailController
             destVC.delegate = self
+            destVC.group = group
+            destVC.month = month
+            destVC.workout = viewModel.workout
         }
         
         if segue.identifier == "detailWorkoutTableSegue" {
@@ -145,6 +148,21 @@ class AddWorkoutLineController: UIViewController {
     @objc func onDoneButtonClick() {
         toolBar.removeFromSuperview()
         picker.removeFromSuperview()
+    }
+    
+    // MARK: - Action
+    
+    @IBAction func addNewLine(sender: Any) {
+        if viewModel.workout == nil {
+            guard let title = workoutTitle.text else { return }
+            guard let date = dateButton.titleLabel?.text else { return }
+            guard let group = group else { return }
+            guard let month = month else { return }
+            let workout = Workout(title: title, date: date, workoutID: "")
+            let id = FirestoreWorkoutManager().addWorkout(to: group, for: month, workout: workout, workoutLines: [])
+            workout.workoutID = id
+            viewModel.workout = workout
+        }
     }
 }
 

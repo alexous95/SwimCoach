@@ -22,7 +22,11 @@ class AddWorkoutLineDetailController: UIViewController {
     var delegate: TransfertDataProtocol?
     var viewModel = AddWorkoutLineDetailViewModel()
     var textViewClearedOnEdit = false
-        
+    
+    var group: Group?
+    var month: String?
+    var workout: Workout?
+    
     // MARK: - Subscribers variables
         
     var workoutSubscriber: AnyCancellable?
@@ -115,11 +119,13 @@ class AddWorkoutLineDetailController: UIViewController {
     }
     
     @IBAction func saveWorkoutLine(_ sender: Any) {
-        
+        guard let group = group else { return }
+        guard let month = month else { return }
+        guard let workout = workout else { return }
         let alert = UIAlertController(title: "Saving", message: "Do you want to save now ?", preferredStyle: .alert)
         
         let save = UIAlertAction(title: "Save", style: .default) { (_) in
-            self.viewModel.save()
+            self.viewModel.save(for: group, for: month, workout: workout)
             self.delegate?.getData(data: self.viewModel.workoutLine)
             self.navigationController?.popViewController(animated: true)
         }

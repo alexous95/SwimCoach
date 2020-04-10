@@ -948,6 +948,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="addNewLineWithSender:" destination="bC9-Eu-fd2" eventType="touchUpInside" id="u9L-xn-3yt"/>
                                     <segue destination="Hjq-aR-lqv" kind="show" identifier="detailWorkoutLine" id="Vaa-L1-yIu"/>
                                 </connections>
                             </button>

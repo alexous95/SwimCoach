@@ -24,11 +24,8 @@ class AddWorkoutLineViewModel {
     }
     
     func addWorkoutLine(_ workoutLine: WorkoutLine ) {
-        print("nombre de ligne : \(workoutLines.count)")
         var index = 0
-        print("WorkoutLine id: \(workoutLine.workoutLineID)")
         for workout in workoutLines {
-            print("WourkoutLines id : \(workout.workoutLineID)")
             if workout.workoutLineID == workoutLine.workoutLineID && workoutLine.workoutLineID != "" {
                 workoutLines.remove(at: index)
                 workoutLines.insert(workoutLine, at: index)
@@ -44,11 +41,11 @@ class AddWorkoutLineViewModel {
             workout = Workout(title: title, date: date, workoutID: "", workoutLines: self.workoutLines)
             guard let workout = workout else { return }
             
-            FirestoreWorkoutManager().addWorkout(to: group, for: month, workout: workout, workoutLines: workoutLines)
+            let _ = FirestoreWorkoutManager().addWorkout(to: group, for: month, workout: workout, workoutLines: workoutLines)
         } else {
             guard let workout = workout else { return }
         
-            FirestoreWorkoutManager().addWorkout(to: group, for: month, workout: workout, workoutLines: workoutLines)
+            let _ = FirestoreWorkoutManager().addWorkout(to: group, for: month, workout: workout, workoutLines: workoutLines)
         }
     }
     
