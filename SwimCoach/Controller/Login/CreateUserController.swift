@@ -24,6 +24,7 @@ class CreateUserController: UIViewController {
     
     let gradient = CAGradientLayer()
     let viewModel = CreateUserViewModel()
+    var isKeyboardAppear = false
     
     var accessSubscriber: AnyCancellable?
     var loadingSubscriber: AnyCancellable?
@@ -37,7 +38,7 @@ class CreateUserController: UIViewController {
         setupTextfields()
         setupButton()
         prepareForAnimation()
-        
+        setupNotification()
     }
     
     override func viewDidLayoutSubviews() {
@@ -50,17 +51,22 @@ class CreateUserController: UIViewController {
         startTexfieldsAnimation()
     }
     
+    
+    // MARK: - Setup
+    
+    /// Setsup the notifications
+    private func setupNotification() {
+        // We use this notification to update our interface if needed when the keyboard appear
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: self.view.window)
+        
+        // We use this notification to update our interface if needed when the keyboard disappear
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: self.view.window)
+    }
+    
     // MARK: - UI Setup
-    
-    /// Setsup the backgound with a gradient of color
-//    private func setupBackground() {
-//        guard let startColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else { return }
-//        guard let endColor = UIColor(named: "BackgroundEnd")?.resolvedColor(with: self.traitCollection) else { return }
-//
-//        gradient.colors = [startColor.cgColor, endColor.cgColor]
-//        view.layer.insertSublayer(gradient, at: 0)
-//    }
-    
+
     /// Setsup the delegates and the design of the textfields
     private func setupTextfields() {
         username.delegate = self
@@ -96,7 +102,6 @@ class CreateUserController: UIViewController {
         createAccount.center.x -= view.bounds.width
     }
     
-    
     /// Starts the animations for the textfields and buttons
     ///
     /// All the element on screen are coming from the left to the center of the screen.
@@ -121,6 +126,7 @@ class CreateUserController: UIViewController {
         }, completion: nil)
     }
     
+    // MARK: - Subscribers
     
     /// Create a subscriber to listen for update from the viewModel if the isLoading value change
     ///
@@ -153,6 +159,52 @@ class CreateUserController: UIViewController {
                     self.showAlert(withTitle: "Oops", message: self.viewModel.error.rawValue)
                 }
         })
+    }
+    
+    // MARK: - OBJC
+    
+    /// This function is used in the selector of the notification
+    /// - Parameter notification: An NSNotification object to retrieve the keyboardsize of the device
+    ///
+    /// This function update our frame when the keyboard is hidding our element
+    @objc func keyboardWillShow(notification: NSNotification) {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            return
+        default:
+            if !isKeyboardAppear {
+                if username.isFirstResponder {
+                    return
+                }
+                guard let userInfo = notification.userInfo else { return }
+                guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+                let keyboardFrame = keyboardSize.cgRectValue
+                if self.view.frame.origin.y == 0 {
+                    self.view.frame.origin.y -= keyboardFrame.height
+                }
+            }
+            isKeyboardAppear = true
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            return
+        default:
+            if isKeyboardAppear {
+                if username.isFirstResponder {
+                    return
+                }
+                guard let userInfo = notification.userInfo else { return }
+                guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+                let keyboardFrame = keyboardSize.cgRectValue
+                if self.view.frame.origin.y != 0 {
+                    self.view.frame.origin.y += keyboardFrame.height
+                }
+            }
+            isKeyboardAppear = false
+        }
     }
     
     // MARK: - Actions

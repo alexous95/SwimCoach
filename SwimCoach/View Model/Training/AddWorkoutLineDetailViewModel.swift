@@ -14,8 +14,7 @@ final class AddWorkoutLineDetailViewModel {
     @Published var workoutText: String = ""
     @Published var workoutLineTitle: String = ""
     
-    var temporaryWorkoutLine: WorkoutLine = WorkoutLine()
-    
+    var temporaryWorkoutLine = WorkoutLine()
     var workoutLine = WorkoutLine()
     
     func updateWorkoutText(text: String) {
@@ -29,6 +28,10 @@ final class AddWorkoutLineDetailViewModel {
     func save() {
         temporaryWorkoutLine.workoutLineID = workoutLine.workoutLineID
         workoutLine = temporaryWorkoutLine
+    }
+    
+    func prepareForDisplay() {
+        temporaryWorkoutLine = workoutLine
     }
     
     func defaultFunction(distance: Double) {}

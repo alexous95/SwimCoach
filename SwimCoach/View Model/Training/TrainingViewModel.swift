@@ -46,5 +46,10 @@ final class TrainingViewModel {
         }
     }
     
+    func deleteWorkout(from group: Group, for month: String, workout: Workout) {
+        network.deleteWorkout(from: group, for: month, workoutID: workout.workoutID)
+        fetchWorkout(from: group, for: month)
+    }
+    
     
 }

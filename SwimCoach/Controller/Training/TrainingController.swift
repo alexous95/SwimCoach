@@ -74,8 +74,9 @@ class TrainingController: UIViewController {
         viewModel.fetchWorkout(from: group, for: month)
     }
     
-    private func deleteItem(at: IndexPath) {
-        print("coucou")
+    private func deleteItem(at indexPath: IndexPath) {
+        guard let group = group, let month = month, let workouts = viewModel.workouts else { return }
+        viewModel.deleteWorkout(from: group, for: month, workout: workouts[indexPath.item])
     }
     
     // MARK: - UI Setup

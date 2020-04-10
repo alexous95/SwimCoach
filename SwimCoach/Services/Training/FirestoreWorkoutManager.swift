@@ -77,30 +77,27 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
             
             let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("Month").document(month).collection("workouts")
             
-            let ref2 = ref.document(workout.workoutID)
-            
-            ref2.getDocument { (snapshot, error) in
-                if error != nil {
-                    let id = ref.document().documentID
-                    let newWorkout = workout
-                    newWorkout.workoutID = id
-                    
-                    for workoutLine in workoutLines {
-                        self.addWorkoutLine(to: group, for: month, workoutID: id, workoutLine: workoutLine)
-                    }
-                    
-                    ref.document().setData(newWorkout.dictionnary)
-                } else {
-                    
-                    for workoutLine in workoutLines {
-                        self.addWorkoutLine(to: group, for: month, workoutID: workout.workoutID, workoutLine: workoutLine)
-                    }
-                    ref2.updateData(workout.dictionnary) { (error) in
-                        if error != nil {
-                            print(error?.localizedDescription)
-                        }
+            if workout.workoutID != "" {
+                let ref2 = ref.document(workout.workoutID)
+                for workoutLine in workoutLines {
+                    self.addWorkoutLine(to: group, for: month, workoutID: workout.workoutID, workoutLine: workoutLine)
+                }
+                ref2.updateData(workout.dictionnary) { (error) in
+                    if error != nil {
+                        print(error?.localizedDescription as Any)
                     }
                 }
+            } else {
+                let id = ref.document().documentID
+                let newWorkout = workout
+                newWorkout.workoutID = id
+                
+                for workoutLine in workoutLines {
+                    self.addWorkoutLine(to: group, for: month, workoutID: id, workoutLine: workoutLine)
+                }
+                
+                print("On est la 13")
+                ref.document(id).setData(newWorkout.dictionnary)
             }
         }
     }
@@ -112,24 +109,36 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
             
             let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("Month").document(month).collection("workouts").document(workoutID).collection("workoutLines")
             
-            let ref2 = ref.document(workoutLine.workoutLineID)
-            
-            ref2.getDocument { (snapshot, error) in
-                if error != nil {
-                    let id = ref.document().documentID
-                    newWorkout.workoutLineID = id
-                    
-                    ref.document(id).setData(newWorkout.dictionnary)
-                } else {
-                    ref2.updateData(workoutLine.dictionnary) { (error) in
-                        if error != nil {
-                            print("erreur 2")
-                        }
-                        
+            if workoutLine.workoutLineID != "" {
+                let ref2 = ref.document(workoutLine.workoutLineID)
+                ref2.updateData(workoutLine.dictionnary) { (error) in
+                    if error != nil {
+                        print(error?.localizedDescription as Any)
                     }
                 }
+            } else {
+                let id = ref.document().documentID
+                newWorkout.workoutLineID = id
+                ref.document(id).setData(newWorkout.dictionnary)
             }
+        }
+    }
+    
+    func deleteWorkout(from group: Group, for month: String, workoutID: String) {
+        if let user = Auth.auth().currentUser {
+            let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("Month").document(month).collection("workouts")
             
+            let deleteRef = ref.document(workoutID)
+            
+            
+            deleteRef.delete { (error) in
+                if error !=  nil {
+                    print("Error while deleting")
+                    print(error.debugDescription)
+                } else {
+                    print("Deletion succesful")
+                }
+            }
         }
     }
 }

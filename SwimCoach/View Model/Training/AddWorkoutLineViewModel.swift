@@ -24,11 +24,12 @@ class AddWorkoutLineViewModel {
     }
     
     func addWorkoutLine(_ workoutLine: WorkoutLine ) {
+        print("nombre de ligne : \(workoutLines.count)")
         var index = 0
         print("WorkoutLine id: \(workoutLine.workoutLineID)")
         for workout in workoutLines {
             print("WourkoutLines id : \(workout.workoutLineID)")
-            if workout.workoutLineID == workoutLine.workoutLineID {
+            if workout.workoutLineID == workoutLine.workoutLineID && workoutLine.workoutLineID != "" {
                 workoutLines.remove(at: index)
                 workoutLines.insert(workoutLine, at: index)
                 return

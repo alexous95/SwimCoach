@@ -44,7 +44,6 @@ class AddWorkoutLineController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("view model z1 = \(viewModel.workoutLines[0].getZ1())")
         tableView.reloadData()
     }
     
