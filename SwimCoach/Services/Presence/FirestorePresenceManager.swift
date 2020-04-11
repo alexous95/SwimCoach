@@ -17,7 +17,9 @@ class FirestorePresenceManager: NetworkPresenceService {
     /// - Parameter group: The group object that will be used to create our reference in the database
     /// - Parameter stringDate: A string representing our date to create a document
     func addPresence(personID: String, from group: Group, stringDate: String) {
-        if let user = Auth.auth().currentUser {
+        
+        DispatchQueue.main.async {
+            guard let user = Auth.auth().currentUser else { return }
             let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("persons").document(personID)
             
             ref.updateData(["presences": FieldValue.arrayUnion([stringDate])])
@@ -26,8 +28,10 @@ class FirestorePresenceManager: NetworkPresenceService {
     
     /// Fetches the presence for a person
     func fetchPresence(personID: String, date: String, from group: Group, completion: @escaping ([String], Error?) -> ()) {
-        if let user = Auth.auth().currentUser {
-            var presences: [String] = []
+        var presences: [String] = []
+        
+        DispatchQueue.main.async {
+            guard let user = Auth.auth().currentUser else { return }
             let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("persons").document(personID)
             
             ref.getDocument { (document, error) in

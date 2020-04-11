@@ -22,7 +22,8 @@ class FirestorePersonManager: NetworkPersonService {
     func fetchPersons(from group: Group, date: String, completion: @escaping ([Person], Error?) -> ()) {
         var persons = [Person]()
         
-        if let user = Auth.auth().currentUser {
+        DispatchQueue.main.async {
+            guard let user = Auth.auth().currentUser else { return }
             let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("persons")
             
             ref.getDocuments { (snapshot, error) in
@@ -39,7 +40,7 @@ class FirestorePersonManager: NetworkPersonService {
                         
                         FirestorePresenceManager().fetchPresence(personID: person.personID, date: date, from: group) { (presences, error) in
                             if error != nil {
-                                print("13 error loading presence")
+                                print(error?.localizedDescription as Any)
                             } else {
                                 person.presences = presences
                             }
@@ -62,7 +63,9 @@ class FirestorePersonManager: NetworkPersonService {
     /// We then create a person object and a new document in the "persons" collection
     /// Finaly we add the person to the database
     func addPerson(lastName: String, firstName: String, to group: Group) {
-        if let user = Auth.auth().currentUser {
+        
+        DispatchQueue.main.async {
+            guard let user = Auth.auth().currentUser else { return }
             let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("persons")
             
             // We create an empty document and we retrieve his ID which is created randomly
@@ -70,7 +73,6 @@ class FirestorePersonManager: NetworkPersonService {
             let id = ref.document().documentID
             let person = Person(personID: id, firstName: firstName, lastName: lastName)
             ref.document(id).setData(person.dictionary)
-            
         }
     }
     
@@ -81,14 +83,15 @@ class FirestorePersonManager: NetworkPersonService {
     /// We use this method with a group name and the personID to create a path to our required group.
     /// Then we delete the person's document to remove the data from the database
     func deletePerson(personID: String, from group: Group) {
-        if let user = Auth.auth().currentUser {
+        
+        DispatchQueue.main.async {
+            guard let user = Auth.auth().currentUser else { return }
             let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups").document(group.groupName).collection("persons")
             
             let deleteRef = ref.document(personID)
             
             deleteRef.delete { (error) in
                 if error !=  nil {
-                    print("Error while deleting")
                     print(error.debugDescription)
                 } else {
                     print("Deletion succesful")
@@ -96,7 +99,5 @@ class FirestorePersonManager: NetworkPersonService {
             }
         }
     }
-    
-    
 }
 

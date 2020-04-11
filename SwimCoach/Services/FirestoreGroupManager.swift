@@ -18,24 +18,23 @@ class FirestoreGroupManager: NetworkGroupService {
         var groups = [Group]()
         
         DispatchQueue.main.async {
-            if let user = Auth.auth().currentUser {
-                let ref = FirestoreService.database.collection("users").document(user.uid)
-                
-                ref.collection("groups").getDocuments { (snapshot, error) in
-                    if error != nil {
-                        completion(groups, error!)
-                        return
-                    }
-                    
-                    guard let snapshot = snapshot else { return }
-                    let documents = snapshot.documents
-                    
-                    for document in documents {
-                        guard let group = Group(document: document.data()) else { return }
-                        groups.append(group)
-                    }
-                    completion(groups, nil)
+            guard let user = Auth.auth().currentUser else { return }
+            let ref = FirestoreService.database.collection("users").document(user.uid)
+            
+            ref.collection("groups").getDocuments { (snapshot, error) in
+                if error != nil {
+                    completion(groups, error!)
+                    return
                 }
+                
+                guard let snapshot = snapshot else { return }
+                let documents = snapshot.documents
+                
+                for document in documents {
+                    guard let group = Group(document: document.data()) else { return }
+                    groups.append(group)
+                }
+                completion(groups, nil)
             }
         }
     }
@@ -45,33 +44,31 @@ class FirestoreGroupManager: NetworkGroupService {
     ///
     /// The group model has a property dictionnary of type [String : Any] used to add data to firestore
     func addGroup(group: Group) {
+        
         DispatchQueue.main.async {
             
-            if let user = Auth.auth().currentUser{
-                let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups")
-                
-                // We create here a new document which name is the group name
-                // We set the data with dictionnary property of the group model
-                
-                ref.document(group.groupName).setData(group.dictionnary)
-            }
+            guard let user = Auth.auth().currentUser else { return }
+            let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups")
+            
+            // We create here a new document which name is the group name
+            // We set the data with dictionnary property of the group model
+            
+            ref.document(group.groupName).setData(group.dictionnary)
         }
     }
     
     func deleteGroup(group: Group) {
+        
         DispatchQueue.main.async {
-            if let user = Auth.auth().currentUser {
-                let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups")
-                
-                let deleteRef = ref.document(group.groupName)
-                
-                deleteRef.delete { (error) in
-                    if error !=  nil {
-                        print("Error while deleting")
-                        print(error.debugDescription)
-                    } else {
-                        print("Deletion succesful")
-                    }
+            guard let user = Auth.auth().currentUser else { return }
+            let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups")
+            
+            let deleteRef = ref.document(group.groupName)
+            
+            deleteRef.delete { (error) in
+                if error !=  nil {
+                    print("Error while deleting")
+                    print(error.debugDescription)
                 }
             }
         }

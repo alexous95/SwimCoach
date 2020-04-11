@@ -11,5 +11,6 @@ import Foundation
 protocol NetworkWorkoutService {
     func fetchWorkout(from group: Group, for month: String, completion: @escaping ([Workout], Error?) -> ())
     func fetchWorkoutLines(from group: Group, for month: String, for workoutID: String, completion: @escaping ([WorkoutLine], Error?) -> () )
-     func deleteWorkout(from group: Group, for month: String, workoutID: String)
+    func deleteWorkout(from group: Group, for month: String, workoutID: String)
+    func deleteWorkoutLine(from group: Group, for month: String, workoutID: String, workoutLineID: String)
 }
