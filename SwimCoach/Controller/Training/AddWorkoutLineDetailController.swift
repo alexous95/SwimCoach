@@ -101,11 +101,9 @@ class AddWorkoutLineDetailController: UIViewController {
             let distanceTextfield = alert.textFields![0] as UITextField
             
             guard let distance = distanceTextfield.text else { return }
-            sender.setTitle(distance + " m", for: .normal)
+            guard let doubleDistance = Double(distance) else { return }
             
-            guard let doubleDistance = Double(distance) else {
-                return
-            }
+            sender.setTitle(distance + " m", for: .normal)
             
             function(doubleDistance)
         }

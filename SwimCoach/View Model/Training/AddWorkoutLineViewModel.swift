@@ -41,9 +41,7 @@ class AddWorkoutLineViewModel {
             print("erreur add line workout")
             return
         } else {
-            print("On est la 60")
             guard let workout = workout else { return }
-            print("On est la 61")
             for workoutLine in workoutLines {
                 FirestoreWorkoutManager().addWorkoutLine(to: group, for: month, workoutID: workout.workoutID , workoutLine: workoutLine)
             }
