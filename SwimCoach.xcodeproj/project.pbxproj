@@ -33,7 +33,6 @@
 		FA7814B523FE90C90011A69B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7814B323FE90C90011A69B /* Main.storyboard */; };
 		FA7814BA23FE90CE0011A69B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA7814B923FE90CE0011A69B /* Assets.xcassets */; };
 		FA7814BD23FE90CE0011A69B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7814BB23FE90CE0011A69B /* LaunchScreen.storyboard */; };
-		FA7814C823FE90CE0011A69B /* SwimCoachTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7814C723FE90CE0011A69B /* SwimCoachTests.swift */; };
 		FA7814DA23FE965B0011A69B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA7814D923FE965B0011A69B /* GoogleService-Info.plist */; };
 		FA812F03242C9AAE0073EDB6 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA812F02242C9AAE0073EDB6 /* Workout.swift */; };
 		FA812F05242CA4990073EDB6 /* WorkoutLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA812F04242CA4990073EDB6 /* WorkoutLine.swift */; };
@@ -108,7 +107,6 @@
 		FA7814BC23FE90CE0011A69B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA7814BE23FE90CE0011A69B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA7814C323FE90CE0011A69B /* SwimCoachTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwimCoachTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA7814C723FE90CE0011A69B /* SwimCoachTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwimCoachTests.swift; sourceTree = "<group>"; };
 		FA7814C923FE90CE0011A69B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA7814D923FE965B0011A69B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA812F02242C9AAE0073EDB6 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
@@ -251,8 +249,7 @@
 		FA7814C623FE90CE0011A69B /* SwimCoachTests */ = {
 			isa = PBXGroup;
 			children = (
-				FA7814C723FE90CE0011A69B /* SwimCoachTests.swift */,
-				FA88C85B2444578D00167266 /* PersonTest.swift */,
+				FA88C85D244462CD00167266 /* ModelTest */,
 				FA7814C923FE90CE0011A69B /* Info.plist */,
 			);
 			path = SwimCoachTests;
@@ -327,6 +324,14 @@
 				FA812F09242CAA8D0073EDB6 /* FirestoreWorkoutManager.swift */,
 			);
 			path = Training;
+			sourceTree = "<group>";
+		};
+		FA88C85D244462CD00167266 /* ModelTest */ = {
+			isa = PBXGroup;
+			children = (
+				FA88C85B2444578D00167266 /* PersonTest.swift */,
+			);
+			path = ModelTest;
 			sourceTree = "<group>";
 		};
 		FA8CB8F0242A8A3800145575 /* Presence */ = {
@@ -653,7 +658,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA88C85C2444578D00167266 /* PersonTest.swift in Sources */,
-				FA7814C823FE90CE0011A69B /* SwimCoachTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

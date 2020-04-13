@@ -11,12 +11,6 @@ import XCTest
 
 class PersonTest: XCTestCase {
 
-    override func setUp() {
-    }
-
-    override func tearDown() {
-    }
-
     
     func testGivenNil_WhenCreatingPerson_ThenPersonIsNotNil() {
         
