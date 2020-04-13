@@ -13,7 +13,6 @@ class PersonTest: XCTestCase {
 
     
     func testGivenNil_WhenCreatingPerson_ThenPersonIsNotNil() {
-        
         // Given
         // When
         let person = Person(firstName: "", lastName: "")
@@ -25,7 +24,6 @@ class PersonTest: XCTestCase {
     
     
     func testGivenPerson_WhenInitPerson_ThenPersonPropertyEqualInit() {
-        
         // Given
         
         let person: Person
@@ -43,9 +41,7 @@ class PersonTest: XCTestCase {
         
     }
     
-    
     func testGivenPerson_WhenAccessingDictionnary_ThenValuesEqualProperty() {
-        
         // Given
         
         let person = Person(personID: "test", firstName: "John", lastName: "Doe", presences: ["test1", "test2", "test3"])
@@ -64,7 +60,6 @@ class PersonTest: XCTestCase {
     
     
     func testGivenDictionnary_WhenCreatingPersonFromDictionnary_ThenPropertyEqualValues() {
-        
         // Given
         
         let dictionnary: [String : Any] = [ "personID" : "test",
@@ -87,7 +82,6 @@ class PersonTest: XCTestCase {
     
     
     func testGivenWrongPersonID_WhenCreatingPersonFromDictionnary_ThenPersonIsNil() {
-        
         // Given
         
         let dictionnary: [String : Any] = [ "personID" : 42,
@@ -106,7 +100,6 @@ class PersonTest: XCTestCase {
     }
     
     func testGivenWrongFirstName_WhenCreatingPersonFromDictionnary_ThenPersonIsNil() {
-        
         // Given
         
         let dictionnary: [String : Any] = [ "personID" : "test",
@@ -125,7 +118,6 @@ class PersonTest: XCTestCase {
     }
     
     func testGivenWrongLastName_WhenCreatingPersonFromDictionnary_ThenPersonIsNil() {
-        
         // Given
         
         let dictionnary: [String : Any] = [ "personID" : "test",
@@ -144,7 +136,6 @@ class PersonTest: XCTestCase {
     }
     
     func testGivenWrongPresences_WhenCreatingPersonFromDictionnary_ThenPersonIsNil() {
-        
         // Given
         
         let dictionnary: [String : Any] = [ "personID" : "test",
