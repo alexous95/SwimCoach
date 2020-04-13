@@ -46,6 +46,7 @@
 		FA82DF9E2412C9E90053BA2C /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82DF9D2412C9E90053BA2C /* Person.swift */; };
 		FA87951C2435F0B00028BBE1 /* UITextView+Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA87951B2435F0B00028BBE1 /* UITextView+Toolbar.swift */; };
 		FA87951E2436299F0028BBE1 /* AddWorkoutLineDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA87951D2436299F0028BBE1 /* AddWorkoutLineDetailViewModel.swift */; };
+		FA88C85C2444578D00167266 /* PersonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88C85B2444578D00167266 /* PersonTest.swift */; };
 		FA9855EF23FED97F00B6CF3F /* CreateUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9855EE23FED97F00B6CF3F /* CreateUserController.swift */; };
 		FA9855F123FEDD4300B6CF3F /* GroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9855F023FEDD4300B6CF3F /* GroupController.swift */; };
 		FA9CFCE2242383D800CB7FCB /* PersonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CFCE1242383D800CB7FCB /* PersonViewCell.swift */; };
@@ -121,6 +122,7 @@
 		FA82DF9D2412C9E90053BA2C /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		FA87951B2435F0B00028BBE1 /* UITextView+Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Toolbar.swift"; sourceTree = "<group>"; };
 		FA87951D2436299F0028BBE1 /* AddWorkoutLineDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutLineDetailViewModel.swift; sourceTree = "<group>"; };
+		FA88C85B2444578D00167266 /* PersonTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTest.swift; sourceTree = "<group>"; };
 		FA9855EE23FED97F00B6CF3F /* CreateUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserController.swift; sourceTree = "<group>"; };
 		FA9855F023FEDD4300B6CF3F /* GroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupController.swift; sourceTree = "<group>"; };
 		FA9CFCE1242383D800CB7FCB /* PersonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewCell.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				FA7814C723FE90CE0011A69B /* SwimCoachTests.swift */,
+				FA88C85B2444578D00167266 /* PersonTest.swift */,
 				FA7814C923FE90CE0011A69B /* Info.plist */,
 			);
 			path = SwimCoachTests;
@@ -649,6 +652,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA88C85C2444578D00167266 /* PersonTest.swift in Sources */,
 				FA7814C823FE90CE0011A69B /* SwimCoachTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

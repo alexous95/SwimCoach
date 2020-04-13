@@ -38,8 +38,4 @@ struct Person: Codable {
         self.init(personID: personID, firstName: firstName, lastName: lastName, presences: presence)
     }
     
-    mutating func addPresences(presences: [String]) {
-        self.presences = presences
-    }
-
 }
