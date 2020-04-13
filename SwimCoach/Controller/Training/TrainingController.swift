@@ -90,9 +90,11 @@ class TrainingController: UIViewController {
     private func createActivitySubscriber() {
         activitySubscriber = viewModel.$isLoading.receive(on: DispatchQueue.main).sink(receiveValue: { (loading) in
             if loading {
+                self.collectionView.isHidden = loading
                 self.activityWheel.isHidden = !loading
                 self.activityWheel.startAnimating()
             } else {
+                self.collectionView.isHidden = loading
                 self.activityWheel.isHidden = !loading
                 self.activityWheel.stopAnimating()
             }
@@ -147,7 +149,6 @@ extension TrainingController: UICollectionViewDelegate, UICollectionViewDataSour
             
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), attributes: .destructive, handler: { action in
                 self.deleteItem(at: indexPath)
-                print("delete clicked.")
             })
             
             return UIMenu(title: "", image: nil, identifier: nil, options: [.displayInline], children: [delete])

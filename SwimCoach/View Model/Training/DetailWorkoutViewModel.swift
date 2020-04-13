@@ -7,8 +7,12 @@
 //
 
 import Foundation
+import Combine
 
 final class DetailWorkoutViewModel {
+    
+    @Published var isLoading: Bool = false
+    @Published var dataAvaillable: Bool = false
     
     var workout: Workout
     

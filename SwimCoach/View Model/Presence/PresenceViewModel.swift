@@ -112,10 +112,12 @@ final class PresenceViewModel {
         if dateSelected == nil {
             let dateString = dateFormatter.string(from: now)
             networkPresence.addPresence(personID: personID, from: group, stringDate: dateString)
+            fetchPerson()
         } else {
             guard let dateSelected = dateSelected else { return }
             let dateString = dateFormatter.string(from: dateSelected)
             networkPresence.addPresence(personID: personID, from: group, stringDate: dateString)
+            fetchPerson()
         }
     }
     

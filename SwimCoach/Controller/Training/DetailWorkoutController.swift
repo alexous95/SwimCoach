@@ -7,24 +7,30 @@
 //
 
 import UIKit
+import Combine
 
 class DetailWorkoutController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    // MARK: - Variables
     
     let gradient = CAGradientLayer()
+    
     var workout: Workout?
     var group: Group?
     var month: String?
-    
     var viewModel: DetailWorkoutViewModel?
+    
+    // MARK: - Outlet
+    
+    @IBOutlet weak var tableView: UITableView!
+
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewModel()
         setupBackground(gradient: gradient)
         setupDelegate()
-        
     }
 
     override func viewDidLayoutSubviews() {
@@ -58,6 +64,8 @@ class DetailWorkoutController: UIViewController {
     }
 
 }
+
+// MARK: - Extension
 
 extension DetailWorkoutController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -97,10 +105,7 @@ extension DetailWorkoutController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let workout = workout else {
-            print("ca a pas marche")
-            return UITableViewCell() }
-        
+        guard let workout = workout else { return UITableViewCell() }
         guard let viewModel = viewModel else { return UITableViewCell() }
         
         switch indexPath.section {

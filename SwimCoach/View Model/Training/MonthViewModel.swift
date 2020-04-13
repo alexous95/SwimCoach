@@ -16,5 +16,4 @@ final class MonthViewModel {
         return months.count
     }
     
-    
 }
