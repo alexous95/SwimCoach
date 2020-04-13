@@ -47,6 +47,7 @@
 		FA87951E2436299F0028BBE1 /* AddWorkoutLineDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA87951D2436299F0028BBE1 /* AddWorkoutLineDetailViewModel.swift */; };
 		FA88C85C2444578D00167266 /* PersonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88C85B2444578D00167266 /* PersonTest.swift */; };
 		FA88C8602444695B00167266 /* GroupTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88C85F2444695B00167266 /* GroupTest.swift */; };
+		FA88C86324446D5A00167266 /* WorkoutTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88C86224446D5A00167266 /* WorkoutTest.swift */; };
 		FA9855EF23FED97F00B6CF3F /* CreateUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9855EE23FED97F00B6CF3F /* CreateUserController.swift */; };
 		FA9855F123FEDD4300B6CF3F /* GroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9855F023FEDD4300B6CF3F /* GroupController.swift */; };
 		FA9CFCE2242383D800CB7FCB /* PersonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CFCE1242383D800CB7FCB /* PersonViewCell.swift */; };
@@ -123,6 +124,7 @@
 		FA87951D2436299F0028BBE1 /* AddWorkoutLineDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutLineDetailViewModel.swift; sourceTree = "<group>"; };
 		FA88C85B2444578D00167266 /* PersonTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTest.swift; sourceTree = "<group>"; };
 		FA88C85F2444695B00167266 /* GroupTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTest.swift; sourceTree = "<group>"; };
+		FA88C86224446D5A00167266 /* WorkoutTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTest.swift; sourceTree = "<group>"; };
 		FA9855EE23FED97F00B6CF3F /* CreateUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserController.swift; sourceTree = "<group>"; };
 		FA9855F023FEDD4300B6CF3F /* GroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupController.swift; sourceTree = "<group>"; };
 		FA9CFCE1242383D800CB7FCB /* PersonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewCell.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 		FA88C85D244462CD00167266 /* ModelTest */ = {
 			isa = PBXGroup;
 			children = (
+				FA88C86124446D3900167266 /* TrainingTest */,
 				FA88C85E2444693500167266 /* PresenceTest */,
 				FA88C85F2444695B00167266 /* GroupTest.swift */,
 			);
@@ -343,6 +346,14 @@
 				FA88C85B2444578D00167266 /* PersonTest.swift */,
 			);
 			path = PresenceTest;
+			sourceTree = "<group>";
+		};
+		FA88C86124446D3900167266 /* TrainingTest */ = {
+			isa = PBXGroup;
+			children = (
+				FA88C86224446D5A00167266 /* WorkoutTest.swift */,
+			);
+			path = TrainingTest;
 			sourceTree = "<group>";
 		};
 		FA8CB8F0242A8A3800145575 /* Presence */ = {
@@ -670,6 +681,7 @@
 			files = (
 				FA88C85C2444578D00167266 /* PersonTest.swift in Sources */,
 				FA88C8602444695B00167266 /* GroupTest.swift in Sources */,
+				FA88C86324446D5A00167266 /* WorkoutTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

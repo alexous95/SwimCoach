@@ -20,6 +20,7 @@ final class Workout {
         self.title = title
         self.date = date
         self.workoutID = workoutID
+        self.workoutLines = workoutLines
     }
     
     init() {}
