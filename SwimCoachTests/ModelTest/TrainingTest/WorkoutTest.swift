@@ -139,6 +139,25 @@ class WorkoutTest: XCTestCase {
         XCTAssertNil(workout)
     }
     
+    
+    func testGivenCorrectDictionnary_WhenCreatingWorkoutFromDictionnary_ThenWorkoutNotNil() {
+        // Given
+        
+        let dictionnary: [String : Any] = ["title" : "testTitle",
+                                           "date" : "testDate",
+                                           "workoutID" : "testID"
+        ]
+        
+        // When
+        
+        let workout = Workout(document: dictionnary)
+        
+        // Then
+        
+        XCTAssertNotNil(workout)
+        
+    }
+    
     // MARK: - Get Tests
     
     func testGivenWorkoutLine_WhenCreatingWorkout_ThenWorkoutIsNotNil() {
