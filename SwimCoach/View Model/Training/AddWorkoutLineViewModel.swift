@@ -15,12 +15,24 @@ class AddWorkoutLineViewModel {
     let dateFormatter = DateFormatter()
     
     var workout: Workout?
-    
     var dateSelected: Date?
+    
+    private let network: NetworkWorkoutService
     var workoutLines: [WorkoutLine] = []
+    
+    init(network: NetworkWorkoutService = FirestoreWorkoutManager()) {
+        self.network = network
+    }
     
     func getNumberOfLines() -> Int {
         return workoutLines.count
+    }
+    
+    func createWorkout(title: String, date: String, for group: Group, for month: String) {
+        let workout = Workout(title: title, date: date, workoutID: "")
+        let id = network.addWorkout(to: group, for: month, workout: workout)
+        workout.workoutID = id
+        self.workout = workout
     }
     
     func addWorkoutLine(_ workoutLine: WorkoutLine ) {
@@ -43,7 +55,7 @@ class AddWorkoutLineViewModel {
         } else {
             guard let workout = workout else { return }
             for workoutLine in workoutLines {
-                FirestoreWorkoutManager().addWorkoutLine(to: group, for: month, workoutID: workout.workoutID , workoutLine: workoutLine)
+                network.addWorkoutLine(to: group, for: month, workoutID: workout.workoutID , workoutLine: workoutLine)
             }
         }
     }

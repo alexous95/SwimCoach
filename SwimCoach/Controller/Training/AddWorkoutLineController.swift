@@ -156,10 +156,7 @@ class AddWorkoutLineController: UIViewController {
             guard let date = dateButton.titleLabel?.text else { return }
             guard let group = group else { return }
             guard let month = month else { return }
-            let workout = Workout(title: title, date: date, workoutID: "")
-            let id = FirestoreWorkoutManager().addWorkout(to: group, for: month, workout: workout)
-            workout.workoutID = id
-            viewModel.workout = workout
+            viewModel.createWorkout(title: title, date: date, for: group, for: month)
         }
     }
 }
@@ -221,7 +218,6 @@ extension AddWorkoutLineController: TransfertDataProtocol {
 
 extension AddWorkoutLineController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("On est dans le should return")
         guard let text = textField.text else { return false }
         viewModel.title = text
         self.view.endEditing(true)

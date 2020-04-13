@@ -17,6 +17,12 @@ final class AddWorkoutLineDetailViewModel {
     var temporaryWorkoutLine = WorkoutLine()
     var workoutLine = WorkoutLine()
     
+    private let network: NetworkWorkoutService
+    
+    init(network: NetworkWorkoutService = FirestoreWorkoutManager()) {
+        self.network = network
+    }
+    
     func updateWorkoutText(text: String) {
         temporaryWorkoutLine.text = text
     }
@@ -28,7 +34,7 @@ final class AddWorkoutLineDetailViewModel {
     func save(for group: Group, for month: String, workout: Workout) {
         temporaryWorkoutLine.workoutLineID = workoutLine.workoutLineID
         workoutLine = temporaryWorkoutLine
-        FirestoreWorkoutManager().addWorkoutLine(to: group, for: month, workoutID: workout.workoutID, workoutLine: workoutLine)
+        network.addWorkoutLine(to: group, for: month, workoutID: workout.workoutID, workoutLine: workoutLine)
     }
     
     func prepareForDisplay() {

@@ -120,26 +120,26 @@ extension DetailWorkoutController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "zoneCell", for: indexPath)
             switch indexPath.row {
             case 0:
-                cell.textLabel!.text = "Z1: " + String(workout.getDistanceZ1()) + "m"
-                cell.detailTextLabel!.text = viewModel.getPercentageZ1() + "%"
+                cell.textLabel?.text = "Z1: " + String(workout.getDistanceZ1()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageZ1() + "%"
             case 1:
-                cell.textLabel!.text = "Z2: " + String(workout.getDistanceZ2()) + "m"
-                cell.detailTextLabel!.text = viewModel.getPercentageZ2() + "%"
+                cell.textLabel?.text = "Z2: " + String(workout.getDistanceZ2()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageZ2() + "%"
             case 2:
-                cell.textLabel!.text = "Z3: " + String(workout.getDistanceZ3()) + "m"
-                cell.detailTextLabel!.text = viewModel.getPercentageZ3() + "%"
+                cell.textLabel?.text = "Z3: " + String(workout.getDistanceZ3()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageZ3() + "%"
             case 3:
-                cell.textLabel!.text = "Z4: " + String(workout.getDistanceZ4()) + "m"
-                cell.detailTextLabel!.text = viewModel.getPercentageZ4() + "%"
+                cell.textLabel?.text = "Z4: " + String(workout.getDistanceZ4()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageZ4() + "%"
             case 4:
-                cell.textLabel!.text = "Z5: " + String(workout.getDistanceZ5()) + "m"
-                cell.detailTextLabel!.text = viewModel.getPercentageZ5() + "%"
+                cell.textLabel?.text = "Z5: " + String(workout.getDistanceZ5()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageZ5() + "%"
             case 5:
-                cell.textLabel!.text = "Z6: " + String(workout.getDistanceZ6()) + "m"
-                cell.detailTextLabel!.text = viewModel.getPercentageZ6() + "%"
+                cell.textLabel?.text = "Z6: " + String(workout.getDistanceZ6()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageZ6() + "%"
             case 6:
-                cell.textLabel!.text = "Z7: " + String(workout.getDistanceZ7()) + "m"
-                cell.detailTextLabel!.text = viewModel.getPercentageZ7() + "%"
+                cell.textLabel?.text = "Z7: " + String(workout.getDistanceZ7()) + "m"
+                cell.detailTextLabel?.text = viewModel.getPercentageZ7() + "%"
             default:
                 cell.textLabel!.text = "fail"
             }

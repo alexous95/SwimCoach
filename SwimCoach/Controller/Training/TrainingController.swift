@@ -28,12 +28,16 @@ class TrainingController: UIViewController {
         createActivitySubscriber()
         createDataSubscriber()
         setupDelegate()
-        loadData()
     }
 
     override func viewDidLayoutSubviews() {
         gradient.frame = view.bounds
         setupBackground(gradient: gradient)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
