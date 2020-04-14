@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 
 class FirestorePresenceManager: NetworkPresenceService {
+  
     
     /// Adds a presence to the database
     /// - Parameter personID: The person ID to select the correct document in the database
@@ -27,7 +28,7 @@ class FirestorePresenceManager: NetworkPresenceService {
     }
     
     /// Fetches the presence for a person
-    func fetchPresence(personID: String, date: String, from group: Group, completion: @escaping ([String], Error?) -> ()) {
+    func fetchPresence(personID: String, from group: Group, completion: @escaping ([String], Error?) -> ()) {
         var presences: [String] = []
         
         DispatchQueue.main.async {

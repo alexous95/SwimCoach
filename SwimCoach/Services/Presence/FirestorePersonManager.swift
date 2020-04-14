@@ -38,7 +38,7 @@ class FirestorePersonManager: NetworkPersonService {
                     for document in documents {
                         guard var person = Person(document: document.data()) else { return }
                         
-                        FirestorePresenceManager().fetchPresence(personID: person.personID, date: date, from: group) { (presences, error) in
+                        FirestorePresenceManager().fetchPresence(personID: person.personID, from: group) { (presences, error) in
                             if error != nil {
                                 print(error?.localizedDescription as Any)
                             } else {
