@@ -67,7 +67,6 @@ class FirestoreGroupManager: NetworkGroupService {
             
             deleteRef.delete { (error) in
                 if error !=  nil {
-                    print("Error while deleting")
                     print(error.debugDescription)
                 }
             }

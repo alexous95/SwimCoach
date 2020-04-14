@@ -49,6 +49,9 @@
 		FA88C8602444695B00167266 /* GroupTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88C85F2444695B00167266 /* GroupTest.swift */; };
 		FA88C86324446D5A00167266 /* WorkoutTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88C86224446D5A00167266 /* WorkoutTest.swift */; };
 		FA88C8652444B09A00167266 /* WorkoutLineTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88C8642444B09A00167266 /* WorkoutLineTest.swift */; };
+		FA88C86B2444C5A000167266 /* FirestoreGroupMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88C86A2444C5A000167266 /* FirestoreGroupMock.swift */; };
+		FA88C86D2444C93800167266 /* GroupViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88C86C2444C93800167266 /* GroupViewModelTest.swift */; };
+		FA88C86F2444CD0B00167266 /* FirestoreGroupTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88C86E2444CD0B00167266 /* FirestoreGroupTest.swift */; };
 		FA9855EF23FED97F00B6CF3F /* CreateUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9855EE23FED97F00B6CF3F /* CreateUserController.swift */; };
 		FA9855F123FEDD4300B6CF3F /* GroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9855F023FEDD4300B6CF3F /* GroupController.swift */; };
 		FA9CFCE2242383D800CB7FCB /* PersonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CFCE1242383D800CB7FCB /* PersonViewCell.swift */; };
@@ -127,6 +130,9 @@
 		FA88C85F2444695B00167266 /* GroupTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTest.swift; sourceTree = "<group>"; };
 		FA88C86224446D5A00167266 /* WorkoutTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTest.swift; sourceTree = "<group>"; };
 		FA88C8642444B09A00167266 /* WorkoutLineTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutLineTest.swift; sourceTree = "<group>"; };
+		FA88C86A2444C5A000167266 /* FirestoreGroupMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGroupMock.swift; sourceTree = "<group>"; };
+		FA88C86C2444C93800167266 /* GroupViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModelTest.swift; sourceTree = "<group>"; };
+		FA88C86E2444CD0B00167266 /* FirestoreGroupTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGroupTest.swift; sourceTree = "<group>"; };
 		FA9855EE23FED97F00B6CF3F /* CreateUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserController.swift; sourceTree = "<group>"; };
 		FA9855F023FEDD4300B6CF3F /* GroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupController.swift; sourceTree = "<group>"; };
 		FA9CFCE1242383D800CB7FCB /* PersonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewCell.swift; sourceTree = "<group>"; };
@@ -255,6 +261,8 @@
 		FA7814C623FE90CE0011A69B /* SwimCoachTests */ = {
 			isa = PBXGroup;
 			children = (
+				FA88C8692444C56000167266 /* ServicesTest */,
+				FA88C8662444C4FC00167266 /* ViewModelTest */,
 				FA88C85D244462CD00167266 /* ModelTest */,
 				FA7814C923FE90CE0011A69B /* Info.plist */,
 			);
@@ -357,6 +365,39 @@
 				FA88C8642444B09A00167266 /* WorkoutLineTest.swift */,
 			);
 			path = TrainingTest;
+			sourceTree = "<group>";
+		};
+		FA88C8662444C4FC00167266 /* ViewModelTest */ = {
+			isa = PBXGroup;
+			children = (
+				FA88C8682444C52800167266 /* Presence */,
+				FA88C8672444C51300167266 /* Training */,
+				FA88C86C2444C93800167266 /* GroupViewModelTest.swift */,
+			);
+			path = ViewModelTest;
+			sourceTree = "<group>";
+		};
+		FA88C8672444C51300167266 /* Training */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Training;
+			sourceTree = "<group>";
+		};
+		FA88C8682444C52800167266 /* Presence */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presence;
+			sourceTree = "<group>";
+		};
+		FA88C8692444C56000167266 /* ServicesTest */ = {
+			isa = PBXGroup;
+			children = (
+				FA88C86A2444C5A000167266 /* FirestoreGroupMock.swift */,
+				FA88C86E2444CD0B00167266 /* FirestoreGroupTest.swift */,
+			);
+			path = ServicesTest;
 			sourceTree = "<group>";
 		};
 		FA8CB8F0242A8A3800145575 /* Presence */ = {
@@ -682,10 +723,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA88C86B2444C5A000167266 /* FirestoreGroupMock.swift in Sources */,
 				FA88C85C2444578D00167266 /* PersonTest.swift in Sources */,
+				FA88C86D2444C93800167266 /* GroupViewModelTest.swift in Sources */,
 				FA88C8602444695B00167266 /* GroupTest.swift in Sources */,
 				FA88C86324446D5A00167266 /* WorkoutTest.swift in Sources */,
 				FA88C8652444B09A00167266 /* WorkoutLineTest.swift in Sources */,
+				FA88C86F2444CD0B00167266 /* FirestoreGroupTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
