@@ -19,7 +19,7 @@ class FirestorePersonManager: NetworkPersonService {
     ///
     /// We use this method with a group name to create a path to our required group.
     /// We then fetch all the document inside the persons collection from the document groupName.
-    func fetchPersons(from group: Group, date: String, completion: @escaping ([Person], Error?) -> ()) {
+    func fetchPersons(from group: Group, completion: @escaping ([Person], Error?) -> ()) {
         var persons = [Person]()
         
         DispatchQueue.main.async {

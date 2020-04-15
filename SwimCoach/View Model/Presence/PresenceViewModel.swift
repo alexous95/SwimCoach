@@ -15,6 +15,7 @@ final class PresenceViewModel {
     
     private let networkPerson: NetworkPersonService
     private let networkPresence: NetworkPresenceService
+    
     var group: Group
     
     var error: String = ""
@@ -39,13 +40,9 @@ final class PresenceViewModel {
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale(identifier: "FR-fr")
         
-        var dateChoice = now
-        if let dateSelected = dateSelected {
-            dateChoice = dateSelected
-        }
-        let dateString = dateFormatter.string(from: dateChoice)
+        
         isLoading = true
-        networkPerson.fetchPersons(from: group, date: dateString) { (persons, error) in
+        networkPerson.fetchPersons(from: group) { (persons, error) in
             if error != nil {
                 print("error while loading group")
                 self.error = "error while loading"

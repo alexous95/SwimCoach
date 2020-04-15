@@ -13,22 +13,36 @@ class FirestorePersonMock: FirestorePersonManager {
     
     var emptyPersons: [Person] = []
     var error: Error?
-    var persons: [Person]
+    var database: [String : [Person]]
     
-    init(persons: [Person], error: Error? = nil) {
-        self.persons = persons
+    init(database: [String : [Person]], error: Error? = nil) {
+        self.database = database
         self.error = error
     }
     
-    override func fetchPersons(from group: Group, date: String, completion: @escaping ([Person], Error?) -> ()) {
-        
+    override func fetchPersons(from group: Group, completion: @escaping ([Person], Error?) -> ()) {
+        if error == nil {
+            guard let person = database[group.groupName] else {
+                completion(emptyPersons, nil)
+                return
+            }
+            completion(person, nil)
+        } else {
+            completion(emptyPersons, error)
+        }
     }
     
     override func addPerson(lastName: String, firstName: String, to group: Group) {
-        
+        database[group.groupName]?.append(Person(firstName: firstName, lastName: lastName))
     }
     
     override func deletePerson(personID: String, from group: Group) {
-        
+        var index = 0
+        for person in database[group.groupName]! {
+            if person.personID == personID {
+                database[group.groupName]!.remove(at: index)
+            }
+            index += 1
+        }
     }
 }

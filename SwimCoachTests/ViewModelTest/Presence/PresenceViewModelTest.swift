@@ -7,8 +7,13 @@
 //
 
 import XCTest
+@testable import SwimCoach
 
 class PresenceViewModelTest: XCTestCase {
 
-  
+    var group: Group!
+    
+    override func setUp() {
+        <#code#>
+    }
 }

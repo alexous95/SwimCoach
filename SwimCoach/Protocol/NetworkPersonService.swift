@@ -9,7 +9,7 @@
 import Foundation
 
 protocol NetworkPersonService {
-    func fetchPersons(from group: Group, date: String, completion: @escaping ([Person], Error?) -> ())
+    func fetchPersons(from group: Group, completion: @escaping ([Person], Error?) -> ())
     func addPerson(lastName: String, firstName: String, to group: Group)
     func deletePerson(personID: String, from group: Group)
 }
