@@ -284,9 +284,9 @@
 		FA7814D223FE91230011A69B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FAD6CF8B24485A6D00217481 /* Group */,
 				FA812F01242C9A830073EDB6 /* Training */,
 				FA8CB8F6242A8B6700145575 /* Presence */,
-				FA82DF9B2412C9AD0053BA2C /* Group.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -304,10 +304,10 @@
 		FA7814D423FE91420011A69B /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				FAD6CF8A24485A5200217481 /* Group */,
 				FA812F08242CAA670073EDB6 /* Training */,
 				FA8CB8F4242A8B0D00145575 /* Presence */,
 				FABAD7BB23FEBC5100E573AF /* FirestoreService.swift */,
-				FA82DF992412C9290053BA2C /* FirestoreGroupManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -382,9 +382,9 @@
 		FA88C8662444C4FC00167266 /* ViewModelTest */ = {
 			isa = PBXGroup;
 			children = (
+				FAD6CF8D24485A9D00217481 /* Group */,
 				FA88C8682444C52800167266 /* Presence */,
 				FA88C8672444C51300167266 /* Training */,
-				FA88C86C2444C93800167266 /* GroupViewModelTest.swift */,
 			);
 			path = ViewModelTest;
 			sourceTree = "<group>";
@@ -408,9 +408,8 @@
 		FA88C8692444C56000167266 /* ServicesTest */ = {
 			isa = PBXGroup;
 			children = (
+				FAD6CF8C24485A8B00217481 /* Group */,
 				FAAC7B282445B80D00DD8F17 /* Presence */,
-				FA88C86A2444C5A000167266 /* FirestoreGroupMock.swift */,
-				FA88C86E2444CD0B00167266 /* FirestoreGroupTest.swift */,
 			);
 			path = ServicesTest;
 			sourceTree = "<group>";
@@ -506,12 +505,53 @@
 		FAD03DB5241A58B1001DC925 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				FAD6CF8924485A4100217481 /* Group */,
 				FAB152D7242B61F8006820A5 /* Training */,
-				FA2A565C241F96640037128F /* GroupViewModel.swift */,
 				FA8CB8F3242A8AE300145575 /* Presence */,
 				FA8CB8F2242A8AD100145575 /* Login */,
 			);
 			path = "View Model";
+			sourceTree = "<group>";
+		};
+		FAD6CF8924485A4100217481 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				FA2A565C241F96640037128F /* GroupViewModel.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		FAD6CF8A24485A5200217481 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				FA82DF992412C9290053BA2C /* FirestoreGroupManager.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		FAD6CF8B24485A6D00217481 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				FA82DF9B2412C9AD0053BA2C /* Group.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		FAD6CF8C24485A8B00217481 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				FA88C86A2444C5A000167266 /* FirestoreGroupMock.swift */,
+				FA88C86E2444CD0B00167266 /* FirestoreGroupTest.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		FAD6CF8D24485A9D00217481 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				FA88C86C2444C93800167266 /* GroupViewModelTest.swift */,
+			);
+			path = Group;
 			sourceTree = "<group>";
 		};
 		FAF69D35243733E500FBEEB5 /* Protocol */ = {
