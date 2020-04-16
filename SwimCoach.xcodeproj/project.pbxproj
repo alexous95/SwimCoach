@@ -67,6 +67,7 @@
 		FABAD7BC23FEBC5100E573AF /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABAD7BB23FEBC5100E573AF /* FirestoreService.swift */; };
 		FAC8C20E242A8F1100E7E96D /* TrainingGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */; };
 		FAD03DB7241A58D1001DC925 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03DB6241A58D1001DC925 /* LoginViewModel.swift */; };
+		FAD6CF88244858C500217481 /* MonthViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6CF87244858C500217481 /* MonthViewModelTest.swift */; };
 		FAD71AC924112CC50047B885 /* FolderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD71AC824112CC50047B885 /* FolderCollectionViewCell.swift */; };
 		FAD96C4B24376F3800DD14C8 /* WorkoutTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD96C4A24376F3800DD14C8 /* WorkoutTitleCell.swift */; };
 		FADFFEE0243497340011C773 /* UIController+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFFEDF243497340011C773 /* UIController+Background.swift */; };
@@ -153,6 +154,7 @@
 		FABAD7BB23FEBC5100E573AF /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingGroupController.swift; sourceTree = "<group>"; };
 		FAD03DB6241A58D1001DC925 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		FAD6CF87244858C500217481 /* MonthViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewModelTest.swift; sourceTree = "<group>"; };
 		FAD71AC824112CC50047B885 /* FolderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAD96C4A24376F3800DD14C8 /* WorkoutTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTitleCell.swift; sourceTree = "<group>"; };
 		FADFFEDF243497340011C773 /* UIController+Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIController+Background.swift"; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 		FA88C8672444C51300167266 /* Training */ = {
 			isa = PBXGroup;
 			children = (
+				FAD6CF87244858C500217481 /* MonthViewModelTest.swift */,
 			);
 			path = Training;
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 			files = (
 				FA88C86B2444C5A000167266 /* FirestoreGroupMock.swift in Sources */,
 				FA88C85C2444578D00167266 /* PersonTest.swift in Sources */,
+				FAD6CF88244858C500217481 /* MonthViewModelTest.swift in Sources */,
 				FA8DF92B24470C3700C8AA63 /* FirestorePersonTest.swift in Sources */,
 				FA88C86D2444C93800167266 /* GroupViewModelTest.swift in Sources */,
 				FAAC7B312445DCCA00DD8F17 /* PresenceViewModelTest.swift in Sources */,
