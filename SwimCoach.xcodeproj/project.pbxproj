@@ -408,6 +408,7 @@
 		FA88C8692444C56000167266 /* ServicesTest */ = {
 			isa = PBXGroup;
 			children = (
+				FAD6CF8E24485B1D00217481 /* Training */,
 				FAD6CF8C24485A8B00217481 /* Group */,
 				FAAC7B282445B80D00DD8F17 /* Presence */,
 			);
@@ -552,6 +553,13 @@
 				FA88C86C2444C93800167266 /* GroupViewModelTest.swift */,
 			);
 			path = Group;
+			sourceTree = "<group>";
+		};
+		FAD6CF8E24485B1D00217481 /* Training */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Training;
 			sourceTree = "<group>";
 		};
 		FAF69D35243733E500FBEEB5 /* Protocol */ = {
