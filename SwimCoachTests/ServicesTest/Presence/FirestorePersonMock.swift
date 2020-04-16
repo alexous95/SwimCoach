@@ -9,7 +9,7 @@
 import Foundation
 @testable import SwimCoach
 
-class FirestorePersonMock: FirestorePersonManager {
+final class FirestorePersonMock: NetworkPersonService {
     
     var emptyPersons: [Person] = []
     var error: Error?
@@ -20,7 +20,7 @@ class FirestorePersonMock: FirestorePersonManager {
         self.error = error
     }
     
-    override func fetchPersons(from group: Group, completion: @escaping ([Person], Error?) -> ()) {
+    func fetchPersons(from group: Group, completion: @escaping ([Person], Error?) -> ()) {
         if error == nil {
             guard let person = database[group.groupName] else {
                 completion(emptyPersons, nil)
@@ -32,11 +32,11 @@ class FirestorePersonMock: FirestorePersonManager {
         }
     }
     
-    override func addPerson(lastName: String, firstName: String, to group: Group) {
+    func addPerson(lastName: String, firstName: String, to group: Group) {
         database[group.groupName]?.append(Person(firstName: firstName, lastName: lastName))
     }
     
-    override func deletePerson(personID: String, from group: Group) {
+    func deletePerson(personID: String, from group: Group) {
         var index = 0
         for person in database[group.groupName]! {
             if person.personID == personID {

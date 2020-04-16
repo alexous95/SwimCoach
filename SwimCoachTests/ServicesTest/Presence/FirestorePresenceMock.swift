@@ -9,7 +9,7 @@
 import Foundation
 @testable import SwimCoach
 
-class FirestorePresenceMock: FirestorePresenceManager {
+final class FirestorePresenceMock: NetworkPresenceService {
     
     var emptyPresence = [String]()
     var error: Error?
@@ -20,7 +20,7 @@ class FirestorePresenceMock: FirestorePresenceManager {
         self.error = error
     }
     
-    override func addPresence(personID: String, from group: Group, stringDate: String) {
+    func addPresence(personID: String, from group: Group, stringDate: String) {
         var index = 0
         
         for person in persons {
@@ -32,7 +32,7 @@ class FirestorePresenceMock: FirestorePresenceManager {
         }
     }
     
-    override func fetchPresence(personID: String, from group: Group, completion: @escaping ([String], Error?) -> ()) {
+    func fetchPresence(personID: String, from group: Group, completion: @escaping ([String], Error?) -> ()) {
         if self.error == nil {
             var index = 0
             for person in persons {

@@ -9,7 +9,7 @@
 import Foundation
 @testable import SwimCoach
 
-class FirestoreGroupMock: FirestoreGroupManager {
+class FirestoreGroupMock: NetworkGroupService {
     
     var groups: [Group]
     let error: Error?
@@ -21,7 +21,7 @@ class FirestoreGroupMock: FirestoreGroupManager {
         self.error = error
     }
     
-    override func fetchGroup(completion: @escaping ([Group], Error?) -> ()) {
+    func fetchGroup(completion: @escaping ([Group], Error?) -> ()) {
         if self.error == nil {
             completion(self.groups, nil)
         }
@@ -30,11 +30,11 @@ class FirestoreGroupMock: FirestoreGroupManager {
         }
     }
     
-    override func addGroup(group: Group) {
+    func addGroup(group: Group) {
         groups.append(group)
     }
     
-    override func deleteGroup(group: Group) {
+    func deleteGroup(group: Group) {
         var index = 0
         
         for groupTest in groups {
