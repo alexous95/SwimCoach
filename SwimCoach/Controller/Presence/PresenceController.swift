@@ -192,7 +192,7 @@ class PresenceController: UIViewController {
         
         if sender.isOn {
             let person = persons[sender.tag]
-            viewModel.addPresence(personID: person.personID, from: group, isPresent: true)
+            viewModel.addPresence(personID: person.personID, from: group)
         }
     }
     

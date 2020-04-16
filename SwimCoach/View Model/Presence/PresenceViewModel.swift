@@ -13,8 +13,8 @@ final class PresenceViewModel {
     
     var persons: [Person]?
     
-    private let networkPerson: NetworkPersonService
-    private let networkPresence: NetworkPresenceService
+    let networkPerson: NetworkPersonService
+    let networkPresence: NetworkPresenceService
     
     var group: Group
     
@@ -24,6 +24,7 @@ final class PresenceViewModel {
     let now = Date()
     let dateFormatter = DateFormatter()
     
+    
     @Published var dataAvaillable: Bool = false
     @Published var isLoading: Bool = false
     @Published var presenceAvaillable: Bool = false
@@ -32,15 +33,15 @@ final class PresenceViewModel {
         self.group = group
         self.networkPerson = networkPerson
         self.networkPresence = networkPresence
+        
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "FR-fr")
     }
     
     /// Fetches persons from the database and add them to our model
     func fetchPerson() {
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-        dateFormatter.locale = Locale(identifier: "FR-fr")
-        
-        
+       
         isLoading = true
         networkPerson.fetchPersons(from: group) { (persons, error) in
             if error != nil {
@@ -82,10 +83,6 @@ final class PresenceViewModel {
     ///
     /// - Returns: A string with the date of the day formatted
     func printDate() -> String {
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-        
-        dateFormatter.locale = Locale(identifier: "FR-fr")
         
         return dateFormatter.string(from: now)
     }
@@ -93,19 +90,13 @@ final class PresenceViewModel {
     /// Return the formatted date of the selected date
     func printDate(from date: Date) -> String {
         dateSelected = date
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-        dateFormatter.locale = Locale(identifier: "FR-fr")
         
         return dateFormatter.string(from: date)
     }
     
     /// Add a presence to the database
-    func addPresence(personID: String, from group: Group, isPresent: Bool) {
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-        dateFormatter.locale = Locale(identifier: "FR-fr")
-        
+    func addPresence(personID: String, from group: Group) {
+       
         if dateSelected == nil {
             let dateString = dateFormatter.string(from: now)
             networkPresence.addPresence(personID: personID, from: group, stringDate: dateString)
@@ -121,9 +112,6 @@ final class PresenceViewModel {
     /// Returns a boolean indicating if the switch is supposed to be on or off
     /// - Parameter person: We need a person to access to its array of presences
     func switchState(person: Person) -> Bool {
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-        dateFormatter.locale = Locale(identifier: "FR-fr")
         
         for date in person.presences {
             if dateSelected != nil {
