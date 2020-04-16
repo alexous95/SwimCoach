@@ -85,7 +85,7 @@ class GroupViewModelTest: XCTestCase {
         // Then
         
         XCTAssertNotNil(viewModel.groups)
-        XCTAssertEqual(viewModel.groups!.count, 5)
+        XCTAssertEqual(viewModel.groups?.count, 5)
     }
     
     
@@ -152,6 +152,6 @@ class GroupViewModelTest: XCTestCase {
         // Then
         
         XCTAssertNotNil(viewModel.groups)
-        XCTAssertEqual(viewModel.groups!.count, 4)
+        XCTAssertEqual(viewModel.groups?.count, 4)
     }
 }

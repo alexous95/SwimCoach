@@ -68,7 +68,7 @@ class FirestorePersonTest: XCTestCase {
             // Then
             
             XCTAssertNil(error)
-            XCTAssertEqual(persons.count, self.database["Arctique"]!.count)
+            XCTAssertEqual(persons.count, self.database["Arctique"]?.count)
             expectation.fulfill()
         }
         
@@ -107,7 +107,7 @@ class FirestorePersonTest: XCTestCase {
              // Then
             
             XCTAssertNil(error)
-            XCTAssertEqual(persons.count, personManager.database[self.group.groupName]!.count)
+            XCTAssertEqual(persons.count, personManager.database[self.group.groupName]?.count)
             expectation.fulfill()
         }
        
@@ -129,7 +129,7 @@ class FirestorePersonTest: XCTestCase {
             // Then
             
             XCTAssertNil(error)
-            XCTAssertEqual(persons.count, personManager.database[self.group.groupName]!.count)
+            XCTAssertEqual(persons.count, personManager.database[self.group.groupName]?.count)
             expectation.fulfill()
         }
         
@@ -145,7 +145,7 @@ class FirestorePersonTest: XCTestCase {
         
         // When
         
-        let countBefore = personManager.database[group.groupName]!.count
+        let countBefore = personManager.database[group.groupName]?.count
         personManager.deletePerson(personID: "test12", from: group)
         personManager.fetchPersons(from: group) { (persons, error) in
             // Then

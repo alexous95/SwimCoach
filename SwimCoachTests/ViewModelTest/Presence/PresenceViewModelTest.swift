@@ -69,13 +69,19 @@ class PresenceViewModelTest: XCTestCase {
         viewModel.fetchPerson()
         
         // Then
-        
-        XCTAssertEqual(viewModel.persons?.count, self.database[viewModel.group.groupName]!.count)
+        XCTAssertNotNil(self.database[viewModel.group.groupName])
+        XCTAssertEqual(viewModel.persons?.count, self.database[viewModel.group.groupName]?.count)
         let personsDatabase = database[group.groupName]
-        for person in viewModel.persons! {
-            XCTAssertEqual(person.personID, personsDatabase![index].personID)
-            XCTAssertEqual(person.firstName, personsDatabase![index].firstName)
-            XCTAssertEqual(person.lastName, personsDatabase![index].lastName)
+        
+        guard let persons = viewModel.persons else {
+            XCTFail("Expected a persons array at this point")
+            return
+        }
+        
+        for person in persons {
+            XCTAssertEqual(person.personID, personsDatabase?[index].personID)
+            XCTAssertEqual(person.firstName, personsDatabase?[index].firstName)
+            XCTAssertEqual(person.lastName, personsDatabase?[index].lastName)
             index += 1
         }
     }
@@ -99,14 +105,15 @@ class PresenceViewModelTest: XCTestCase {
         // When
         
         viewModel.fetchPerson()
-        let previous = viewModel.persons!.count
+        let previous = viewModel.persons?.count
         
         viewModel.addPerson(lastName: "testLast42", firstName: "testFirst42", to: group)
         
         // Then
         
+        XCTAssertNotNil(previous)
         XCTAssertEqual(viewModel.persons?.count, 3)
-        XCTAssertEqual(viewModel.persons?.count, previous + 1)
+        XCTAssertEqual(viewModel.persons?.count, previous! + 1)
     }
     
     
@@ -115,14 +122,15 @@ class PresenceViewModelTest: XCTestCase {
         // When
         
         viewModel.fetchPerson()
-        let previous = viewModel.persons!.count
+        let previous = viewModel.persons?.count
         
         viewModel.deletePerson(personID: "test0", from: group)
         
         // Then
         
+        XCTAssertNotNil(previous)
         XCTAssertEqual(viewModel.persons?.count, 1)
-        XCTAssertEqual(viewModel.persons?.count, previous - 1)
+        XCTAssertEqual(viewModel.persons?.count, previous! - 1)
     }
     
     
@@ -146,12 +154,16 @@ class PresenceViewModelTest: XCTestCase {
     func testGivenViewModel_WhenPrintingDateFromSelectedDate_ThenDateIsConform() {
         // Given
         
-        let selectedDate = dateFormatter.date(from: "08/04/2020")
-        let selectedString = dateFormatter.string(from: selectedDate!)
+        guard let selectedDate = dateFormatter.date(from: "08/04/2020") else {
+            XCTFail("Expected a Date at this point")
+            return
+        }
+        
+        let selectedString = dateFormatter.string(from: selectedDate)
         
         // When
         
-        let date = viewModel.printDate(from: selectedDate!)
+        let date = viewModel.printDate(from: selectedDate)
         
         // Then
         
@@ -189,7 +201,11 @@ class PresenceViewModelTest: XCTestCase {
         // Given
         
         var previousCount = 0
-        let selectedDate = dateFormatter.date(from: "08/04/2020")
+        guard let selectedDate = dateFormatter.date(from: "08/04/2020") else {
+            XCTFail("Expected a valid date a this point")
+            return
+        }
+        
         let expectation = XCTestExpectation(description: "Loading presences")
         viewModel.dateSelected = selectedDate
         
@@ -204,7 +220,7 @@ class PresenceViewModelTest: XCTestCase {
             // Then
             
             XCTAssertEqual(previousCount + 1, presences.count)
-            XCTAssertEqual(presences[1], self.dateFormatter.string(from: selectedDate!))
+            XCTAssertEqual(presences[1], self.dateFormatter.string(from: selectedDate))
             expectation.fulfill()
         }
         
