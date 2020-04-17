@@ -23,6 +23,7 @@ class AddWorkoutLineViewModelTest: XCTestCase {
     var firestoreWorkoutErrorMock: FirestoreWorkoutMock!
     var viewModel: AddWorkoutLineViewModel!
     var viewModelError: AddWorkoutLineViewModel!
+    let dateFormatter = DateFormatter()
     
     func createWorkoutLines() -> [WorkoutLine] {
         let workoutLine = WorkoutLine(text: "test", zone1: 1.0, zone2: 1.0, zone3: 1.0, zone4: 1.0, zone5: 1.0, zone6: 1.0, zone7: 1.0, ampM: 1.0, coorM: 1.0, endM: 1.0, educ: 1.0, crawl: 1.0, medley: 1.0, spe: 1.0, nageC: 1.0, jbs: 1.0, bras: 1.0, workoutLineID: "testID", workoutLineTitle: "titleTest")
@@ -77,6 +78,10 @@ class AddWorkoutLineViewModelTest: XCTestCase {
     }
     
     override func setUp() {
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "FR-fr")
+        
         group = Group(groupName: "Arctique")
         databaseWorkout = createWorkoutDatabase()
         databaseWorkoutLines = createWorkoutLinesDatabase()
@@ -222,8 +227,62 @@ class AddWorkoutLineViewModelTest: XCTestCase {
         let month = "April"
         viewModel.createWorkout(title: title, date: date, for: group, for: month)
         
+        let workoutLine = WorkoutLine(text: "test", zone1: 1.0, zone2: 1.0, zone3: 1.0, zone4: 1.0, zone5: 1.0, zone6: 1.0, zone7: 1.0, ampM: 1.0, coorM: 1.0, endM: 1.0, educ: 1.0, crawl: 1.0, medley: 1.0, spe: 1.0, nageC: 1.0, jbs: 1.0, bras: 1.0, workoutLineID: "testID", workoutLineTitle: "titleTest")
+        viewModel.workoutLines.append(workoutLine)
+        
         // When
         
+        viewModel.addLineToWorkout(to: group, for: "April")
         
+        // Then
+        
+        XCTAssertEqual(viewModel.workoutLines.count, viewModel.workout?.workoutLines.count)
+    }
+    
+    
+    func testGivenViewModel_WhenAddingLinesToNilWorkout_ThenLinesAreNotAdded() {
+        // Given
+        // When
+        
+        viewModel.addLineToWorkout(to: group, for: "April")
+        
+        // Then
+        
+        XCTAssertNil(viewModel.workout)
+    }
+    
+    func testGivenViewModel_WhenPrintingDate_ThenDateIsConform() {
+        // Given
+        
+        let now = Date()
+        let dateString = dateFormatter.string(from: now)
+        
+        // When
+        
+        let date = viewModel.printDate()
+        
+        // Then
+        
+        XCTAssertEqual(dateString, date)
+        
+    }
+    
+    func testGivenViewModel_WhenPrintingDateFromSelectedDate_ThenDateIsConform() {
+        // Given
+        
+        guard let selectedDate = dateFormatter.date(from: "08/04/2020") else {
+            XCTFail("Expected a Date at this point")
+            return
+        }
+        
+        let selectedString = dateFormatter.string(from: selectedDate)
+        
+        // When
+        
+        let date = viewModel.printDate(from: selectedDate)
+        
+        // Then
+        
+        XCTAssertEqual(selectedString, date)
     }
 }

@@ -17,7 +17,7 @@ class AddWorkoutLineViewModel {
     var workout: Workout?
     var dateSelected: Date?
     
-    private let network: NetworkWorkoutService
+    let network: NetworkWorkoutService
     var workoutLines: [WorkoutLine] = []
     
     init(network: NetworkWorkoutService = FirestoreWorkoutManager()) {
@@ -61,6 +61,7 @@ class AddWorkoutLineViewModel {
             for workoutLine in workoutLines {
                 network.addWorkoutLine(to: group, for: month, workoutID: workout.workoutID , workoutLine: workoutLine)
             }
+            workout.workoutLines = workoutLines
         }
     }
     
