@@ -34,7 +34,7 @@ final class TrainingViewModel {
         isLoading = true
         network.fetchWorkout(from: group, for: month) { (workouts, error) in
             if error != nil {
-                self.error = error.debugDescription
+                self.error = "error while loading workouts"
                 self.isLoading = false
                 return
             } else {
