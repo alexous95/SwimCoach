@@ -25,6 +25,7 @@
 		FA5E06CF243B34B80004B94E /* NetworkPresenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E06CE243B34B80004B94E /* NetworkPresenceService.swift */; };
 		FA5E06D2243B42F40004B94E /* NetworkWorkoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5E06D1243B42F40004B94E /* NetworkWorkoutService.swift */; };
 		FA688E50243C6E39003F7183 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA688E4F243C6E39003F7183 /* CustomButton.swift */; };
+		FA69C3D7244A4E59002544AF /* AddWorkoutLineDetailViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69C3D6244A4E59002544AF /* AddWorkoutLineDetailViewModelTest.swift */; };
 		FA708BFC242E396B0096FF5A /* DetailWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA708BFB242E396B0096FF5A /* DetailWorkoutViewModel.swift */; };
 		FA7125BD24211BFD00C98323 /* PresenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7125BC24211BFD00C98323 /* PresenceController.swift */; };
 		FA7814AE23FE90C90011A69B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7814AD23FE90C90011A69B /* AppDelegate.swift */; };
@@ -113,6 +114,7 @@
 		FA5E06CE243B34B80004B94E /* NetworkPresenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPresenceService.swift; sourceTree = "<group>"; };
 		FA5E06D1243B42F40004B94E /* NetworkWorkoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWorkoutService.swift; sourceTree = "<group>"; };
 		FA688E4F243C6E39003F7183 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		FA69C3D6244A4E59002544AF /* AddWorkoutLineDetailViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutLineDetailViewModelTest.swift; sourceTree = "<group>"; };
 		FA708BFB242E396B0096FF5A /* DetailWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorkoutViewModel.swift; sourceTree = "<group>"; };
 		FA7125BC24211BFD00C98323 /* PresenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceController.swift; sourceTree = "<group>"; };
 		FA7814AA23FE90C90011A69B /* SwimCoach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwimCoach.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -406,6 +408,7 @@
 				FAAF62122449E9B900AACBF3 /* TrainingViewModelTest.swift */,
 				FAAF62142449FBA100AACBF3 /* DetailWorkoutViewModelTest.swift */,
 				FAAF6216244A078A00AACBF3 /* AddWorkoutLineViewModelTest.swift */,
+				FA69C3D6244A4E59002544AF /* AddWorkoutLineDetailViewModelTest.swift */,
 			);
 			path = Training;
 			sourceTree = "<group>";
@@ -830,6 +833,7 @@
 				FAAC7B2A2445B84000DD8F17 /* FirestorePresenceTest.swift in Sources */,
 				FAAF62132449E9B900AACBF3 /* TrainingViewModelTest.swift in Sources */,
 				FA88C86F2444CD0B00167266 /* FirestoreGroupTest.swift in Sources */,
+				FA69C3D7244A4E59002544AF /* AddWorkoutLineDetailViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
