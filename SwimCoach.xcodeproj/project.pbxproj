@@ -31,7 +31,6 @@
 		FA7814B023FE90C90011A69B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7814AF23FE90C90011A69B /* SceneDelegate.swift */; };
 		FA7814B223FE90C90011A69B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7814B123FE90C90011A69B /* LoginController.swift */; };
 		FA7814B523FE90C90011A69B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7814B323FE90C90011A69B /* Main.storyboard */; };
-		FA7814BA23FE90CE0011A69B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA7814B923FE90CE0011A69B /* Assets.xcassets */; };
 		FA7814BD23FE90CE0011A69B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7814BB23FE90CE0011A69B /* LaunchScreen.storyboard */; };
 		FA7814DA23FE965B0011A69B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA7814D923FE965B0011A69B /* GoogleService-Info.plist */; };
 		FA812F03242C9AAE0073EDB6 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA812F02242C9AAE0073EDB6 /* Workout.swift */; };
@@ -64,6 +63,8 @@
 		FAAC7B332445DD1D00DD8F17 /* FirestorePersonMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAC7B322445DD1D00DD8F17 /* FirestorePersonMock.swift */; };
 		FAAF62132449E9B900AACBF3 /* TrainingViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF62122449E9B900AACBF3 /* TrainingViewModelTest.swift */; };
 		FAAF62152449FBA100AACBF3 /* DetailWorkoutViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF62142449FBA100AACBF3 /* DetailWorkoutViewModelTest.swift */; };
+		FAAF6217244A078A00AACBF3 /* AddWorkoutLineViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF6216244A078A00AACBF3 /* AddWorkoutLineViewModelTest.swift */; };
+		FAAF6219244A17CE00AACBF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAAF6218244A17CE00AACBF3 /* Assets.xcassets */; };
 		FAB152D6242B56EB006820A5 /* MonthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB152D5242B56EB006820A5 /* MonthController.swift */; };
 		FAB152D9242B6214006820A5 /* MonthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB152D8242B6214006820A5 /* MonthViewModel.swift */; };
 		FAB152DB242B6CB3006820A5 /* TrainingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB152DA242B6CB3006820A5 /* TrainingCollectionViewCell.swift */; };
@@ -119,7 +120,6 @@
 		FA7814AF23FE90C90011A69B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FA7814B123FE90C90011A69B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		FA7814B423FE90C90011A69B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FA7814B923FE90CE0011A69B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA7814BC23FE90CE0011A69B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA7814BE23FE90CE0011A69B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA7814C323FE90CE0011A69B /* SwimCoachTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwimCoachTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +155,8 @@
 		FAAC7B322445DD1D00DD8F17 /* FirestorePersonMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestorePersonMock.swift; sourceTree = "<group>"; };
 		FAAF62122449E9B900AACBF3 /* TrainingViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewModelTest.swift; sourceTree = "<group>"; };
 		FAAF62142449FBA100AACBF3 /* DetailWorkoutViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorkoutViewModelTest.swift; sourceTree = "<group>"; };
+		FAAF6216244A078A00AACBF3 /* AddWorkoutLineViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutLineViewModelTest.swift; sourceTree = "<group>"; };
+		FAAF6218244A17CE00AACBF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAB152D5242B56EB006820A5 /* MonthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthController.swift; sourceTree = "<group>"; };
 		FAB152D8242B6214006820A5 /* MonthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewModel.swift; sourceTree = "<group>"; };
 		FAB152DA242B6CB3006820A5 /* TrainingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -304,7 +306,7 @@
 			children = (
 				FA7814AD23FE90C90011A69B /* AppDelegate.swift */,
 				FA7814AF23FE90C90011A69B /* SceneDelegate.swift */,
-				FA7814B923FE90CE0011A69B /* Assets.xcassets */,
+				FAAF6218244A17CE00AACBF3 /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -403,6 +405,7 @@
 				FAD6CF87244858C500217481 /* MonthViewModelTest.swift */,
 				FAAF62122449E9B900AACBF3 /* TrainingViewModelTest.swift */,
 				FAAF62142449FBA100AACBF3 /* DetailWorkoutViewModelTest.swift */,
+				FAAF6216244A078A00AACBF3 /* AddWorkoutLineViewModelTest.swift */,
 			);
 			path = Training;
 			sourceTree = "<group>";
@@ -672,7 +675,7 @@
 			files = (
 				FA7814BD23FE90CE0011A69B /* LaunchScreen.storyboard in Resources */,
 				FA7814DA23FE965B0011A69B /* GoogleService-Info.plist in Resources */,
-				FA7814BA23FE90CE0011A69B /* Assets.xcassets in Resources */,
+				FAAF6219244A17CE00AACBF3 /* Assets.xcassets in Resources */,
 				FA7814B523FE90C90011A69B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -815,6 +818,7 @@
 				FAD6CF88244858C500217481 /* MonthViewModelTest.swift in Sources */,
 				FA8DF92B24470C3700C8AA63 /* FirestorePersonTest.swift in Sources */,
 				FAAF62152449FBA100AACBF3 /* DetailWorkoutViewModelTest.swift in Sources */,
+				FAAF6217244A078A00AACBF3 /* AddWorkoutLineViewModelTest.swift in Sources */,
 				FA88C86D2444C93800167266 /* GroupViewModelTest.swift in Sources */,
 				FAAC7B312445DCCA00DD8F17 /* PresenceViewModelTest.swift in Sources */,
 				FAAC7B332445DD1D00DD8F17 /* FirestorePersonMock.swift in Sources */,

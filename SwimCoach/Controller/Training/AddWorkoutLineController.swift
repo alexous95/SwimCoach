@@ -118,6 +118,7 @@ class AddWorkoutLineController: UIViewController {
     
     @IBAction func changeDate(_ sender: Any) {
         picker = UIDatePicker.init()
+        tabBarController?.tabBar.isHidden = true
         picker.backgroundColor = .systemBackground
         
         picker.autoresizingMask = .flexibleWidth
@@ -146,6 +147,7 @@ class AddWorkoutLineController: UIViewController {
     @objc func onDoneButtonClick() {
         toolBar.removeFromSuperview()
         picker.removeFromSuperview()
+        tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - Action
