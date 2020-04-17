@@ -57,6 +57,7 @@
 		FA9855EF23FED97F00B6CF3F /* CreateUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9855EE23FED97F00B6CF3F /* CreateUserController.swift */; };
 		FA9855F123FEDD4300B6CF3F /* GroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9855F023FEDD4300B6CF3F /* GroupController.swift */; };
 		FA9CFCE2242383D800CB7FCB /* PersonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CFCE1242383D800CB7FCB /* PersonViewCell.swift */; };
+		FAABEDF02448AF16000FAEF8 /* FirestoreWorkoutTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAABEDEF2448AF16000FAEF8 /* FirestoreWorkoutTest.swift */; };
 		FAAC7B2A2445B84000DD8F17 /* FirestorePresenceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAC7B292445B84000DD8F17 /* FirestorePresenceTest.swift */; };
 		FAAC7B2C2445B86C00DD8F17 /* FirestorePresenceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAC7B2B2445B86C00DD8F17 /* FirestorePresenceMock.swift */; };
 		FAAC7B312445DCCA00DD8F17 /* PresenceViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAC7B302445DCCA00DD8F17 /* PresenceViewModelTest.swift */; };
@@ -145,6 +146,7 @@
 		FA9855EE23FED97F00B6CF3F /* CreateUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserController.swift; sourceTree = "<group>"; };
 		FA9855F023FEDD4300B6CF3F /* GroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupController.swift; sourceTree = "<group>"; };
 		FA9CFCE1242383D800CB7FCB /* PersonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewCell.swift; sourceTree = "<group>"; };
+		FAABEDEF2448AF16000FAEF8 /* FirestoreWorkoutTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreWorkoutTest.swift; sourceTree = "<group>"; };
 		FAAC7B292445B84000DD8F17 /* FirestorePresenceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestorePresenceTest.swift; sourceTree = "<group>"; };
 		FAAC7B2B2445B86C00DD8F17 /* FirestorePresenceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestorePresenceMock.swift; sourceTree = "<group>"; };
 		FAAC7B302445DCCA00DD8F17 /* PresenceViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenceViewModelTest.swift; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 			isa = PBXGroup;
 			children = (
 				FA8D633524485C6C00ED2CD7 /* FirestoreWorkoutMock.swift */,
+				FAABEDEF2448AF16000FAEF8 /* FirestoreWorkoutTest.swift */,
 			);
 			path = Training;
 			sourceTree = "<group>";
@@ -802,6 +805,7 @@
 			files = (
 				FA88C86B2444C5A000167266 /* FirestoreGroupMock.swift in Sources */,
 				FA88C85C2444578D00167266 /* PersonTest.swift in Sources */,
+				FAABEDF02448AF16000FAEF8 /* FirestoreWorkoutTest.swift in Sources */,
 				FAD6CF88244858C500217481 /* MonthViewModelTest.swift in Sources */,
 				FA8DF92B24470C3700C8AA63 /* FirestorePersonTest.swift in Sources */,
 				FA88C86D2444C93800167266 /* GroupViewModelTest.swift in Sources */,
