@@ -22,6 +22,10 @@ class AddWorkoutLineViewModel {
     
     init(network: NetworkWorkoutService = FirestoreWorkoutManager()) {
         self.network = network
+        
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "FR-fr")
     }
     
     func getNumberOfLines() -> Int {
@@ -61,10 +65,6 @@ class AddWorkoutLineViewModel {
     }
     
     func printDate() -> String {
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-        
-        dateFormatter.locale = Locale(identifier: "FR-fr")
         
         return dateFormatter.string(from: now)
     }
@@ -72,9 +72,6 @@ class AddWorkoutLineViewModel {
     /// Return the formatted date of the selected date
     func printDate(from date: Date) -> String {
         dateSelected = date
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-        dateFormatter.locale = Locale(identifier: "FR-fr")
         
         return dateFormatter.string(from: date)
     }
