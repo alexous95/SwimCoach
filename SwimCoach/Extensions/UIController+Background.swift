@@ -11,7 +11,11 @@ import UIKit
 
 extension UIViewController {
     
-    // Setsup background gradient 
+    /// Setsup background gradient for the controller
+    ///
+    /// - Parameter gradient: A CAGradientLayer object that is used to apply our gradients
+    ///
+    /// The gradient is updated every time the view will appear to update its frame and make it equal to the view's bound
     func setupBackground(gradient: CAGradientLayer) {
         guard let backStartColor = UIColor(named: "BackgroundStart")?.resolvedColor(with: self.traitCollection) else {
             print("on a pas la couleur")

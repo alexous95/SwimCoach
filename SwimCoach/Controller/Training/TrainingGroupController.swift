@@ -18,10 +18,16 @@ class TrainingGroupController: UIViewController {
     
     // MARK: - Variables
     
+    /// The gradient object we use to apply our gradient colors
     let gradient = CAGradientLayer()
+    
+    /// The viewModel that manage the data for our controller
     let viewModel = GroupViewModel()
     
+    /// The property that will subscribe to the publisher from the view model
     var activitySubscriber: AnyCancellable?
+    
+    /// The property that will subscribe to the publisher from the view model
     var availlableDataSubscriber: AnyCancellable?
     
     // MARK: - View Life Cycle
@@ -79,6 +85,7 @@ class TrainingGroupController: UIViewController {
         viewModel.fetchGroup()
     }
     
+    /// Deletes the selected group
     private func deleteItem(at indexPath: IndexPath) {
         guard let groups = viewModel.groups else { return }
         viewModel.deleteGroup(group: groups[indexPath.item])
@@ -116,7 +123,7 @@ class TrainingGroupController: UIViewController {
     }
 }
 
-// MARK: - Extension
+// MARK: - Collection View Extension
 
 extension TrainingGroupController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     

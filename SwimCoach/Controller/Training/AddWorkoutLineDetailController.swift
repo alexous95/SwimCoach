@@ -17,19 +17,33 @@ class AddWorkoutLineDetailController: UIViewController {
     
     // MARK: - Variables
     
+    /// The gradient object we use to apply our gradient colors
     let gradient = CAGradientLayer()
     
+    /// The delegate used to transfer data back
     var delegate: TransfertDataProtocol?
+    
+    /// The viewModel that manage the data for our controller
     var viewModel = AddWorkoutLineDetailViewModel()
+    
+    /// Indicate if the textView has already been cleared
     var textViewClearedOnEdit = false
     
+    /// The group choosen by the user
     var group: Group?
+    
+    /// The month choosen by the user
     var month: String?
+    
+    /// The workout choosen by the user
     var workout: Workout?
     
     // MARK: - Subscribers variables
-        
+    
+    /// The property that will subscribe to the publisher from the view model
     var workoutSubscriber: AnyCancellable?
+    
+    /// The property that will subscribe to the publisher from the view model
     var workoutTitleSubscriber: AnyCancellable?
     
     
@@ -56,12 +70,14 @@ class AddWorkoutLineDetailController: UIViewController {
     
     // MARK: - Setup
     
+    /// Setsup the delegate
     private func setupDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.keyboardDismissMode = .onDrag
     }
     
+    /// Setsup th viewModel
     private func setupViewModel() {
         viewModel.prepareForDisplay()
     }
@@ -84,6 +100,7 @@ class AddWorkoutLineDetailController: UIViewController {
     
     // MARK: - Action
     
+    /// Change the button's title with the distance choosen by the user
     @IBAction func setDistance(_ sender: UIButton) {
         
         // This two lines are used to avoid duplicated code in the methode
@@ -116,6 +133,7 @@ class AddWorkoutLineDetailController: UIViewController {
         present(alert, animated: true)
     }
     
+    /// Saves the workout line
     @IBAction func saveWorkoutLine(_ sender: Any) {
         guard let group = group else { return }
         guard let month = month else { return }
@@ -136,8 +154,7 @@ class AddWorkoutLineDetailController: UIViewController {
         present(alert, animated: true)
     }
     
-    // We use this action to update our model when the user enter a new title in the uitextfields
-    
+    /// Updates our model when the user enter a new title in the uitextfields
     @IBAction func textFieldChanged(_ sender: UITextField) {
         if let text = sender.text {
             viewModel.workoutLineTitle = text
@@ -147,7 +164,7 @@ class AddWorkoutLineDetailController: UIViewController {
 }
 
 
-// MARK: - Extension
+// MARK: - Table View Extension
 
 extension AddWorkoutLineDetailController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {

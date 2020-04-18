@@ -9,6 +9,12 @@
 import UIKit
 
 extension UITextView {
+    
+    /// Adds a done Button to textview's keyboard
+    ///
+    /// - Parameter title: The button's title
+    /// - Parameter target: The object in wich we add the button
+    /// - Parameter selector: The action performed when the button is pressed
     func addDoneButton(title: String, target: Any, selector: Selector) {
         
         let toolBar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 44.0))

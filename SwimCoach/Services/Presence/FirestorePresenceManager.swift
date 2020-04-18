@@ -27,7 +27,13 @@ class FirestorePresenceManager: NetworkPresenceService {
         }
     }
     
-    /// Fetches the presence for a person
+    /// Fetches the presence for a person from the database
+    /// - Parameter personID: The person we want to fetch the presences for
+    /// - Parameter group: A Group object to get our reference from firebase
+    /// - Parameter completion: An escaping closure to transmit the data to another class
+    ///
+    /// We use this method with a group name to create a path to our required group.
+    /// We then fetch all the document inside the persons collection from the document groupName.
     func fetchPresence(personID: String, from group: Group, completion: @escaping ([String], Error?) -> ()) {
         var presences: [String] = []
         

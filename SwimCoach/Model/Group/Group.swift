@@ -10,11 +10,17 @@ import Foundation
 
 struct Group: Codable {
     
+    // MARK: - Variables
+    
+    /// The group's name
     let groupName: String
     
+    /// Stored property that is used to add objects to Firestore
     var dictionnary: [String : Any] {
         return ["groupName" : self.groupName]
     }
+    
+    // MARK: - Init
     
     init(groupName: String) {
         self.groupName = groupName

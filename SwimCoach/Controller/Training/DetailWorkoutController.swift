@@ -11,19 +11,27 @@ import Combine
 
 class DetailWorkoutController: UIViewController {
 
-    // MARK: - Variables
-    
-    let gradient = CAGradientLayer()
-    
-    var workout: Workout?
-    var group: Group?
-    var month: String?
-    var viewModel: DetailWorkoutViewModel?
-    
     // MARK: - Outlet
     
     @IBOutlet weak var tableView: UITableView!
-
+    
+    // MARK: - Variables
+    
+    /// The gradient object we use to apply our gradient colors
+    let gradient = CAGradientLayer()
+    
+    /// The workout choosen by the user
+    var workout: Workout?
+    
+    /// The group choosen by the user
+    var group: Group?
+    
+    /// The month choosen by the user
+    var month: String?
+    
+    /// The viewModel that manage the data for our controller
+    var viewModel: DetailWorkoutViewModel?
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -53,11 +61,13 @@ class DetailWorkoutController: UIViewController {
     
     // MARK: - Setup
     
+    /// Setsup the delegate
     private func setupDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
     }
     
+    /// Setsup the view model
     private func setupViewModel() {
         guard let workout = workout else { return }
         viewModel = DetailWorkoutViewModel(workout: workout)
@@ -65,7 +75,7 @@ class DetailWorkoutController: UIViewController {
 
 }
 
-// MARK: - Extension
+// MARK: - Table View Extension
 
 extension DetailWorkoutController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {

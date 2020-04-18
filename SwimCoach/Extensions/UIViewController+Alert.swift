@@ -10,6 +10,10 @@ import UIKit
 
 extension UIViewController {
     
+    /// Shows an alert with a custom title and message
+    ///
+    /// - Parameter title: The alert's title
+    /// - Parameter message: The alert's message
     func showAlert(withTitle title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

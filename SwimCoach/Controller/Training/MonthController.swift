@@ -10,16 +10,20 @@ import UIKit
 
 class MonthController: UIViewController {
 
-    // MARK: - Variable
-    
-    var group: Group?
-    
-    let gradient = CAGradientLayer()
-    let viewModel = MonthViewModel()
-    
     // MARK: - Outlet
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    // MARK: - Variable
+    
+    /// The group choosen by the user
+    var group: Group?
+    
+    /// The gradient object we use to apply our gradient colors
+    let gradient = CAGradientLayer()
+    
+    /// The viewModel that manage the data for our controller
+    let viewModel = MonthViewModel()
     
     // MARK: View Life Cycle
     
@@ -50,6 +54,7 @@ class MonthController: UIViewController {
     
     // MARK: - Setup
     
+    /// Setsup the delegate
     private func setupDelegate() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -57,13 +62,14 @@ class MonthController: UIViewController {
     
     // MARK: - UI Setup
     
+    /// Add a little image below the nav bar
     private func setupNavBar() {
         self.navigationController?.navigationBar.shadowImage = UIImage.imageWithColor(color: UIColor.white)
     }
     
 }
 
-// MARK: - Extension
+// MARK: - Collection View Extension
 
 extension MonthController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

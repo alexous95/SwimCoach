@@ -157,7 +157,7 @@ class GroupController: UIViewController {
     
 }
 
-// MARK: - Extension
+// MARK: - Collection View Extension
 
 extension GroupController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -207,7 +207,6 @@ extension GroupController: UICollectionViewDelegate, UICollectionViewDataSource,
           
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), attributes: .destructive, handler: { action in
                 self.deleteItem(at: indexPath)
-                print("delete clicked.")
             })
             
             return UIMenu(title: "", image: nil, identifier: nil, options: [.displayInline], children: [delete])

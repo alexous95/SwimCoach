@@ -9,6 +9,9 @@
 import Foundation
 import FirebaseAuth
 
+/// A class that manage our group
+///
+/// This class is used to make the calls to the database
 class FirestoreGroupManager: NetworkGroupService {
     
     /// Fetch the documents from the group's collection
@@ -57,11 +60,15 @@ class FirestoreGroupManager: NetworkGroupService {
         }
     }
     
+    /// Delete a document from the group's collection
+    /// - Parameter group: The object that will be deleted
     func deleteGroup(group: Group) {
         
         DispatchQueue.main.async {
             guard let user = Auth.auth().currentUser else { return }
             let ref = FirestoreService.database.collection("users").document(user.uid).collection("groups")
+            
+            // We create a reference for the document we want to delete
             
             let deleteRef = ref.document(group.groupName)
             

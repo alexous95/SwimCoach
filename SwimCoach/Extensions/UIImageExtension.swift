@@ -10,6 +10,8 @@ import UIKit
 import Foundation
 
 extension UIImage {
+    
+    /// Returns an image with a width and height of 1 fill with the selected color
     class func imageWithColor(color: UIColor) -> UIImage {
         let rect: CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 1, height: 1), false, 0)

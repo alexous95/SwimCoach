@@ -10,11 +10,29 @@ import Foundation
 
 final class Workout {
     
+    // MARK: - Variables
+    
+    /// The workout's title
     var title: String = ""
+    
+    /// The workout's date
     var date: String = ""
+    
+    /// The workout's ID
     var workoutID: String = ""
     
+    /// The workout's lines
     var workoutLines: [WorkoutLine] = []
+    
+    /// Stored property that is used to add objects to Firestore
+    var dictionnary: [String : Any] {
+        return ["title" : self.title,
+                "date" : self.date,
+                "workoutID" : self.workoutID
+        ]
+    }
+    
+    // MARK: - Init
     
     init(title: String, date: String, workoutID: String, workoutLines: [WorkoutLine] = []) {
         self.title = title
@@ -25,13 +43,6 @@ final class Workout {
     
     init() {}
     
-    var dictionnary: [String : Any] {
-        return ["title" : self.title,
-                "date" : self.date,
-                "workoutID" : self.workoutID
-               ]
-    }
-    
     convenience init?(document: [String : Any]) {
         guard let title = document["title"] as? String else { return nil }
         guard let date = document["date"]  as? String else { return nil }
@@ -39,7 +50,9 @@ final class Workout {
         self.init(title: title, date: date, workoutID: workoutID)
     }
     
-   
+    // MARK: - Zone Functions
+    
+    /// Returns the total distance of a workout
     func getDistance() -> Double {
         var distance = 0.0
         for workout in workoutLines {
@@ -49,6 +62,7 @@ final class Workout {
         return distance
     }
     
+    /// Returns the total zone 1 distance
     func getDistanceZ1() -> Double {
         var distance = 0.0
         
@@ -59,6 +73,7 @@ final class Workout {
         return distance
     }
     
+    /// Returns the total zone 2 distance
     func getDistanceZ2() -> Double {
         var distance = 0.0
         
@@ -69,6 +84,7 @@ final class Workout {
         return distance
     }
     
+    /// Returns the total zone 3 distance
     func getDistanceZ3() -> Double {
         var distance = 0.0
         
@@ -79,6 +95,7 @@ final class Workout {
         return distance
     }
     
+    /// Returns the total zone 4 distance
     func getDistanceZ4() -> Double {
         var distance = 0.0
         
@@ -89,6 +106,7 @@ final class Workout {
         return distance
     }
     
+    /// Returns the total zone 5 distance
     func getDistanceZ5() -> Double {
         var distance = 0.0
         
@@ -99,6 +117,7 @@ final class Workout {
         return distance
     }
     
+    /// Returns the total zone 6 distance
     func getDistanceZ6() -> Double {
         var distance = 0.0
         
@@ -109,6 +128,7 @@ final class Workout {
         return distance
     }
     
+    /// Returns the total zone 7 distance
     func getDistanceZ7() -> Double {
         var distance = 0.0
         
@@ -119,7 +139,7 @@ final class Workout {
         return distance
     }
     
-   
+    /// Returns a the workout text formatted
     func description() -> [String] {
         var descriptionLine = [String]()
         
@@ -130,6 +150,9 @@ final class Workout {
         return descriptionLine
     }
     
+    // MARK: - Motricity Functions
+    
+    /// Returns the total AmpM distance
     func getDistanceAmpM() -> Double {
         var distance = 0.0
         
@@ -140,6 +163,7 @@ final class Workout {
         return distance
     }
     
+    /// Returns the total CoorM distance
     func getDistanceCoorM() -> Double {
         var distance = 0.0
         
@@ -150,6 +174,7 @@ final class Workout {
         return distance
     }
     
+    /// Returns the total EndM distance
     func getDistanceEndM() -> Double {
         var distance = 0.0
         
@@ -160,6 +185,7 @@ final class Workout {
         return distance
     }
     
+    /// Returns the total educ distance
     func getDistanceEduc() -> Double {
         var distance = 0.0
         
@@ -170,6 +196,7 @@ final class Workout {
         return distance
     }
     
+    /// Returns the total crawl distance
     func getDistanceCrawl() -> Double {
         var distance = 0.0
         
@@ -180,6 +207,7 @@ final class Workout {
         return distance
     }
     
+    /// Returns the total medley distance
     func getDistanceMedley() -> Double {
         var distance = 0.0
         
@@ -190,6 +218,7 @@ final class Workout {
         return distance
     }
     
+    /// Returns the total spe distance
     func getDistanceSpe() -> Double {
         var distance = 0.0
         
@@ -200,6 +229,7 @@ final class Workout {
         return distance
     }
     
+    /// Returns the total NageC distance
     func getDistanceNageC() -> Double {
         var distance = 0.0
         
@@ -210,6 +240,7 @@ final class Workout {
         return distance
     }
     
+    /// Returns the total jbs distance
     func getDistanceJbs() -> Double {
         var distance = 0.0
         
@@ -220,6 +251,7 @@ final class Workout {
         return distance
     }
     
+    /// Returns the total bras distance
     func getDistanceBras() -> Double {
         var distance = 0.0
         

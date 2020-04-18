@@ -14,11 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // Configure our Firebase database from the plist file
+        
         FirebaseApp.configure()
+        
+        // Create an image from the assets folder
         
         guard UIImage(named: "transparent") != nil else {
             return false
         }
+        
+        // Configuration of appearances
         
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UITextField.appearance().tintColor = UIColor.white

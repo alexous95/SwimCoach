@@ -9,8 +9,16 @@
 import Foundation
 import FirebaseAuth
 
+/// A class that manage our workouts
+///
+/// This class is used to make the calls to the database
 class FirestoreWorkoutManager: NetworkWorkoutService {
     
+    /// Fetch the documents from the group's collection
+    /// - Parameter group: The group we want to fetch the document from
+    /// - Parameter month: The month we want to fetch our workout from
+    /// - Parameter completion: An escaping closure of type ([Workout], Error?) to pass data to another class
+    /// We use this class to populate our model in the viewModel
     func fetchWorkout(from group: Group, for month: String, completion: @escaping ([Workout], Error?) -> ()) {
         var workouts = [Workout]()
         
@@ -46,6 +54,12 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
         }
     }
     
+    /// Fetch the documents from the group's collection
+    /// - Parameter group: The group we want to fetch the document from
+    /// - Parameter month: The month we want to fetch our workout from
+    /// - Parameter workoutID: The workout id we want to fetch data from
+    /// - Parameter completion: An escaping closure of type ([WorkoutLine], Error?) to pass data to another class
+    /// We use this class to populate our model in the viewModel
     func fetchWorkoutLines(from group: Group, for month: String, for workoutID: String, completion: @escaping ([WorkoutLine], Error?) -> () ){
         var workoutLines = [WorkoutLine]()
         
@@ -74,7 +88,11 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
        
     }
 
-    
+    /// Add a document to the workout's collection
+    /// - Parameter group: The group we want to add workout to
+    /// - Parameter month: The month we want to add workout to
+    /// - Parameter workout: The object that will be added to the database
+    /// The workout model has a property dictionnary of type [String : Any] used to add data to firestore
     func addWorkout(to group: Group, for month: String, workout: Workout) -> String {
     
         guard let user = Auth.auth().currentUser else { return "" }
@@ -102,6 +120,11 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
         
     }
     
+    /// Add a document to the workoutLines's collection
+    /// - Parameter group: The group we want to add workout to
+    /// - Parameter month: The month we want to add workout to
+    /// - Parameter workoutID: The workout we want to add a line
+    /// The workoutLine model has a property dictionnary of type [String : Any] used to add data to firestore
     func addWorkoutLine(to group: Group, for month: String, workoutID: String, workoutLine: WorkoutLine) {
         
         DispatchQueue.main.async {
@@ -126,6 +149,10 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
         
     }
     
+    /// Delete a document from the Workout's collection
+    /// - Parameter group: The group we want to delete a workout from
+    /// - Parameter month: The month we want to delete a workout from
+    /// - Parameter workoutID: The workout we want to delete
     func deleteWorkout(from group: Group, for month: String, workoutID: String) {
         
         DispatchQueue.main.async {
@@ -143,6 +170,11 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
         }
     }
     
+    /// Delete a document from the WorkoutLines's collection
+    /// - Parameter group: The group we want to delete a workout from
+    /// - Parameter month: The month we want to delete a workout from
+    /// - Parameter workoutID: The workout we want to delete a line from
+    /// - Parameter workoutLineID: The workoutLine we want to delete
     func deleteWorkoutLine(from group: Group, for month: String, workoutID: String, workoutLineID: String) {
         
         DispatchQueue.main.async {

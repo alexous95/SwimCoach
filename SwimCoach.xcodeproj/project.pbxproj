@@ -79,7 +79,6 @@
 		FAD71AC924112CC50047B885 /* FolderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD71AC824112CC50047B885 /* FolderCollectionViewCell.swift */; };
 		FAD96C4B24376F3800DD14C8 /* WorkoutTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD96C4A24376F3800DD14C8 /* WorkoutTitleCell.swift */; };
 		FADFFEE0243497340011C773 /* UIController+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFFEDF243497340011C773 /* UIController+Background.swift */; };
-		FADFFEE22434A2AA0011C773 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFFEE12434A2AA0011C773 /* PreviewController.swift */; };
 		FAF69D372437341D00FBEEB5 /* TransfertDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF69D362437341D00FBEEB5 /* TransfertDataProtocol.swift */; };
 /* End PBXBuildFile section */
 
@@ -174,7 +173,6 @@
 		FAD71AC824112CC50047B885 /* FolderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAD96C4A24376F3800DD14C8 /* WorkoutTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTitleCell.swift; sourceTree = "<group>"; };
 		FADFFEDF243497340011C773 /* UIController+Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIController+Background.swift"; sourceTree = "<group>"; };
-		FADFFEE12434A2AA0011C773 /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
 		FAF69D362437341D00FBEEB5 /* TransfertDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfertDataProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -346,7 +344,6 @@
 				FAB152D4242B53BA006820A5 /* Training */,
 				FA8CB8F1242A8A5300145575 /* Login */,
 				FA8CB8F0242A8A3800145575 /* Presence */,
-				FADFFEE12434A2AA0011C773 /* PreviewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -803,7 +800,6 @@
 				FA5E06CF243B34B80004B94E /* NetworkPresenceService.swift in Sources */,
 				FA708BFC242E396B0096FF5A /* DetailWorkoutViewModel.swift in Sources */,
 				FA82DF9C2412C9AD0053BA2C /* Group.swift in Sources */,
-				FADFFEE22434A2AA0011C773 /* PreviewController.swift in Sources */,
 				FAD03DB7241A58D1001DC925 /* LoginViewModel.swift in Sources */,
 				FA82DF9A2412C9290053BA2C /* FirestoreGroupManager.swift in Sources */,
 				FAF69D372437341D00FBEEB5 /* TransfertDataProtocol.swift in Sources */,

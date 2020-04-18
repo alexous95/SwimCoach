@@ -19,12 +19,22 @@ class AddWorkoutLineController: UIViewController {
     
     // MARK: - Variables
     
+    /// The group choosen by the user
     var group: Group?
+    
+    /// The month choosen by the user
     var month: String?
+    
+    /// A toolbar that will be added on top of our keyboard
     var toolBar = UIToolbar()
+    
+    /// A date picker to choose a date
     var picker = UIDatePicker()
     
+    /// The gradient object we use to apply our gradient colors
     let gradient = CAGradientLayer()
+    
+    /// The viewModel that manage the data for our controller
     let viewModel = AddWorkoutLineViewModel()
     
     // MARK: View Life Cycle
@@ -73,6 +83,7 @@ class AddWorkoutLineController: UIViewController {
     
     // MARK: - Setup
     
+    /// Setsup the delegates
     private func setupDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -83,6 +94,7 @@ class AddWorkoutLineController: UIViewController {
     
     // MARK: - UI Setup
     
+    /// Makes the buttons rounded with a white border
     private func setupButton() {
         addLine.layer.cornerRadius = 10
         addLine.layer.borderColor = UIColor.white.cgColor
@@ -94,7 +106,7 @@ class AddWorkoutLineController: UIViewController {
         dateButton.setTitle(viewModel.printDate(), for: .normal)
     }
     
-    
+    /// Setsup the textfields border and radius
     private func setupTextfield() {
         if viewModel.title != "" {
             workoutTitle.text = viewModel.title
@@ -108,6 +120,7 @@ class AddWorkoutLineController: UIViewController {
     
     // MARK: - OBJC Action
     
+    /// Add the workoutLines to the workout
     @objc private func addLineToWorkout() {
         guard let group = group else { return }
         guard let month = month else { return }
@@ -116,6 +129,7 @@ class AddWorkoutLineController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    /// Shows a date picker with a toolbar to dismiss
     @IBAction func changeDate(_ sender: Any) {
         picker = UIDatePicker.init()
         tabBarController?.tabBar.isHidden = true
@@ -138,12 +152,14 @@ class AddWorkoutLineController: UIViewController {
         
     }
     
+    /// Change the dateButton title according to date selected in the picker
     @objc func dateChanged(_ sender: UIDatePicker?) {
         if let date = sender?.date {
             dateButton.setTitle(viewModel.printDate(from: date), for: .normal)
         }
     }
     
+    /// Dismiss the date picker
     @objc func onDoneButtonClick() {
         toolBar.removeFromSuperview()
         picker.removeFromSuperview()
@@ -152,6 +168,7 @@ class AddWorkoutLineController: UIViewController {
     
     // MARK: - Action
     
+    /// Creates a workout if the viewModel workout is nil
     @IBAction func addNewLine(sender: Any) {
         if viewModel.workout == nil {
             guard let title = workoutTitle.text else { return }

@@ -9,8 +9,10 @@
 import Foundation
 import Firebase
 
+/// Class that holds our database reference
 final class FirestoreService {
     
+    /// The reference to our firestore databse
     static let database = Firestore.firestore()
     
 }

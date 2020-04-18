@@ -10,7 +10,7 @@ import Foundation
 
 /// Protocol used for dependency injection
 ///
-/// We use this protocol to fetch groups from the database
+/// We use this protocol to fetch, add and delete groups from the database
 protocol NetworkGroupService {
     func fetchGroup(completion: @escaping ([Group], Error?) -> ())
     func addGroup(group: Group)

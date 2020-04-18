@@ -11,17 +11,32 @@ import Combine
 
 class TrainingController: UIViewController {
 
+    // MARK: - Outlets
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityWheel: UIActivityIndicatorView!
     
+    // MARK: - Variables
+    
+    /// The gradient object we use to apply our gradient colors
     let gradient = CAGradientLayer()
+    
+    /// The viewModel that manage the data for our controller
     let viewModel = TrainingViewModel()
     
+    /// The group choosen by the user
     var group: Group?
+    
+    /// The month choosen by the user
     var month: String?
     
+    /// The property that will subscribe to the publisher from the view model
     var activitySubscriber: AnyCancellable?
+    
+    /// The property that will subscribe to the publisher from the view model
     var availlableDataSubscriber: AnyCancellable?
+    
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,18 +87,19 @@ class TrainingController: UIViewController {
         collectionView.dataSource = self
     }
     
+    /// Loads data from the viewModel
     private func loadData() {
         guard let group = group else { return }
         guard let month = month else { return }
         viewModel.fetchWorkout(from: group, for: month)
     }
     
+    /// Deletes the selected item
     private func deleteItem(at indexPath: IndexPath) {
         guard let group = group, let month = month, let workouts = viewModel.workouts else { return }
         viewModel.deleteWorkout(from: group, for: month, workout: workouts[indexPath.item])
     }
     
-    // MARK: - UI Setup
         
     // MARK: - Subscriber
     
@@ -113,6 +129,8 @@ class TrainingController: UIViewController {
         })
     }
 }
+
+// MARK: - Collection View Extension
 
 extension TrainingController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
