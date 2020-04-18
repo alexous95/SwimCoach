@@ -11,83 +11,22 @@ import XCTest
 
 class AddWorkoutLineViewModelTest: XCTestCase {
 
-    enum WorkoutLineError : Error {
-        case empty
-    }
-    
-    var group: Group!
-    var error: WorkoutLineError!
-    var databaseWorkout: [String : [String : [Workout]]]!
-    var databaseWorkoutLines: [String : [WorkoutLine]]!
+   
+    var database = DatabaseMock()
     var firestoreWorkoutMock: FirestoreWorkoutMock!
     var firestoreWorkoutErrorMock: FirestoreWorkoutMock!
     var viewModel: AddWorkoutLineViewModel!
     var viewModelError: AddWorkoutLineViewModel!
     let dateFormatter = DateFormatter()
     
-    func createWorkoutLines() -> [WorkoutLine] {
-        let workoutLine = WorkoutLine(text: "test", zone1: 1.0, zone2: 1.0, zone3: 1.0, zone4: 1.0, zone5: 1.0, zone6: 1.0, zone7: 1.0, ampM: 1.0, coorM: 1.0, endM: 1.0, educ: 1.0, crawl: 1.0, medley: 1.0, spe: 1.0, nageC: 1.0, jbs: 1.0, bras: 1.0, workoutLineID: "testID", workoutLineTitle: "titleTest")
-        
-        let workoutLine2 = WorkoutLine(text: "test2", zone1: 1.0, zone2: 1.0, zone3: 1.0, zone4: 1.0, zone5: 1.0, zone6: 1.0, zone7: 1.0, ampM: 1.0, coorM: 1.0, endM: 1.0, educ: 1.0, crawl: 1.0, medley: 1.0, spe: 1.0, nageC: 1.0, jbs: 1.0, bras: 1.0, workoutLineID: "testID2", workoutLineTitle: "titleTest2")
-        
-        let workoutLines = [workoutLine, workoutLine2]
-        
-        return workoutLines
-    }
-    
-    func createWorkouts() -> [Workout] {
-        
-        let workoutLines = createWorkoutLines()
-        var databaseWorkoutLines = [String : [WorkoutLine]]()
-        
-        var workouts = [Workout]()
-        
-        for index in 0...2 {
-            let workout = Workout(title: "testTitle" + "\(index)", date: "testDate" + "\(index)", workoutID: "testID" + "\(index)", workoutLines: workoutLines)
-            workouts.append(workout)
-            
-            databaseWorkoutLines[workout.workoutID] = workoutLines
-        }
-        
-        return workouts
-    }
-    
-    
-    func createWorkoutDatabase() -> [String : [String : [Workout]]] {
-        let workout = createWorkouts()
-        
-        let databaseWorkout = ["Arctique" : ["April" : workout]]
-        
-        return databaseWorkout
-    }
-    
-    func createWorkoutLinesDatabase() -> [String: [WorkoutLine]] {
-        
-        let workoutLines = createWorkoutLines()
-        var databaseWorkoutLines = [String : [WorkoutLine]]()
-        
-        for index in 0...2 {
-            databaseWorkoutLines["testID" + "\(index)"] = workoutLines
-        }
-        
-        return databaseWorkoutLines
-    }
-    
-    func createGroup() -> Group {
-        return Group(groupName: "Arctique")
-    }
-    
     override func setUp() {
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale(identifier: "FR-fr")
         
-        group = Group(groupName: "Arctique")
-        databaseWorkout = createWorkoutDatabase()
-        databaseWorkoutLines = createWorkoutLinesDatabase()
-        error = .empty
-        firestoreWorkoutMock = FirestoreWorkoutMock(databaseWorkout: databaseWorkout, databaseWorkoutLines: databaseWorkoutLines)
-        firestoreWorkoutErrorMock = FirestoreWorkoutMock(databaseWorkout: databaseWorkout, databaseWorkoutLines: databaseWorkoutLines, error: error)
+        database.initDatabase()
+        firestoreWorkoutMock = FirestoreWorkoutMock(databaseWorkout: database.databaseWorkout, databaseWorkoutLines: database.databaseWorkoutLines)
+        firestoreWorkoutErrorMock = FirestoreWorkoutMock(databaseWorkout: database.databaseWorkout, databaseWorkoutLines: database.databaseWorkoutLines, error: database.error)
         viewModel = AddWorkoutLineViewModel(network: firestoreWorkoutMock)
         viewModelError = AddWorkoutLineViewModel(network: firestoreWorkoutErrorMock)
     }
@@ -123,7 +62,7 @@ class AddWorkoutLineViewModelTest: XCTestCase {
     func testGivenViewModel_WhenGettingNumberOfLines_ThenResultIsArrayCount() {
         // Given
         
-        let workoutLines = createWorkoutLines()
+        let workoutLines = database.createWorkoutLines()
         viewModel.workoutLines = workoutLines
         
         // When
@@ -146,7 +85,7 @@ class AddWorkoutLineViewModelTest: XCTestCase {
         
         // When
         
-        viewModel.createWorkout(title: title, date: date, for: group, for: month)
+        viewModel.createWorkout(title: title, date: date, for: database.group, for: month)
         
         // Then
         
@@ -225,14 +164,14 @@ class AddWorkoutLineViewModelTest: XCTestCase {
         let title = "test42"
         let date = "08/04/2020"
         let month = "April"
-        viewModel.createWorkout(title: title, date: date, for: group, for: month)
+        viewModel.createWorkout(title: title, date: date, for: database.group, for: month)
         
         let workoutLine = WorkoutLine(text: "test", zone1: 1.0, zone2: 1.0, zone3: 1.0, zone4: 1.0, zone5: 1.0, zone6: 1.0, zone7: 1.0, ampM: 1.0, coorM: 1.0, endM: 1.0, educ: 1.0, crawl: 1.0, medley: 1.0, spe: 1.0, nageC: 1.0, jbs: 1.0, bras: 1.0, workoutLineID: "testID", workoutLineTitle: "titleTest")
         viewModel.workoutLines.append(workoutLine)
         
         // When
         
-        viewModel.addLineToWorkout(to: group, for: "April")
+        viewModel.addLineToWorkout(to: database.group, for: "April")
         
         // Then
         
@@ -244,7 +183,7 @@ class AddWorkoutLineViewModelTest: XCTestCase {
         // Given
         // When
         
-        viewModel.addLineToWorkout(to: group, for: "April")
+        viewModel.addLineToWorkout(to: database.group, for: "April")
         
         // Then
         

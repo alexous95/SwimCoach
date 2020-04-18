@@ -8,6 +8,9 @@
 
 import Foundation
 
+/// Protocol used for dependency injection
+///
+/// We use this protocol to fetch, add and delete persons from the database
 protocol NetworkPersonService {
     func fetchPersons(from group: Group, completion: @escaping ([Person], Error?) -> ())
     func addPerson(lastName: String, firstName: String, to group: Group)

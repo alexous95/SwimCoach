@@ -22,7 +22,7 @@ final class LoginViewModel {
     
     var error: LoginError = .fieldsError
     
-    func authentificate(withEmail email: String, password: String){
+    func authentificate(withEmail email: String, password: String) {
         isLoading = true
         if email == "" || password == "" || password.count < 5 {
             isLoading = false

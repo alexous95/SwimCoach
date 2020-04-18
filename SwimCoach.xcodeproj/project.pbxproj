@@ -72,6 +72,7 @@
 		FAB152DD242B6CEC006820A5 /* TrainingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB152DC242B6CEC006820A5 /* TrainingController.swift */; };
 		FABAD7BC23FEBC5100E573AF /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABAD7BB23FEBC5100E573AF /* FirestoreService.swift */; };
 		FAC36F92244ADEE800A8A130 /* DatabaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F91244ADEE800A8A130 /* DatabaseMock.swift */; };
+		FAC36F9A244AF2EC00A8A130 /* LoginViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F99244AF2EC00A8A130 /* LoginViewModelTest.swift */; };
 		FAC8C20E242A8F1100E7E96D /* TrainingGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */; };
 		FAD03DB7241A58D1001DC925 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03DB6241A58D1001DC925 /* LoginViewModel.swift */; };
 		FAD6CF88244858C500217481 /* MonthViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6CF87244858C500217481 /* MonthViewModelTest.swift */; };
@@ -166,6 +167,7 @@
 		FAB152DC242B6CEC006820A5 /* TrainingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingController.swift; sourceTree = "<group>"; };
 		FABAD7BB23FEBC5100E573AF /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		FAC36F91244ADEE800A8A130 /* DatabaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMock.swift; sourceTree = "<group>"; };
+		FAC36F99244AF2EC00A8A130 /* LoginViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTest.swift; sourceTree = "<group>"; };
 		FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingGroupController.swift; sourceTree = "<group>"; };
 		FAD03DB6241A58D1001DC925 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FAD6CF87244858C500217481 /* MonthViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewModelTest.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 		FA88C8662444C4FC00167266 /* ViewModelTest */ = {
 			isa = PBXGroup;
 			children = (
+				FAC36F98244AF2D300A8A130 /* Login */,
 				FAD6CF8D24485A9D00217481 /* Group */,
 				FA88C8682444C52800167266 /* Presence */,
 				FA88C8672444C51300167266 /* Training */,
@@ -520,6 +523,14 @@
 				FA87951D2436299F0028BBE1 /* AddWorkoutLineDetailViewModel.swift */,
 			);
 			path = Training;
+			sourceTree = "<group>";
+		};
+		FAC36F98244AF2D300A8A130 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FAC36F99244AF2EC00A8A130 /* LoginViewModelTest.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		FAD03DB5241A58B1001DC925 /* View Model */ = {
@@ -837,6 +848,7 @@
 				FAAC7B2A2445B84000DD8F17 /* FirestorePresenceTest.swift in Sources */,
 				FAAF62132449E9B900AACBF3 /* TrainingViewModelTest.swift in Sources */,
 				FA88C86F2444CD0B00167266 /* FirestoreGroupTest.swift in Sources */,
+				FAC36F9A244AF2EC00A8A130 /* LoginViewModelTest.swift in Sources */,
 				FA69C3D7244A4E59002544AF /* AddWorkoutLineDetailViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

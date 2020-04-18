@@ -8,8 +8,10 @@
 
 import Foundation
 
-protocol NetworkGroupService: class {
-    
+/// Protocol used for dependency injection
+///
+/// We use this protocol to fetch groups from the database
+protocol NetworkGroupService {
     func fetchGroup(completion: @escaping ([Group], Error?) -> ())
     func addGroup(group: Group)
     func deleteGroup(group: Group)

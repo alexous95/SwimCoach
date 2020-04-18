@@ -8,7 +8,7 @@
 
 import Foundation
 
+/// Protocol used to transfer a certain type of data between Controllers
 protocol TransfertDataProtocol {
-    
     func getData(data: WorkoutLine)
 }
