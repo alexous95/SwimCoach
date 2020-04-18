@@ -71,6 +71,7 @@
 		FAB152DB242B6CB3006820A5 /* TrainingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB152DA242B6CB3006820A5 /* TrainingCollectionViewCell.swift */; };
 		FAB152DD242B6CEC006820A5 /* TrainingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB152DC242B6CEC006820A5 /* TrainingController.swift */; };
 		FABAD7BC23FEBC5100E573AF /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABAD7BB23FEBC5100E573AF /* FirestoreService.swift */; };
+		FAC36F92244ADEE800A8A130 /* DatabaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F91244ADEE800A8A130 /* DatabaseMock.swift */; };
 		FAC8C20E242A8F1100E7E96D /* TrainingGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */; };
 		FAD03DB7241A58D1001DC925 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03DB6241A58D1001DC925 /* LoginViewModel.swift */; };
 		FAD6CF88244858C500217481 /* MonthViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6CF87244858C500217481 /* MonthViewModelTest.swift */; };
@@ -164,6 +165,7 @@
 		FAB152DA242B6CB3006820A5 /* TrainingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAB152DC242B6CEC006820A5 /* TrainingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingController.swift; sourceTree = "<group>"; };
 		FABAD7BB23FEBC5100E573AF /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		FAC36F91244ADEE800A8A130 /* DatabaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMock.swift; sourceTree = "<group>"; };
 		FAC8C20D242A8F1100E7E96D /* TrainingGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingGroupController.swift; sourceTree = "<group>"; };
 		FAD03DB6241A58D1001DC925 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FAD6CF87244858C500217481 /* MonthViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewModelTest.swift; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 				FAD6CF8E24485B1D00217481 /* Training */,
 				FAD6CF8C24485A8B00217481 /* Group */,
 				FAAC7B282445B80D00DD8F17 /* Presence */,
+				FAC36F91244ADEE800A8A130 /* DatabaseMock.swift */,
 			);
 			path = ServicesTest;
 			sourceTree = "<group>";
@@ -815,6 +818,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC36F92244ADEE800A8A130 /* DatabaseMock.swift in Sources */,
 				FA88C86B2444C5A000167266 /* FirestoreGroupMock.swift in Sources */,
 				FA88C85C2444578D00167266 /* PersonTest.swift in Sources */,
 				FAABEDF02448AF16000FAEF8 /* FirestoreWorkoutTest.swift in Sources */,
