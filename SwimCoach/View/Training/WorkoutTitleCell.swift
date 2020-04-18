@@ -11,8 +11,11 @@ import Combine
 
 class WorkoutTitleCell: UITableViewCell {
 
+    // MARK: - Outlet
     
     @IBOutlet weak var title: UITextField!
+    
+    // MARK: - Configure
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +36,8 @@ class WorkoutTitleCell: UITableViewCell {
     }
     
 }
+
+// MARK: - Text Fields Extension
 
 extension WorkoutTitleCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

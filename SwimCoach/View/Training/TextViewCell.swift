@@ -10,7 +10,12 @@ import UIKit
 
 class TextViewCell: UITableViewCell {
 
+    // MARK: - Outlet
+    
     @IBOutlet weak var trainingText: UITextView!
+    
+    // MARK: - Variables
+    
     var textChanged: ((String) -> Void)?
     var textViewClearedOnInitialEdit = false
     
@@ -19,6 +24,8 @@ class TextViewCell: UITableViewCell {
         trainingText.delegate = self
         trainingText.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender: )))
     }
+    
+    // MARK: - Configure
     
     func configure(text: String) {
         trainingText.text = text
@@ -37,10 +44,13 @@ class TextViewCell: UITableViewCell {
     
     // MARK: - Private
     
+    /// The done button of the keyboard's tool bar is used to dismiss
     @objc private func tapDone(sender: Any){
         trainingText.resignFirstResponder()
     }
 }
+
+// MARK: - Text View Extension
 
 extension TextViewCell: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {

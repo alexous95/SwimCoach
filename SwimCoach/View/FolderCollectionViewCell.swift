@@ -10,9 +10,13 @@ import UIKit
 
 class FolderCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Outlet
+    
     @IBOutlet weak var folderImage: UIImageView!
     @IBOutlet weak var groupeName: UILabel!
  
+    // MARK: - Configuration
+    
     let gradient = CAGradientLayer()
 
     override func awakeFromNib() {

@@ -10,13 +10,20 @@ import UIKit
 
 class TrainingCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Outlet
+    
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleTrain: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
+    // MARK: - Variables
     
     let gradient = CAGradientLayer()
     
+    
+    // MARK: - Private
+    
+    /// Add a gradient layer to our cells
     private func setupBackground() {
         guard let backStartColor = UIColor(named: "FolderCellStart")?.resolvedColor(with: self.traitCollection) else { return }
         guard let backEndColor = UIColor(named: "FolderCellEnd")?.resolvedColor(with: self.traitCollection) else { return }
@@ -28,6 +35,8 @@ class TrainingCollectionViewCell: UICollectionViewCell {
     private func setupCorner() {
         contentView.layer.cornerRadius = 10
     }
+    
+    // MARK: - Configuration
     
     // This methodes is used to apply our gradient and to force our cells to layout again
     override func layoutSubviews() {

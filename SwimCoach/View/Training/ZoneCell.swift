@@ -10,8 +10,12 @@ import UIKit
 
 class ZoneCell: UITableViewCell {
 
+    // MARK: - Outlet
+    
     @IBOutlet weak var quantification: UILabel!
     @IBOutlet weak var distance: UIButton!
+    
+    // MARK: - Configure
     
     func configure(quantif: String, dist: String) {
         quantification.text = quantif
