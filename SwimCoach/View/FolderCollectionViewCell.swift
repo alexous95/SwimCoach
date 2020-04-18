@@ -62,7 +62,6 @@ class FolderCollectionViewCell: UICollectionViewCell {
         contentView.layer.insertSublayer(gradient, at: 0)
     }
     
-    
     func configure(name: String) {
         groupeName.text = name
     }

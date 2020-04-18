@@ -396,6 +396,11 @@
                         <viewLayoutGuide key="safeArea" id="2LV-wr-pXa"/>
                     </view>
                     <navigationItem key="navigationItem" title="Group" largeTitleDisplayMode="always" id="gpk-sn-muT">
+                        <barButtonItem key="leftBarButtonItem" image="gear" catalog="system" id="uDs-Ye-9LS">
+                            <connections>
+                                <action selector="signOut:" destination="xaQ-HS-j1N" id="uQS-um-GFN"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="folder.badge.plus" catalog="system" id="3AM-Yh-ZRX">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -406,9 +411,11 @@
                     <connections>
                         <outlet property="activityWheel" destination="hGd-SH-AkP" id="RLz-r7-bYH"/>
                         <outlet property="collectionView" destination="CEe-eq-uLy" id="25E-Mz-AKZ"/>
+                        <segue destination="VNb-7C-rmn" kind="unwind" identifier="unwindToLogin" unwindAction="unwind:" id="9Xa-k6-Tpj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXo-xI-COE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="VNb-7C-rmn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3030" y="-214"/>
         </scene>
@@ -1251,6 +1258,7 @@
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="folder" catalog="system" width="128" height="95"/>
         <image name="folder.badge.plus" catalog="system" width="128" height="86"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="person.badge.plus" catalog="system" width="128" height="116"/>
         <image name="transparent" width="0.5" height="0.5"/>

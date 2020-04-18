@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+import FirebaseAuth
 
 class GroupController: UIViewController {
     
@@ -139,22 +140,34 @@ class GroupController: UIViewController {
         present(alert, animated: true)
     }
     
+    @IBAction func signOut(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Sign Out ?", message: "Do you want to sign out", preferredStyle: .alert)
+        
+        let signOutAction = UIAlertAction(title: "Signout", style: .default) { (action) in
+            let fireAuth = Auth.auth()
+            do {
+                try fireAuth.signOut()
+                self.performSegue(withIdentifier: "unwindToLogin", sender: self)
+            } catch let signoutError as NSError {
+                print("error sign out: %@", signoutError )
+            }
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        
+        alert.addAction(cancel)
+        alert.addAction(signOutAction)
+        
+        present(alert, animated: true)
+    }
+    
     // MARK: - Private
     
     private func deleteItem(at indexPath: IndexPath) {
         guard let groups = viewModel.groups else { return }
         viewModel.deleteGroup(group: groups[indexPath.item])
     }
-    
-    
-    private func makePreviewController() -> UIViewController {
-        let viewController = PreviewController()
-        
-        viewController.preferredContentSize = viewController.imageView.frame.size
-        viewController.view.backgroundColor = .clear
-        return viewController
-    }
-    
 }
 
 // MARK: - Collection View Extension

@@ -55,6 +55,13 @@ class LoginController: UIViewController {
         startAnimation()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        prepareForAnimation()
+        email.text = ""
+        password.text = ""
+        
+    }
+    
     // MARK: - Animation Methodes
     
     /// Configures the position before launching the animations
@@ -62,6 +69,7 @@ class LoginController: UIViewController {
         email.center.x -= view.bounds.width
         password.center.x -= view.bounds.width
         login.center.x -= view.bounds.width
+        create.center.x -= view.bounds.width
     }
     
     /// Starts all the animations
@@ -217,6 +225,10 @@ class LoginController: UIViewController {
         guard let password = password.text else { return }
         
         viewModel.authentificate(withEmail: email, password: password)
+    }
+    
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        
     }
     
     @objc private func endEditing() {

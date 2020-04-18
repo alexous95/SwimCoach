@@ -77,6 +77,9 @@ class AddWorkoutLineController: UIViewController {
             destVC.viewModel.workoutText = workoutLine.text
             destVC.viewModel.workoutLineTitle = workoutLine.workoutLineTitle
             destVC.textViewClearedOnEdit = true
+            destVC.group = group
+            destVC.month = month
+            destVC.workout = viewModel.workout
             destVC.delegate = self
         }
     }
