@@ -45,11 +45,11 @@ class FirestoreWorkoutManager: NetworkWorkoutService {
                             print(error?.localizedDescription as Any)
                         } else {
                             workout.workoutLines = workoutLines
+                            workouts.append(workout)
+                            completion(workouts, nil)
                         }
                     }
-                    workouts.append(workout)
                 }
-                completion(workouts, nil)
             }
         }
     }

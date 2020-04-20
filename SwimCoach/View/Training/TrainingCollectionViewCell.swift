@@ -49,6 +49,6 @@ class TrainingCollectionViewCell: UICollectionViewCell {
     func configure(date: String, titreSeance: String, distance: String) {
         dateLabel.text = date
         titleTrain.text = titreSeance
-        distanceLabel.text = distance
+        distanceLabel.text = distance + "m"
     }
 }

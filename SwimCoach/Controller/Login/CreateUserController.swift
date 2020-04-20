@@ -48,7 +48,12 @@ class CreateUserController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        prepareForAnimation()
         startTexfieldsAnimation()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        prepareForAnimation()
     }
     
     

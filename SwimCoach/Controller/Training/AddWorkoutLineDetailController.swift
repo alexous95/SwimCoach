@@ -136,22 +136,18 @@ class AddWorkoutLineDetailController: UIViewController {
     /// Saves the workout line
     @IBAction func saveWorkoutLine(_ sender: Any) {
         guard let group = group else {
-            print("on est la 10")
             return
         }
         guard let month = month else {
-            print("On est la 11")
             return
         }
         guard let workout = workout else {
-            print("On est la 12")
             return
         }
         let alert = UIAlertController(title: "Saving", message: "Do you want to save now ?", preferredStyle: .alert)
         
         let save = UIAlertAction(title: "Save", style: .default) { (_) in
             self.viewModel.save(for: group, for: month, workout: workout)
-            print("On est la")
             self.delegate?.getData(data: self.viewModel.workoutLine)
             self.navigationController?.popViewController(animated: true)
         }
