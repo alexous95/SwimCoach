@@ -7,6 +7,8 @@ This app targets swimmer coaches and helps them manage their workout.
 
 <img src="https://github.com/alexous95/SwimCoach/blob/master/ScreenShots/HomeScreenLight.png" width="250"> <img src="https://github.com/alexous95/SwimCoach/blob/master/ScreenShots/HomeScreendDark.png" width="250">
 
+This two images are the homescreen in light and dark version
+
 ## Features
 
 ### Manage groups of people
